@@ -2,3 +2,15 @@
   ansible.builtin.apt:
     name: nginx
 
+- name: Configure nginx as a uWSGI frontend
+  ansible.builtin.copy:
+    src: ../files/default
+    dest: /etc/nginx/sites-enabled/default
+  notify: Restart Nginx
+
+- name: Nginx service
+  ansible.builtin.service:
+    name: nginx
+    state: started
+    enabled: true
+

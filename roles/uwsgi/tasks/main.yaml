@@ -1,0 +1,30 @@
+- name: Install uWSGI packages
+  ansible.builtin.apt:
+    name:
+      - uwsgi
+      - uwsgi-plugin-python3
+
+- name: Create repository /etc/uwsgi/apps-enabled
+  ansible.builtin.file:
+    path: /etc/uwsgi/apps-enabled
+    state: directory
+
+- name: Add Agama configuration
+  ansible.builtin.copy:
+    content: |
+      [uwsgi]
+      chdir = opt/agama
+      module = agama:app
+      env = AGAMA_DATABASE_URI=sqlite:////opt/agama/db.sqlite3
+      plugins = python3
+      socket = 127.0.0.1:5000
+      uid = agama
+    dest: /etc/uwsgi/apps-enabled/agama.ini
+  notify: Restart uWSGI
+
+- name: uWSGI service
+  ansible.builtin.service:
+    name: uwsgi
+    state: started
+    enabled: true
+

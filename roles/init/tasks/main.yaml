@@ -5,24 +5,25 @@
   ansible.builtin.apt:
     cache_valid_time: 86400
 
-- name: Add use juri
-  ansible.builtin.user:
-    name: juri
-    create_home: yes
+#- name: Add use juri
+#  ansible.builtin.user:
+#    name: juri
+#    create_home: yes
 
-- name: Add user roman
-  ansible.builtin.user:
-    name: roman
-    create_home: yes
+#- name: Add user roman
+#  ansible.builtin.user:
+#    name: roman
+#    create_home: yes
 
-- name: Set authorized keys for juri
-  ansible.posix.authorized_key:
-    user: juri
-    state: present
-    key: https://github.com/hudolejev.keys
+#- name: Set authorized keys for juri
+#  ansible.posix.authorized_key:
+#    user: juri
+#    state: present
+#    key: https://github.com/hudolejev.keys
 
-- name: Set authorized keys for roman
-  ansible.posix.authorized_key:
-    user: roman
-    state: present
-    key: https://github.com/romankuchin.keys
+#- name: Set authorized keys for roman
+#  ansible.posix.authorized_key:
+#    user: roman
+#    state: present
+#    key: https://github.com/romankuchin.keys
+
