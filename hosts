@@ -1,4 +1,8 @@
-jevgeni-arefjev-1 ansible_host=193.40.157.25 ansible_port=36922 ansible_user=ubuntu
+jevgeni-arefjev-1 ansible_host=193.40.157.25 ansible_port=23022 ansible_user=ubuntu
+jevgeni-arefjev-2 ansible_host=193.40.157.25 ansible_port=1922 ansible_user=ubuntu
+
+[db_servers]
+jevgeni-arefjev-2
 
 [web_servers]
 jevgeni-arefjev-1

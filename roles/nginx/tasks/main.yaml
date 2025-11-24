@@ -4,7 +4,7 @@
 
 - name: Configure nginx as a uWSGI frontend
   ansible.builtin.copy:
-    src: ../files/default
+    src: default
     dest: /etc/nginx/sites-enabled/default
   notify: Restart Nginx
 

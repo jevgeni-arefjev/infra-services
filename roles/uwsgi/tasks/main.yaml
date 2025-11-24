@@ -9,17 +9,13 @@
     path: /etc/uwsgi/apps-enabled
     state: directory
 
-- name: Add Agama configuration
-  ansible.builtin.copy:
-    content: |
-      [uwsgi]
-      chdir = opt/agama
-      module = agama:app
-      env = AGAMA_DATABASE_URI=sqlite:////opt/agama/db.sqlite3
-      plugins = python3
-      socket = 127.0.0.1:5000
-      uid = agama
+- name: Add uWSGI app Agama configuration
+  ansible.builtin.template:
+    src: agama.ini.j2
     dest: /etc/uwsgi/apps-enabled/agama.ini
+    owner: agama
+    mode: 0400
+  no_log: true
   notify: Restart uWSGI
 
 - name: uWSGI service
