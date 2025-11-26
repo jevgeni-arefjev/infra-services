@@ -1,0 +1,24 @@
+- name: Install Bind9
+  ansible.builtin.apt:
+    name: bind9
+
+- name: Update Bind9 configuration
+  ansible.builtin.template:
+    src: named.conf.{{ item }}.j2
+    dest: /etc/bind/named.conf.{{ item }}
+  loop:
+    - options
+    - local
+  notify: Restart Bind9
+
+- name: Configure master zone
+  ansible.builtin.template:
+    src: db.humble.hungry.j2
+    dest: /var/cache/bind/db.humble.hungry
+  notify: Restart Bind9
+
+- name: Bind9 service
+  ansible.builtin.service:
+    name: bind9
+    state: started
+    enabled: true
