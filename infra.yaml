@@ -20,3 +20,11 @@
     hosts: dns_servers
     roles:
       - bind
+
+  - name: Prometheus
+    hosts: prometheus
+    roles:
+      - nginx
+      - prometheus
+    tags:
+      - d

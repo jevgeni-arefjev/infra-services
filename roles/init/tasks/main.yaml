@@ -10,6 +10,10 @@
     src: resolv.conf.j2
     dest: /etc/resolv.conf
   
+- name: install prometheus node exporter
+  ansible.builtin.apt:
+    name: prometheus-node-exporter
+    
 
 #- name: Add use juri
 #  ansible.builtin.user:

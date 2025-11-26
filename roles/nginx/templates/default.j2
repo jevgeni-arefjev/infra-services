@@ -1,0 +1,20 @@
+server {
+	listen 80 default_server;
+	server_name _;
+
+{% if inventory_hostname not in groups['prometheus'] %}
+	location / {
+		uwsgi_pass localhost:5000;
+		include uwsgi_params;
+	}
+{% endif %}
+{% if inventory_hostname in groups['prometheus'] %}
+	location / {
+		try_files $uri $uri/ =404;
+	}
+
+	location /prometheus {
+		proxy_pass http://localhost:9090;
+	}
+{% endif %}
+}
