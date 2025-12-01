@@ -16,5 +16,17 @@ server {
 	location /prometheus {
 		proxy_pass http://localhost:9090;
 	}
+
+	location /grafana {
+		proxy_pass http://localhost:3000;
+		proxy_set_header Host $http_host;
+	}
 {% endif %}
+}
+
+server {
+	listen 8080 default_server;
+	location = /stub_status {
+		stub_status;
+	}
 }

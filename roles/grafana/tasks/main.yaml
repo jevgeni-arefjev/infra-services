@@ -1,0 +1,65 @@
+- name: Install Grafana prerequisites
+  ansible.builtin.apt:
+    name:
+      - apt-transport-https 
+      - software-properties-common
+      - wget
+
+- name: Create repository for key
+  ansible.builtin.file:
+    path: /etc/apt/keyrings
+    state: directory
+
+- name: Import GPG key
+  ansible.builtin.apt_key:
+    url: https://apt.grafana.com/gpg.key
+    keyring: /etc/apt/keyrings/grafana.gpg
+
+- name: Add Grafana apt repo
+  ansible.builtin.apt_repository:
+    repo: "deb [signed-by=/etc/apt/keyrings/grafana.gpg] https://apt.grafana.com stable main"
+    filename: grafana
+
+- name: Install Grafana
+  ansible.builtin.apt:
+    name: grafana
+
+- name: Configure Grafana reserve proxy
+  ansible.builtin.template:
+    src: grafana.ini.j2
+    dest: /etc/grafana/grafana.ini
+  notify: Restart Grafana
+
+- name: Configure Grafana data source
+  ansible.builtin.template:
+    src: datasource.yaml.j2
+    dest: /etc/grafana/provisioning/datasources/datasource.yaml
+  notify: Restart Grafana
+
+- name: Configure Grafana dashboards
+  ansible.builtin.copy:
+    src: main.json
+    dest: /etc/grafana/provisioning/dashboards/dashboards.yaml
+  notify: Restart Grafana
+
+- name: Create directory for dashboards
+  ansible.builtin.file:
+    path: /var/lib/grafana/dashboards
+    state: directory
+
+- name: Add Grafana dashboard
+  ansible.builtin.copy:
+    src: main.json
+    dest: /var/lib/grafana/dashboards/main.json
+  # no need to restart because Grafana updates dashboards automatically every 10s
+
+#- name: Create a Grafana user
+#
+#    url_username: 'admin'
+#    url_password: 'admin'
+
+- name: Grafana service
+  ansible.builtin.service:
+    name: grafana-server
+    state: started
+    enabled: true

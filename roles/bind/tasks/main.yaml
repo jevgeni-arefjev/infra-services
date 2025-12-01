@@ -22,3 +22,14 @@
     name: bind9
     state: started
     enabled: true
+
+# Install Bind exporter for prometheus
+- name: Install prometheus-bind-exporter
+  ansible.builtin.apt:
+    name: prometheus-bind-exporter
+
+- name: Bind9-exporter service
+  ansible.builtin.service:
+    name: prometheus-bind-exporter 
+    state: started
+    enabled: true

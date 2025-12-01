@@ -3,11 +3,22 @@
     hosts: all
     roles:
       - init
+    tags:
+      - always
+
+  - name: DNS servers
+    hosts: dns_servers
+    roles:
+      - bind
+    tags:
+      - b
 
   - name: Database servers
     hosts: db_servers
     roles:
       - mysql
+    tags:
+      - d
 
   - name: Web servers
     hosts: web_servers
@@ -15,11 +26,8 @@
       - agama
       - uwsgi
       - nginx
-
-  - name: DNS servers
-    hosts: dns_servers
-    roles:
-      - bind
+    tags:
+      - w
 
   - name: Prometheus
     hosts: prometheus
@@ -27,4 +35,11 @@
       - nginx
       - prometheus
     tags:
-      - d
+      - p
+
+  - name: Grafana
+    hosts: grafana
+    roles:
+      - grafana
+    tags:
+      - g

@@ -38,16 +38,40 @@ scrape_configs:
     static_configs:
       - targets: ['localhost:9090']
 
-  - job_name: node
+  #- job_name: node
     # If prometheus-node-exporter is installed, grab stats about the local
     # machine by default.
-    static_configs:
-      - targets: ['localhost:9100']
+  #  static_configs:
+  #    - targets: ['localhost:9100']
 
   - job_name: 'linux'
-
+    
     static_configs:
       - targets:
 {% for vm in groups['all']%}
         - '{{ vm }}:9100'
+{% endfor %}
+
+  - job_name: 'mysql'
+    
+    static_configs:
+      - targets:
+{% for vm in groups['db_servers']%}
+        - '{{ vm }}:9104'
+{% endfor %}
+
+  - job_name: 'bind9'
+      
+    static_configs:
+      - targets:
+{% for vm in groups['dns_servers']%}
+        - '{{ vm }}:9119'
+{% endfor %}
+
+  - job_name: 'nginx'
+      
+    static_configs:
+      - targets:
+{% for vm in groups['web_servers']%}
+        - '{{ vm }}:9113'
 {% endfor %}
