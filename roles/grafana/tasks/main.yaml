@@ -32,13 +32,13 @@
 
 - name: Configure Grafana data source
   ansible.builtin.template:
-    src: datasource.yaml.j2
-    dest: /etc/grafana/provisioning/datasources/datasource.yaml
+    src: prometheus.yaml.j2
+    dest: /etc/grafana/provisioning/datasources/prometheus.yaml
   notify: Restart Grafana
 
 - name: Configure Grafana dashboards
   ansible.builtin.copy:
-    src: main.json
+    src: dashboards.yaml
     dest: /etc/grafana/provisioning/dashboards/dashboards.yaml
   notify: Restart Grafana
 
@@ -52,11 +52,6 @@
     src: main.json
     dest: /var/lib/grafana/dashboards/main.json
   # no need to restart because Grafana updates dashboards automatically every 10s
-
-#- name: Create a Grafana user
-#
-#    url_username: 'admin'
-#    url_password: 'admin'
 
 - name: Grafana service
   ansible.builtin.service:

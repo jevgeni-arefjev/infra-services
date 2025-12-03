@@ -51,6 +51,7 @@
     src: my.cnf.j2
     dest: /var/lib/prometheus/.my.cnf
     mode: '400'
+    owner: prometheus
   no_log: yes
   notify: Restart Prometheus-mysqld-exporter
 

@@ -1,5 +1,5 @@
-jevgeni-arefjev-1 ansible_host=193.40.157.25 ansible_port=39422 ansible_user=ubuntu
-jevgeni-arefjev-2 ansible_host=193.40.157.25 ansible_port=26822 ansible_user=ubuntu
+jevgeni-arefjev-1 ansible_host=193.40.157.25 ansible_port=30822 ansible_user=ubuntu
+jevgeni-arefjev-2 ansible_host=193.40.157.25 ansible_port=26322 ansible_user=ubuntu
 
 [db_servers]
 jevgeni-arefjev-2
@@ -15,3 +15,6 @@ jevgeni-arefjev-2
 
 [grafana]
 jevgeni-arefjev-2
+
+[loki]
+jevgeni-arefjev-1

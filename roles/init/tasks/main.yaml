@@ -10,6 +10,13 @@
     src: resolv.conf.j2
     dest: /etc/resolv.conf
 
+#- name: Prevent services from auto-starting
+#  ansible.builtin.copy:
+#    dest: /usr/sbin/policy-rc.d
+#    content: |
+#     #!/bin/sh
+#      exit 101
+
 - name: install prometheus node exporter
   ansible.builtin.apt:
     name: prometheus-node-exporter

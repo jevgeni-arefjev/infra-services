@@ -43,3 +43,10 @@
       - grafana
     tags:
       - g
+  
+#  - name: Loki
+#    hosts: loki
+#    roles:
+#      - loki
+#    tags:
+#      - l
