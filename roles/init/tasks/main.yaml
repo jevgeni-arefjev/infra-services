@@ -10,16 +10,60 @@
     src: resolv.conf.j2
     dest: /etc/resolv.conf
 
-#- name: Prevent services from auto-starting
-#  ansible.builtin.copy:
-#    dest: /usr/sbin/policy-rc.d
-#    content: |
-#     #!/bin/sh
-#      exit 101
-
 - name: install prometheus node exporter
   ansible.builtin.apt:
     name: prometheus-node-exporter
+
+- name: Install unzip package
+  ansible.builtin.apt:
+    name: unzip
+
+- name: Download Promtail binary
+  ansible.builtin.get_url:
+    url: "https://github.com/grafana/loki/releases/download/v3.6.2/promtail-linux-amd64.zip"
+    dest: /usr/bin/promtail.zip
+
+- name: Unzip Promtail binary
+  ansible.builtin.unarchive:
+    src: /usr/bin/promtail.zip
+    dest: /usr/bin/
+    remote_src: yes
+
+- name: Create directory for Promtail
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - /etc/promtail
+    - /var/lib/promtail
+
+- name: Create Promtail user
+  ansible.builtin.user:
+    name: promtail
+    system: yes
+
+- name: Add promtail user to adm group for syslog access
+  ansible.builtin.user:
+    name: promtail
+    groups: adm
+    append: yes
+
+- name: Install Promtail configuration
+  ansible.builtin.copy:
+    src: promtail-local-config.yaml
+    dest: /etc/promtail/promtail-local-config.yaml
+  notify: Restart Promtail
+
+- name: Create Promtail systemd service
+  ansible.builtin.copy:
+    src: promtail.service
+    dest: /etc/systemd/system/promtail.service
+
+- name: Promtail Service
+  ansible.builtin.service:
+    name: promtail
+    state: started
+    enabled: true
 
 #- name: Add use juri
 #  ansible.builtin.user:

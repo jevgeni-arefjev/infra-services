@@ -1,0 +1,35 @@
+- name: Download Loki binary
+  ansible.builtin.get_url:
+    url: "https://github.com/grafana/loki/releases/download/v3.6.2/loki-linux-amd64.zip"
+    dest: /usr/bin/loki.zip
+
+- name: Unzip Loki binary
+  ansible.builtin.unarchive:
+    src: /usr/bin/loki.zip
+    dest: /usr/bin/
+    remote_src: yes
+
+- name: Create Loki directory structure
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - /etc/loki
+    - /var/lib/loki
+
+- name: Install Loki configuration
+  ansible.builtin.copy:
+    src: loki-local-config.yaml
+    dest: /etc/loki/loki-local-config.yaml
+  notify: Restart Loki
+
+- name: Create Loki systemd service
+  ansible.builtin.copy:
+    src: loki.service
+    dest: /etc/systemd/system/loki.service
+
+- name: Loki Service
+  ansible.builtin.service:
+    name: loki
+    state: started
+    enabled: true

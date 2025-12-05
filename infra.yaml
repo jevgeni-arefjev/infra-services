@@ -3,6 +3,7 @@
     hosts: all
     roles:
       - init
+    gather_facts: yes
     tags:
       - always
 
@@ -44,9 +45,9 @@
     tags:
       - g
   
-#  - name: Loki
-#    hosts: loki
-#    roles:
-#      - loki
-#    tags:
-#      - l
+  - name: Loki
+    hosts: loki
+    roles:
+      - loki
+    tags:
+      - l

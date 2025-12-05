@@ -24,3 +24,8 @@
     state: started
     enabled: true
 
+- name: Allow group adm to read agama log
+  ansible.builtin.file:
+    path: /var/log/uwsgi #cannot specify agama.log directly, because file does not exist at this moment.
+    group: adm
+    mode: '640'

@@ -30,10 +30,13 @@
     dest: /etc/grafana/grafana.ini
   notify: Restart Grafana
 
-- name: Configure Grafana data source
+- name: Provision Grafana datasources
   ansible.builtin.template:
-    src: prometheus.yaml.j2
-    dest: /etc/grafana/provisioning/datasources/prometheus.yaml
+    src: "{{ item }}.j2"
+    dest: "/etc/grafana/provisioning/datasources/{{ item }}"
+  loop:
+    - prometheus.yaml
+    - loki.yaml
   notify: Restart Grafana
 
 - name: Configure Grafana dashboards
@@ -47,10 +50,13 @@
     path: /var/lib/grafana/dashboards
     state: directory
 
-- name: Add Grafana dashboard
+- name: Add Grafana dashboards
   ansible.builtin.copy:
-    src: main.json
-    dest: /var/lib/grafana/dashboards/main.json
+    src: "{{ item }}"
+    dest: "/var/lib/grafana/dashboards/{{ item }}"
+  loop:
+    - main.json
+    - agamalog.json
   # no need to restart because Grafana updates dashboards automatically every 10s
 
 - name: Grafana service
