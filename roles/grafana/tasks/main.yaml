@@ -57,7 +57,7 @@
   loop:
     - main.json
     - agamalog.json
-  # no need to restart because Grafana updates dashboards automatically every 10s
+  notify: Restart Grafana
 
 - name: Grafana service
   ansible.builtin.service:

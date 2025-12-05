@@ -1,11 +1,15 @@
+log_format status_time '$status $request_time';
+
 server {
 	listen 80 default_server;
 	server_name _;
 
-{% if inventory_hostname not in groups['prometheus'] %}
+{% if inventory_hostname in groups['web_servers'] %}
 	location / {
 		uwsgi_pass localhost:5000;
 		include uwsgi_params;
+		access_log /var/log/nginx/access.log;
+		access_log /var/log/nginx/agama.log status_time;
 	}
 {% endif %}
 {% if inventory_hostname in groups['prometheus'] %}
@@ -16,7 +20,8 @@ server {
 	location /prometheus {
 		proxy_pass http://localhost:9090;
 	}
-
+{% endif %}
+{% if inventory_hostname in groups['grafana'] %}
 	location /grafana {
 		proxy_pass http://localhost:3000;
 		proxy_set_header Host $http_host;
