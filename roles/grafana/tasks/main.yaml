@@ -57,6 +57,7 @@
   loop:
     - main.json
     - agamalog.json
+    - backups.json
   notify: Restart Grafana
 
 - name: Grafana service

@@ -19,3 +19,8 @@
     name: prometheus
     state: started
     enabled: true
+
+- name: Add cron backuping schedule
+  ansible.builtin.template:
+    src: backup_cron.j2
+    dest: /etc/cron.d/prometheus-backup

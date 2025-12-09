@@ -65,7 +65,33 @@
     state: started
     enabled: true
 
-#- name: Add use juri
+- name: Add user backup
+  ansible.builtin.user:
+    name: backup
+    create_home: yes
+    home: /home/backup
+    generate_ssh_key: yes
+    ssh_key_file: .ssh/id_rsa
+
+- name: Add backup server public key 
+  ansible.builtin.template:
+    src: known_hosts.j2
+    dest: /home/backup/.ssh/known_hosts
+    owner: backup
+    group: backup
+
+- name: Create backup restore directory
+  ansible.builtin.file:
+    path: /home/backup/restore
+    state: directory
+    owner: backup
+    mode: '700'
+
+- name: Install Duplicity
+  ansible.builtin.apt:
+    name: duplicity
+
+#- name: Add user juri
 #  ansible.builtin.user:
 #    name: juri
 #    create_home: yes

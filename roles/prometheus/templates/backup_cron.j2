@@ -1,0 +1,2 @@
+25 0 * * * backup  duplicity --no-encryption full /var/lib/prometheus/metrics2/snapshots/ rsync://jevgeni-arefjev@backup/prometheus
+25 0 * * 1-6 backup  duplicity --no-encryption incremental /var/lib/prometheus/metrics2/snapshots/ rsync://jevgeni-arefjev@backup/prometheus

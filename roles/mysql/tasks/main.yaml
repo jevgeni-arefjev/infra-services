@@ -1,4 +1,4 @@
-- name: MySQL installed
+- name: Install MySQL
   ansible.builtin.apt:
     name: mysql-server
 
@@ -46,9 +46,9 @@
     priv: "{{ mysql_database }}.*:ALL"
   notify: Restart Prometheus-mysqld-exporter
 
-- name: Create .my.cnf
+- name: Create Prometheus/.my.cnf
   ansible.builtin.template:
-    src: my.cnf.j2
+    src: my.cnf_prometheus.j2
     dest: /var/lib/prometheus/.my.cnf
     mode: '400'
     owner: prometheus
@@ -61,8 +61,37 @@
     dest: /etc/default/prometheus-mysqld-exporter
   notify: Restart Prometheus-mysqld-exporter
 
-#- name: mysqld-exporter service
-#  ansible.builtin.service:
-#    name: prometheus-mysqld-exporter
-#    state: started
-#    enabled: true
+- name: mysqld-exporter service
+  ansible.builtin.service:
+    name: prometheus-mysqld-exporter
+    state: started
+    enabled: true
+
+- name: Create backup folder for MySQL
+  ansible.builtin.file:
+    path: /home/backup/mysql
+    state: directory
+    owner: backup
+    mode: '700'
+
+- name: Create MySQL user for backup
+  community.mysql.mysql_user:
+    name: "{{ backup_mysql_user }}"
+    password: "{{ backup_mysql_pass }}"
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+    host: "localhost"
+    priv: "{{ mysql_database }}.*:LOCK TABLES,SELECT"
+  notify: Restart Prometheus-mysqld-exporter
+
+- name: Create backup/.my.cnf
+  ansible.builtin.template:
+    src: my.cnf_backup.j2
+    dest: /home/backup/.my.cnf
+    mode: '400'
+    owner: backup
+  no_log: yes
+
+- name: Add cron backuping schedule
+  ansible.builtin.template:
+    src: backup_cron.j2
+    dest: /etc/cron.d/mysql-backup

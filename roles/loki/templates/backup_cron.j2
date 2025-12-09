@@ -1,0 +1,3 @@
+15 0 * * * root cp -t /home/backup/loki/ -r /var/lib/loki/tsdb-shipper-active /var/lib/loki/wal; chown -R backup:backup /home/backup/loki
+20 0 * * 0 backup duplicity --no-encryption full /home/backup/loki rsync://jevgeni-arefjev@backup/loki
+20 0 * * 1-6 backup duplicity --no-encryption incremental /home/backup/loki rsync://jevgeni-arefjev@backup/loki

@@ -33,3 +33,15 @@
     name: loki
     state: started
     enabled: true
+
+- name: Create backup folder for Loki
+  ansible.builtin.file:
+    path: /home/backup/loki
+    state: directory
+    owner: backup
+    mode: '700'
+
+- name: Add cron backuping schedule
+  ansible.builtin.template:
+    src: backup_cron.j2
+    dest: /etc/cron.d/loki-backup
