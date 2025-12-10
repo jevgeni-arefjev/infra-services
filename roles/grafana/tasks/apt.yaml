@@ -1,0 +1,68 @@
+- name: Install Grafana prerequisites
+  ansible.builtin.apt:
+    name:
+      - apt-transport-https 
+      - software-properties-common
+      - wget
+
+- name: Create repository for key
+  ansible.builtin.file:
+    path: /etc/apt/keyrings
+    state: directory
+
+- name: Import GPG key
+  ansible.builtin.apt_key:
+    url: https://apt.grafana.com/gpg.key
+    keyring: /etc/apt/keyrings/grafana.gpg
+
+- name: Add Grafana apt repo
+  ansible.builtin.apt_repository:
+    repo: "deb [signed-by=/etc/apt/keyrings/grafana.gpg] https://apt.grafana.com stable main"
+    filename: grafana
+
+- name: Install Grafana
+  ansible.builtin.apt:
+    name: grafana
+
+- name: Configure Grafana reserve proxy
+  ansible.builtin.template:
+    src: grafana.ini.j2
+    dest: /etc/grafana/grafana.ini
+  notify: Restart Grafana
+
+- name: Provision Grafana datasources
+  ansible.builtin.template:
+    src: "{{ item }}.j2"
+    dest: "/etc/grafana/provisioning/datasources/{{ item }}"
+  loop:
+    - prometheus.yaml
+    - loki.yaml
+  notify: Restart Grafana
+
+- name: Configure Grafana dashboards
+  ansible.builtin.copy:
+    src: dashboards.yaml
+    dest: /etc/grafana/provisioning/dashboards/dashboards.yaml
+  notify: Restart Grafana
+
+- name: Create directory for dashboards
+  ansible.builtin.file:
+    path: /var/lib/grafana/dashboards
+    state: directory
+
+- name: Add Grafana dashboards
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: "/var/lib/grafana/dashboards/{{ item }}"
+  loop:
+    - main.json
+    - agamalog.json
+    - backups.json
+    - mysql.json
+  notify: Restart Grafana
+
+- name: Grafana service
+  ansible.builtin.service:
+    name: grafana-server
+    state: started
+    enabled: true

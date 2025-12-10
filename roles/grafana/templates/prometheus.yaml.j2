@@ -4,5 +4,5 @@ datasources:
     type: prometheus
     access: proxy
     uid: "df5rak9esf2tcd"
-    url: http://localhost:9090/prometheus/
+    url: "http://{{ groups['prometheus'] | first }}:9090/prometheus/"
     isDefault: true

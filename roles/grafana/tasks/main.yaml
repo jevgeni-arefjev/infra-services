@@ -1,68 +1,47 @@
-- name: Install Grafana prerequisites
-  ansible.builtin.apt:
-    name:
-      - apt-transport-https 
-      - software-properties-common
-      - wget
-
-- name: Create repository for key
+- name: Pre-create necessary repositories
   ansible.builtin.file:
-    path: /etc/apt/keyrings
+    path: "/opt/grafana/provisioning/{{ item }}"
     state: directory
+  loop:
+    - dashboards
+    - datasources
 
-- name: Import GPG key
-  ansible.builtin.apt_key:
-    url: https://apt.grafana.com/gpg.key
-    keyring: /etc/apt/keyrings/grafana.gpg
-
-- name: Add Grafana apt repo
-  ansible.builtin.apt_repository:
-    repo: "deb [signed-by=/etc/apt/keyrings/grafana.gpg] https://apt.grafana.com stable main"
-    filename: grafana
-
-- name: Install Grafana
-  ansible.builtin.apt:
-    name: grafana
-
-- name: Configure Grafana reserve proxy
+- name: Add grafana.ini file
   ansible.builtin.template:
     src: grafana.ini.j2
-    dest: /etc/grafana/grafana.ini
+    dest: /opt/grafana/grafana.ini
+    owner: 472
+    mode: '777'
   notify: Restart Grafana
 
-- name: Provision Grafana datasources
+- name: Add Grafana datasources
   ansible.builtin.template:
     src: "{{ item }}.j2"
-    dest: "/etc/grafana/provisioning/datasources/{{ item }}"
+    dest: "/opt/grafana/provisioning/datasources/{{ item }}"
   loop:
     - prometheus.yaml
     - loki.yaml
   notify: Restart Grafana
 
-- name: Configure Grafana dashboards
-  ansible.builtin.copy:
-    src: dashboards.yaml
-    dest: /etc/grafana/provisioning/dashboards/dashboards.yaml
-  notify: Restart Grafana
-
-- name: Create directory for dashboards
-  ansible.builtin.file:
-    path: /var/lib/grafana/dashboards
-    state: directory
-
 - name: Add Grafana dashboards
   ansible.builtin.copy:
     src: "{{ item }}"
-    dest: "/var/lib/grafana/dashboards/{{ item }}"
+    dest: "/opt/grafana/provisioning/dashboards/{{ item }}"
   loop:
+    - dashboards.yaml
     - main.json
     - agamalog.json
     - backups.json
     - mysql.json
   notify: Restart Grafana
 
-- name: Grafana service
-  ansible.builtin.service:
-    name: grafana-server
+- name: Install Grafana (as container)
+  community.docker.docker_container:
+    image: grafana/grafana
+    name: grafana
+    volumes: /opt/grafana:/etc/grafana
     state: started
-    enabled: true
+    published_ports: "{{ grafana_port }}:3000"
+    log_driver: grafana/loki-docker-driver
+    log_options:
+      loki-url: http://jevgeni-arefjev-1:3100/loki/api/v1/push

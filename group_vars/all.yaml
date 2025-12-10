@@ -13,6 +13,7 @@ dns_forwarders:
   - 1.1.1.1
   - 8.8.8.8
 
+agama_port: 8001
 node_id: "{{ (ansible_port / 100) | int }}"
 mysql_backup_host: "{{ groups['db_servers'] | reject('eq', mysql_host) | first | default(mysql_host) }}"
 
@@ -31,6 +32,7 @@ mysqld_exporter_pass: !vault |
           6139663230396537300a373065303535323661333238313335653333633335643335323233653763
           3663
 
+grafana_port: 3001
 grafana_user: admin123
 grafana_password: !vault |
           $ANSIBLE_VAULT;1.1;AES256
