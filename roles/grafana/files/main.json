@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 1,
+  "id": 2,
   "links": [],
   "panels": [
     {
@@ -862,7 +862,7 @@
           },
           "direction": "backward",
           "editorMode": "code",
-          "expr": "100*(\nrate({filename=\"/var/log/nginx/agama.log\"} \n|~ \"^[23]\\\\d\\\\d\" [2m])\n/ rate({filename=\"/var/log/nginx/agama.log\"}[2m]))",
+          "expr": "100*(\nrate({filename=\"/var/log/nginx/agama.log\"} \n|~ \"^[23]\\\\d\\\\d\" [1h])\n/ rate({filename=\"/var/log/nginx/agama.log\"}[1h]))",
           "queryType": "range",
           "refId": "A"
         }
@@ -1171,5 +1171,5 @@
   "timezone": "browser",
   "title": "Main",
   "uid": "adwwd28",
-  "version": 3
+  "version": 1
 }

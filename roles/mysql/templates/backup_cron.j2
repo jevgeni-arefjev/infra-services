@@ -1,3 +1,0 @@
-30 0 * * * backup mysqldump agama > /home/backup/mysql/agama.sql
-35 0 * * 0 backup duplicity --no-encryption full /home/backup/mysql/ rsync://jevgeni-arefjev@backup/mysql
-35 0 * * 1-6 backup duplicity --no-encryption incremental /home/backup/mysql/ rsync://jevgeni-arefjev@backup/mysql

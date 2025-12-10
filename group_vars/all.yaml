@@ -1,4 +1,4 @@
-mysql_host: jevgeni-arefjev-2.humble.hungry
+mysql_host: jevgeni-arefjev-1
 mysql_database: agama
 mysql_user: agama
 mysql_password: !vault |
@@ -12,6 +12,10 @@ mysql_password: !vault |
 dns_forwarders:
   - 1.1.1.1
   - 8.8.8.8
+
+node_id: "{{ (ansible_port / 100) | int }}"
+mysql_backup_host: "{{ groups['db_servers'] | reject('eq', mysql_host) | first | default(mysql_host) }}"
+
 
 backup_server_ip_address: 192.168.42.5
 backup_server_ssh_key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAtnpnME3TsMyvcJyiYawMBod33jkDcFG9Pb1rlxDiXX"
@@ -44,3 +48,12 @@ backup_mysql_pass: !vault |
           39313637313662353836643237656333396135306434336633396635353365626263333639343830
           6163326561633032310a303930356634633337653635636439643766383762343465343030393338
           6662
+
+mysql_replication_user: replication
+mysql_replication_pass: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          37656262656231306536343232623938333765633431323631333632356435336335633264623730
+          3264613165383635303038663836613234633137326165310a653865633135356562346561663330
+          64393331306161313661383765656266333039663066616561323334383131663739333838386532
+          3835393630383035310a663930326538346163303561613930373335343839363536396237633864
+          3138

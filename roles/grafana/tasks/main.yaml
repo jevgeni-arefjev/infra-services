@@ -58,6 +58,7 @@
     - main.json
     - agamalog.json
     - backups.json
+    - mysql.json
   notify: Restart Grafana
 
 - name: Grafana service

@@ -20,6 +20,7 @@
       - mysql
     tags:
       - d
+      - sw
 
   - name: Web servers
     hosts: web_servers
@@ -29,6 +30,7 @@
       - nginx
     tags:
       - w
+      - sw
 
   - name: Prometheus
     hosts: prometheus

@@ -1,0 +1,3 @@
+30 0 * * * backup curl -XPOST http://localhost:9090/prometheus/api/v1/admin/tsdb/snapshot
+35 0 * * 0 backup duplicity --no-encryption full /var/lib/prometheus/metrics2/snapshots/ rsync://jevgeni-arefjev@backup/prometheus
+35 0 * * 1-6 backup duplicity --no-encryption incremental /var/lib/prometheus/metrics2/snapshots/ rsync://jevgeni-arefjev@backup/prometheus

@@ -3,8 +3,8 @@
     name: mysql-server
 
 - name: Configure MySQL to listen on public port
-  ansible.builtin.copy:
-    src: override.cnf
+  ansible.builtin.template:
+    src: override.cnf.j2
     dest: /etc/mysql/mysql.conf.d/override.cnf
   notify: Restart MySQL
 
@@ -22,14 +22,18 @@
   community.mysql.mysql_db:
     name: "{{ mysql_database }}"
     login_unix_socket: /var/run/mysqld/mysqld.sock
+  notify:
+    - Reset MySQL source
+    - Reset MySQL replica
 
-- name: MySQL user
+- name: MySQL user agama
   community.mysql.mysql_user:
     name: "{{ mysql_user }}"
     password: "{{ mysql_password }}"
     login_unix_socket: /var/run/mysqld/mysqld.sock
     host: "%"
     priv: "{{ mysql_database }}.*:ALL"
+  no_log: yes
 
 # Installing prometheus exporter
 - name: Install mysqld_exporter
@@ -43,7 +47,9 @@
     password: "{{ mysqld_exporter_pass }}"
     login_unix_socket: /var/run/mysqld/mysqld.sock
     host: "localhost"
-    priv: "{{ mysql_database }}.*:ALL"
+#    priv: "{{ mysql_database }}.*:ALL"
+    priv: "*.*:ALL"
+  no_log: yes
   notify: Restart Prometheus-mysqld-exporter
 
 - name: Create Prometheus/.my.cnf
@@ -81,6 +87,7 @@
     login_unix_socket: /var/run/mysqld/mysqld.sock
     host: "localhost"
     priv: "{{ mysql_database }}.*:LOCK TABLES,SELECT"
+  no_log: yes
   notify: Restart Prometheus-mysqld-exporter
 
 - name: Create backup/.my.cnf
@@ -93,5 +100,24 @@
 
 - name: Add cron backuping schedule
   ansible.builtin.template:
-    src: backup_cron.j2
+    src: backup-cron.j2
     dest: /etc/cron.d/mysql-backup
+
+- name: MySQL user replication
+  community.mysql.mysql_user:
+    name: "{{ mysql_replication_user }}"
+    password: "{{ mysql_replication_pass }}"
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+    host: "%"
+    priv: "*.*:REPLICATION SLAVE"
+  no_log: yes
+
+- name: Set replica server to read-only
+  community.mysql.mysql_variables:
+    variable: read_only
+    value: "{{ 'OFF' if inventory_hostname == mysql_host else 'ON' }}"
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+    mode: persist
+  notify:
+    - Reset MySQL source
+    - Reset MySQL replica
