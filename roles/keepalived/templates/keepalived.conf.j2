@@ -1,0 +1,24 @@
+vrrp_script check_haproxy {                 
+    script /home/keepalived_script/script
+    weight 20                              
+    interval 1               
+}
+vrrp_instance XXX {             
+    interface ens3
+    virtual_router_id 1
+    priority {{ 100 - inventory_hostname[-1] | int }}
+    advert_int 1                            
+    virtual_ipaddress {                     
+        {{ virtual_ip_address }}/24                   
+    }
+    unicast_peer {  
+{% for vm in groups['all'] %}
+{% if vm != inventory_hostname %}                     
+        {{ hostvars[vm]['ansible_default_ipv4']['address'] }}
+{% endif %}
+{% endfor %}
+    }
+    track_script {
+        check_haproxy
+    }
+}

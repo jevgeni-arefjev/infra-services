@@ -1,0 +1,9 @@
+[Unit]
+Description=Keepalived exporter for prometheus
+
+[Service]
+ExecStart=/usr/bin/keepalived-exporter
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

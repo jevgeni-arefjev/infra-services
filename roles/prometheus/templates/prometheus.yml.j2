@@ -75,9 +75,6 @@ scrape_configs:
 {% for vm in groups['web_servers']%}
         - '{{ vm }}:9113'
 {% endfor %}
-{% for vm in groups['prometheus']%}
-        - '{{ vm }}:9113'
-{% endfor %}
 
   - job_name: 'loki'
       
@@ -101,3 +98,18 @@ scrape_configs:
       - targets:
         - 'backup:9111'
 
+  - job_name: 'haproxy'
+      
+    static_configs:
+      - targets:
+{% for vm in groups['ha']%}
+        - '{{ vm }}:9101'
+{% endfor %}
+
+  - job_name: 'keepalived'
+      
+    static_configs:
+      - targets:
+{% for vm in groups['ha']%}
+        - '{{ vm }}:9165'
+{% endfor %}

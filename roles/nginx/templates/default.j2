@@ -12,10 +12,6 @@ server {
 	}
 {% endif %}
 {% if inventory_hostname in groups['prometheus'] %}
-	location / {
-		try_files $uri $uri/ =404;
-	}
-
 	location /prometheus {
 		proxy_pass http://localhost:9090;
 	}

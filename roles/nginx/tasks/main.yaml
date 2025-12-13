@@ -2,7 +2,7 @@
   ansible.builtin.apt:
     name: nginx
 
-- name: Configure nginx as a uWSGI frontend
+- name: Configure nginx
   ansible.builtin.template:
     src: default.j2
     dest: /etc/nginx/sites-enabled/default

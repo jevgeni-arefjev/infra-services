@@ -1,0 +1,50 @@
+- name: Install keepalived
+  ansible.builtin.apt:
+    name: keepalived
+
+- name: Create user for keepalived
+  ansible.builtin.user:
+    name: keepalived_script
+    create_home: yes
+
+- name: Add keepalived.conf
+  ansible.builtin.template:
+    src: keepalived.conf.j2
+    dest: /etc/keepalived/keepalived.conf
+  notify: Restart Keepalived
+
+- name: Add script for haproxy health check
+  ansible.builtin.copy:
+    src: script
+    dest: /home/keepalived_script/script
+    mode: '777'
+  notify: Restart Keepalived
+
+- name: Keepalived service
+  ansible.builtin.service:
+    name: keepalived
+    state: started
+    enabled: true
+
+- name: Download keepalived-exporter tar.gz
+  ansible.builtin.get_url:
+    url: "https://github.com/mehdy/keepalived-exporter/releases/download/v1.7.0/keepalived-exporter_1.7.0_linux_amd64.tar.gz"
+    dest: /usr/bin/keepalived-exporter_1.7.0_linux_amd64.tar.gz
+
+- name: Unarchive keepalived-exporter
+  ansible.builtin.unarchive:
+    src: /usr/bin/keepalived-exporter_1.7.0_linux_amd64.tar.gz
+    dest: /usr/bin/
+    remote_src: yes
+
+- name: Create keepalived-exporter systemd service
+  ansible.builtin.copy:
+    src: keepalived-exporter.service
+    dest: /etc/systemd/system/keepalived-exporter.service
+
+- name: Keepalived-exporter Service
+  ansible.builtin.systemd_service:
+    name: keepalived-exporter
+    state: started
+    enabled: true
+    daemon_reload: true
