@@ -17,7 +17,7 @@ Services that are backed up:
 
 MySQL full backups are created every Sunday and incremental backups every day; it takes up to 10 min to create and store the backup.
 
-Prometheus full backups are created every Sunday and incremental backups every day; it takes up to 5 min to create and store the backup.
+Prometheus full backups are created every Sunday and incremental backups every day; it takes up to 10 min to create and store the backup.
 
 Loki full backups are created every Sunday and incremental backups every day; it takes up to 10 min to create and store the backup.
 

@@ -50,8 +50,9 @@ frontend my_ha_frontend
     log-format "%ST %Tr"  # %ST = status code; %Tr = response time;
 
 backend my_ha_backend
-    server jevgeni1 jevgeni-arefjev-1:8001 check
-    server jevgeni2 jevgeni-arefjev-2:8001 check
+{% for vm in groups['haproxy'] %}
+    server jevgeni{{ vm[-1] }} {{ vm }}:8001 check
+{% endfor %}
 
 listen stats
     bind localhost:9188  # Binds only to localhost

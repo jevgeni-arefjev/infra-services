@@ -80,9 +80,7 @@ scrape_configs:
       
     static_configs:
       - targets:
-{% for vm in groups['loki']%}
-        - '{{ vm }}:3100'
-{% endfor %}
+        - 'loki:3100'
 
   - job_name: 'promtail'
       
@@ -102,7 +100,7 @@ scrape_configs:
       
     static_configs:
       - targets:
-{% for vm in groups['ha']%}
+{% for vm in groups['haproxy']%}
         - '{{ vm }}:9101'
 {% endfor %}
 
@@ -110,6 +108,6 @@ scrape_configs:
       
     static_configs:
       - targets:
-{% for vm in groups['ha']%}
+{% for vm in groups['haproxy']%}
         - '{{ vm }}:9165'
 {% endfor %}

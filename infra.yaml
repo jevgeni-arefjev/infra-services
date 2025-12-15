@@ -7,7 +7,7 @@
     tags:
       - always
 
-# DNS should always go first because of nsupdates
+  # DNS should always go first because of nsupdates
   - name: DNS servers
     hosts: dns_servers
     roles:
@@ -27,7 +27,7 @@
     roles:
       - docker
       - agama
-#     - uwsgi
+     #- uwsgi
       - nginx
     tags:
       - www
@@ -56,7 +56,7 @@
       - l
 
   - name: HA
-    hosts: ha
+    hosts: haproxy
     roles:
       - keepalived
       - haproxy

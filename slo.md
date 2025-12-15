@@ -15,7 +15,7 @@ SLO:
 
 
 User Journey:
-User inserts or deletes a fact from the app. It should update itself within a reasonable amount of time to feel smooth to the user.
+User wants to access their facts from the app. It should update itself within a reasonable amount of time to feel smooth to the user.
 
 SLI Type:
 Latency

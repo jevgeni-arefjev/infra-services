@@ -23,12 +23,13 @@
     image: agama
     name: agama
     state: started
+    restart_policy: always 
     env:
       "AGAMA_DATABASE_URI=mysql+pymysql://{{ mysql_user }}:{{ mysql_password }}@{{ mysql_host }}/{{ mysql_database }}"
     published_ports: "{{ agama_port }}:8000"
     log_driver: grafana/loki-docker-driver
     log_options:
-      loki-url: http://jevgeni-arefjev-1:3100/loki/api/v1/push
+      loki-url: http://loki:3100/loki/api/v1/push
 
 - name: Create DNS CNAME record for Agama servers
   community.general.nsupdate:
