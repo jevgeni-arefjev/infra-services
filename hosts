@@ -1,5 +1,5 @@
-jevgeni-arefjev-1 ansible_host=193.40.157.25 ansible_port=40722 ansible_user=ubuntu
-jevgeni-arefjev-2 ansible_host=193.40.157.25 ansible_port=39322 ansible_user=ubuntu
+jevgeni-arefjev-1 ansible_host=193.40.157.25 ansible_port=42222 ansible_user=ubuntu
+jevgeni-arefjev-2 ansible_host=193.40.157.25 ansible_port=46922 ansible_user=ubuntu
 
 [db_servers]
 jevgeni-arefjev-2
@@ -9,8 +9,15 @@ jevgeni-arefjev-1
 jevgeni-arefjev-1
 jevgeni-arefjev-2
 
-[dns_servers]
+[dns_primary]
+jevgeni-arefjev-1
+
+[dns_secondary]
 jevgeni-arefjev-2
+
+[dns_servers:children]
+dns_primary
+dns_secondary
 
 [prometheus]
 jevgeni-arefjev-2

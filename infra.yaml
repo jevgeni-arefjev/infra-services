@@ -7,31 +7,30 @@
     tags:
       - always
 
+# DNS should always go first because of nsupdates
   - name: DNS servers
     hosts: dns_servers
     roles:
       - bind
     tags:
-      - b
+      - dns
 
   - name: Database servers
     hosts: db_servers
     roles:
       - mysql
     tags:
-      - d
-      - sw
+      - db
 
   - name: Web servers
     hosts: web_servers
     roles:
       - docker
       - agama
-#      - uwsgi
+#     - uwsgi
       - nginx
     tags:
-      - w
-      - sw
+      - www
 
   - name: Prometheus
     hosts: prometheus

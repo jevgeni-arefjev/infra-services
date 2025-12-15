@@ -29,3 +29,16 @@
     log_driver: grafana/loki-docker-driver
     log_options:
       loki-url: http://jevgeni-arefjev-1:3100/loki/api/v1/push
+
+- name: Create DNS CNAME record for Agama servers
+  community.general.nsupdate:
+    server: "{{ hostvars[item]['ansible_default_ipv4']['address'] }}"
+    key_algorithm: "hmac-sha256"
+    key_name: "nsupdate."
+    key_secret: "{{ nsupdate_key }}"
+    type: "CNAME"
+    zone: "{{ startup_domain }}"
+    record: "www-{{ inventory_hostname[-1] }}"
+    value: "{{ inventory_hostname }}"
+  loop: "{{ groups['dns_primary'] }}"
+

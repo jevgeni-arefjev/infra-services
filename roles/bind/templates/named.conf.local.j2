@@ -1,4 +1,41 @@
 zone "humble.hungry" {
+{% if inventory_hostname in groups['dns_primary'] %}
     type primary;
-    file "db.humble.hungry";
+    allow-update {key nsupdate. ;};
+    allow-transfer {127.0.0.1;key transfer. ;};
+{% else %}
+    type secondary;
+    allow-transfer {127.0.0.1;};
+    primaries {
+{% for vm in groups['dns_primary'] %}
+        {{ hostvars[vm]['ansible_default_ipv4']['address'] }};
+{% endfor %}
+    };
+{% endif %}
+    file "db.domain";
+};
+
+{% if inventory_hostname in groups['dns_secondary'] %}
+{% for vm in groups['dns_primary'] %}
+server {{ hostvars[vm]['ansible_default_ipv4']['address'] }} {
+    keys { transfer. ;};
+};
+{% endfor %}
+{% endif%}
+
+zone "168.192.in-addr.arpa" {
+{% if inventory_hostname in groups['dns_primary'] %}
+    type primary;
+    allow-update {key nsupdate. ;};
+    allow-transfer {127.0.0.1;key transfer. ;};
+{% else %}
+    type secondary;
+    allow-transfer {127.0.0.1;};
+    primaries {
+{% for vm in groups['dns_primary'] %}
+        {{ hostvars[vm]['ansible_default_ipv4']['address'] }};
+{% endfor %}
+    };
+{% endif %}
+    file "db.ptr";
 };

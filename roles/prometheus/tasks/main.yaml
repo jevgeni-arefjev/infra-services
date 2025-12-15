@@ -24,3 +24,16 @@
   ansible.builtin.template:
     src: backup-cron.j2
     dest: /etc/cron.d/prometheus-backup
+
+- name: Create DNS CNAME record for Prometheus server
+  community.general.nsupdate:
+    server: "{{ hostvars[item]['ansible_default_ipv4']['address'] }}"
+    key_algorithm: "hmac-sha256"
+    key_name: "nsupdate."
+    key_secret: "{{ nsupdate_key }}"
+    type: "CNAME"
+    zone: "{{ startup_domain }}"
+    record: "prometheus"
+    value: "{{ inventory_hostname }}"
+  loop: "{{ groups['dns_primary'] }}"
+

@@ -121,3 +121,15 @@
   notify:
     - Reset MySQL source
     - Reset MySQL replica
+
+- name: Create DNS CNAME record for MySQL servers
+  community.general.nsupdate:
+    server: "{{ hostvars[item]['ansible_default_ipv4']['address'] }}"
+    key_algorithm: "hmac-sha256"
+    key_name: "nsupdate."
+    key_secret: "{{ nsupdate_key }}"
+    type: "CNAME"
+    zone: "{{ startup_domain }}"
+    record: "db-{{ inventory_hostname[-1] }}"
+    value: "{{ inventory_hostname }}"
+  loop: "{{ groups['dns_primary'] }}"

@@ -9,13 +9,19 @@
   loop:
     - options
     - local
+  no_log: yes
   notify: Restart Bind9
 
 - name: Configure master zone
   ansible.builtin.template:
-    src: db.humble.hungry.j2
-    dest: /var/cache/bind/db.humble.hungry
+    src: "db.{{ item }}.j2"
+    dest: "/var/cache/bind/db.{{ item }}"
+    #force: no
+  loop:
+    - domain
+    - ptr
   notify: Restart Bind9
+  when: inventory_hostname in groups['dns_primary']
 
 - name: Bind9 service
   ansible.builtin.service:
@@ -33,3 +39,26 @@
     name: prometheus-bind-exporter 
     state: started
     enabled: true
+
+- name: Create DNS A record for backup server
+  community.general.nsupdate:
+    server: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
+    key_algorithm: "hmac-sha256"
+    key_name: "nsupdate."
+    key_secret: "{{ nsupdate_key }}"
+    zone: "{{ startup_domain }}"
+    record: "backup"
+    value: "{{ backup_server_ip_address }}"
+  when: inventory_hostname in groups['dns_primary']
+
+- name: Create DNS CNAME record for Bind9 servers
+  community.general.nsupdate:
+    server: "{{ hostvars[item]['ansible_default_ipv4']['address'] }}"
+    key_algorithm: "hmac-sha256"
+    key_name: "nsupdate."
+    key_secret: "{{ nsupdate_key }}"
+    type: "CNAME"
+    zone: "{{ startup_domain }}"
+    record: "ns-{{ inventory_hostname[-1] }}"
+    value: "{{ inventory_hostname }}"
+  loop: "{{ groups['dns_primary'] }}"

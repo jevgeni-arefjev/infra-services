@@ -1,12 +1,12 @@
 $TTL	604800
-{{ startup_domain }}.	IN	SOA	vm2.{{ startup_domain }}. jevgeni.{{ startup_domain }}. (
+{{ startup_domain }}.	IN	SOA	vm1.{{ startup_domain }}. jevgeni.{{ startup_domain }}. (
 			      2		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
 			 604800 )	; Negative Cache TTL
 ;
+{{ startup_domain }}.	IN	NS	jevgeni-arefjev-1.{{ startup_domain }}.
 {{ startup_domain }}.	IN	NS	jevgeni-arefjev-2.{{ startup_domain }}.
 jevgeni-arefjev-1	IN	A	{{ hostvars['jevgeni-arefjev-1']['ansible_default_ipv4']['address'] }}
 jevgeni-arefjev-2	IN	A	{{ hostvars['jevgeni-arefjev-2']['ansible_default_ipv4']['address'] }}
-backup	IN	A	{{ backup_server_ip_address }}

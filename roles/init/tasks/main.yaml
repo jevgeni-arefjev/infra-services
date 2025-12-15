@@ -91,6 +91,11 @@
   ansible.builtin.apt:
     name: duplicity
 
+# needed for creating DNS repords with community.general.nsupdate
+- name: Install dnspython package
+  ansible.builtin.apt:
+    name: python3-dnspython
+
 #- name: Add user juri
 #  ansible.builtin.user:
 #    name: juri
