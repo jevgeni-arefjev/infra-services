@@ -8,20 +8,23 @@ Install and configure infrastructure with Ansible:
 
 ## Run following commands on server where MySQL is running
 
+Escalate the privileges:
+
+    sudo su -
+
 You can check if the server is correct and MySQL is operational:
 
     service mysql status
 
 Make sure /home/backup/restore directory is empty:
 
-    rm -r /home/backup/restore/*
+    rm -r /home/backup/restore/
 
 Restore MySQL data from the backup:
 
     sudo -u backup duplicity --no-encryption restore rsync://jevgeni-arefjev@backup/mysql /home/backup/restore
-    sudo su -
+
     mysql agama < /home/backup/restore/agama.sql
-    exit
 
 ### Check if data is restored
 
@@ -44,24 +47,36 @@ Install and configure infrastructure with Ansible:
 
 ## Run following commands on server with prometheus
 
+Escalate the privileges:
 
-You can check if the server is correct and MySQL is operational:
+    sudo su -
+
+You can check if the server is correct and prometheus is operational:
 
     service prometheus status
 
-Make sure /home/backup/restore directory is empty:
-
-    rm -r /home/backup/restore/*
-
-Prometheus snapshot has a name starting with the date, 2025 for example.
 Restore prometheus snapshot from the backup:
 
     sudo -u backup duplicity --no-encryption restore rsync://jevgeni-arefjev@backup/prometheus /home/backup/restore --no-restore-ownership
-    sudo su -
+
+Stop prometheus:
+
+    service prometheus stop
+
+Make sure /home/backup/restore and /var/lib/prometheus/metrics2 directories are empty:
+
+    rm -r /home/backup/restore/
+
+    rm -r /var/lib/prometheus/metrics2/
+
+Prometheus snapshot has a name starting with the date, 2025 for example. Use autocomplete to find that snapshot:
+    
     mv /home/backup/restore/2025...{use autocomplete}/* /var/lib/prometheus/metrics2/
+
     chown -R prometheus:prometheus /var/lib/prometheus/metrics2/
+
     service prometheus start
-    exit
+    
 
 ### Check if data is restored
 
@@ -84,25 +99,31 @@ Install and configure infrastructure with Ansible:
 
 ## Run following commands on server with loki
 
+Escalate the privileges:
 
-You can check if the server is correct and MySQL is operational:
+    sudo su -
+
+You can check if the server is correct and loki is operational:
 
     service loki status
 
 Make sure /home/backup/restore directory is empty:
 
-    rm -r /home/backup/restore/*
+    rm -r /home/backup/restore/
 
 Restore Loki logs from the backup:
 
     sudo -u backup duplicity --no-encryption restore rsync://jevgeni-arefjev@backup/loki /home/backup/restore
-    sudo su -
+    
     service loki stop
+
     rm -r /var/lib/loki/*
+
     mv /home/backup/restore/* /var/lib/loki/
+
     chown -R nobody:nogroup /var/lib/loki
+
     service loki start
-    exit
 
 ### Check if data is restored
 

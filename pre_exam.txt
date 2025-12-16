@@ -1,0 +1,5513 @@
+Tue Dec 16 06:16:11 PM EET 2025
++ hostname
+HomePC
++ ansible-playbook infra.yaml --diff
+
+PLAY [Initial setup] ***********************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-3]
+ok: [jevgeni-arefjev-1]
+
+TASK [init : Update APT cache] *************************************************
+changed: [jevgeni-arefjev-1]
+changed: [jevgeni-arefjev-2]
+changed: [jevgeni-arefjev-3]
+
+TASK [init : install prometheus node exporter] *********************************
+The following additional packages will be installed:
+  freeipmi-common ipmitool libfreeipmi17 libio-pty-perl libipc-run-perl
+  libopenipmi0t64 libsnmp-base libsnmp40t64 libtime-duration-perl
+  libtimedate-perl moreutils nvme-cli openipmi
+  prometheus-node-exporter-collectors python3-decorator
+  python3-prometheus-client smartmontools
+Suggested packages:
+  freeipmi-tools snmp-mibs-downloader gsmartcontrol smart-notifier mailx
+  | mailutils
+The following NEW packages will be installed:
+  freeipmi-common ipmitool libfreeipmi17 libio-pty-perl libipc-run-perl
+  libopenipmi0t64 libsnmp-base libsnmp40t64 libtime-duration-perl
+  libtimedate-perl moreutils nvme-cli openipmi prometheus-node-exporter
+  prometheus-node-exporter-collectors python3-decorator
+  python3-prometheus-client smartmontools
+0 upgraded, 18 newly installed, 0 to remove and 252 not upgraded.
+changed: [jevgeni-arefjev-1]
+The following additional packages will be installed:
+  freeipmi-common ipmitool libfreeipmi17 libio-pty-perl libipc-run-perl
+  libopenipmi0t64 libsnmp-base libsnmp40t64 libtime-duration-perl
+  libtimedate-perl moreutils nvme-cli openipmi
+  prometheus-node-exporter-collectors python3-decorator
+  python3-prometheus-client smartmontools
+Suggested packages:
+  freeipmi-tools snmp-mibs-downloader gsmartcontrol smart-notifier mailx
+  | mailutils
+The following NEW packages will be installed:
+  freeipmi-common ipmitool libfreeipmi17 libio-pty-perl libipc-run-perl
+  libopenipmi0t64 libsnmp-base libsnmp40t64 libtime-duration-perl
+  libtimedate-perl moreutils nvme-cli openipmi prometheus-node-exporter
+  prometheus-node-exporter-collectors python3-decorator
+  python3-prometheus-client smartmontools
+0 upgraded, 18 newly installed, 0 to remove and 252 not upgraded.
+changed: [jevgeni-arefjev-3]
+The following additional packages will be installed:
+  freeipmi-common ipmitool libfreeipmi17 libio-pty-perl libipc-run-perl
+  libopenipmi0t64 libsnmp-base libsnmp40t64 libtime-duration-perl
+  libtimedate-perl moreutils nvme-cli openipmi
+  prometheus-node-exporter-collectors python3-decorator
+  python3-prometheus-client smartmontools
+Suggested packages:
+  freeipmi-tools snmp-mibs-downloader gsmartcontrol smart-notifier mailx
+  | mailutils
+The following NEW packages will be installed:
+  freeipmi-common ipmitool libfreeipmi17 libio-pty-perl libipc-run-perl
+  libopenipmi0t64 libsnmp-base libsnmp40t64 libtime-duration-perl
+  libtimedate-perl moreutils nvme-cli openipmi prometheus-node-exporter
+  prometheus-node-exporter-collectors python3-decorator
+  python3-prometheus-client smartmontools
+0 upgraded, 18 newly installed, 0 to remove and 252 not upgraded.
+changed: [jevgeni-arefjev-2]
+
+TASK [init : Install unzip package] ********************************************
+Suggested packages:
+  zip
+The following NEW packages will be installed:
+  unzip
+0 upgraded, 1 newly installed, 0 to remove and 252 not upgraded.
+changed: [jevgeni-arefjev-1]
+Suggested packages:
+  zip
+The following NEW packages will be installed:
+  unzip
+0 upgraded, 1 newly installed, 0 to remove and 252 not upgraded.
+changed: [jevgeni-arefjev-2]
+Suggested packages:
+  zip
+The following NEW packages will be installed:
+  unzip
+0 upgraded, 1 newly installed, 0 to remove and 252 not upgraded.
+changed: [jevgeni-arefjev-3]
+
+TASK [init : Download Promtail binary] *****************************************
+changed: [jevgeni-arefjev-1]
+changed: [jevgeni-arefjev-3]
+changed: [jevgeni-arefjev-2]
+
+TASK [init : Unzip Promtail binary] ********************************************
+>f++++++.?? promtail-linux-amd64
+changed: [jevgeni-arefjev-3]
+>f++++++.?? promtail-linux-amd64
+changed: [jevgeni-arefjev-1]
+>f++++++.?? promtail-linux-amd64
+changed: [jevgeni-arefjev-2]
+
+TASK [init : Create directory for Promtail] ************************************
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+     "path": "/etc/promtail",
+-    "state": "absent"
++    "state": "directory"
+ }
+
+changed: [jevgeni-arefjev-1] => (item=/etc/promtail)
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+     "path": "/etc/promtail",
+-    "state": "absent"
++    "state": "directory"
+ }
+
+changed: [jevgeni-arefjev-2] => (item=/etc/promtail)
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+     "path": "/etc/promtail",
+-    "state": "absent"
++    "state": "directory"
+ }
+
+changed: [jevgeni-arefjev-3] => (item=/etc/promtail)
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+     "path": "/var/lib/promtail",
+-    "state": "absent"
++    "state": "directory"
+ }
+
+changed: [jevgeni-arefjev-3] => (item=/var/lib/promtail)
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+     "path": "/var/lib/promtail",
+-    "state": "absent"
++    "state": "directory"
+ }
+
+changed: [jevgeni-arefjev-2] => (item=/var/lib/promtail)
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+     "path": "/var/lib/promtail",
+-    "state": "absent"
++    "state": "directory"
+ }
+
+changed: [jevgeni-arefjev-1] => (item=/var/lib/promtail)
+
+TASK [init : Create Promtail user] *********************************************
+changed: [jevgeni-arefjev-2]
+changed: [jevgeni-arefjev-1]
+changed: [jevgeni-arefjev-3]
+
+TASK [init : Add promtail user to adm group for syslog access] *****************
+changed: [jevgeni-arefjev-1]
+changed: [jevgeni-arefjev-3]
+changed: [jevgeni-arefjev-2]
+
+TASK [init : Install Promtail configuration] ***********************************
+--- before
++++ after: /home/jevgeni/ica0002/roles/init/files/promtail-local-config.yaml
+@@ -0,0 +1,56 @@
++server:
++  http_listen_port: 9080
++  grpc_listen_port: 0
++
++positions:
++  filename: /var/log/positions.yaml
++
++clients:
++  - url: "http://loki:3100/loki/api/v1/push"
++
++scrape_configs:
++  - job_name: syslog-host
++    static_configs:
++    - targets:
++        - localhost
++      labels:
++        job: syslog-host
++        __path__: /var/log/syslog
++
++  - job_name: agama
++    static_configs:
++    - targets:
++       - localhost
++      labels:
++        job: agama
++        __path__: /var/log/uwsgi/app/agama.log
++
++  - job_name: nginx_access
++    static_configs:
++    - targets:
++        - localhost
++      labels:
++        job: nginx_access
++        __path__: /var/log/nginx/access.log
++
++  - job_name: nginx_agama_log
++    static_configs:
++    - targets:
++        - localhost
++      labels:
++        job: nginx_agama_log
++        __path__: /var/log/nginx/agama.log
++
++  - job_name: nginx_error
++    static_configs:
++    - targets:
++        - localhost
++      labels:
++        job: nginx_error
++        __path__: /var/log/nginx/error.log
++
++  - job_name: syslog
++    syslog:
++      listen_address: 0.0.0.0:514
++      labels:
++        job: "syslog"
+
+changed: [jevgeni-arefjev-3]
+--- before
++++ after: /home/jevgeni/ica0002/roles/init/files/promtail-local-config.yaml
+@@ -0,0 +1,56 @@
++server:
++  http_listen_port: 9080
++  grpc_listen_port: 0
++
++positions:
++  filename: /var/log/positions.yaml
++
++clients:
++  - url: "http://loki:3100/loki/api/v1/push"
++
++scrape_configs:
++  - job_name: syslog-host
++    static_configs:
++    - targets:
++        - localhost
++      labels:
++        job: syslog-host
++        __path__: /var/log/syslog
++
++  - job_name: agama
++    static_configs:
++    - targets:
++       - localhost
++      labels:
++        job: agama
++        __path__: /var/log/uwsgi/app/agama.log
++
++  - job_name: nginx_access
++    static_configs:
++    - targets:
++        - localhost
++      labels:
++        job: nginx_access
++        __path__: /var/log/nginx/access.log
++
++  - job_name: nginx_agama_log
++    static_configs:
++    - targets:
++        - localhost
++      labels:
++        job: nginx_agama_log
++        __path__: /var/log/nginx/agama.log
++
++  - job_name: nginx_error
++    static_configs:
++    - targets:
++        - localhost
++      labels:
++        job: nginx_error
++        __path__: /var/log/nginx/error.log
++
++  - job_name: syslog
++    syslog:
++      listen_address: 0.0.0.0:514
++      labels:
++        job: "syslog"
+
+changed: [jevgeni-arefjev-1]
+--- before
++++ after: /home/jevgeni/ica0002/roles/init/files/promtail-local-config.yaml
+@@ -0,0 +1,56 @@
++server:
++  http_listen_port: 9080
++  grpc_listen_port: 0
++
++positions:
++  filename: /var/log/positions.yaml
++
++clients:
++  - url: "http://loki:3100/loki/api/v1/push"
++
++scrape_configs:
++  - job_name: syslog-host
++    static_configs:
++    - targets:
++        - localhost
++      labels:
++        job: syslog-host
++        __path__: /var/log/syslog
++
++  - job_name: agama
++    static_configs:
++    - targets:
++       - localhost
++      labels:
++        job: agama
++        __path__: /var/log/uwsgi/app/agama.log
++
++  - job_name: nginx_access
++    static_configs:
++    - targets:
++        - localhost
++      labels:
++        job: nginx_access
++        __path__: /var/log/nginx/access.log
++
++  - job_name: nginx_agama_log
++    static_configs:
++    - targets:
++        - localhost
++      labels:
++        job: nginx_agama_log
++        __path__: /var/log/nginx/agama.log
++
++  - job_name: nginx_error
++    static_configs:
++    - targets:
++        - localhost
++      labels:
++        job: nginx_error
++        __path__: /var/log/nginx/error.log
++
++  - job_name: syslog
++    syslog:
++      listen_address: 0.0.0.0:514
++      labels:
++        job: "syslog"
+
+changed: [jevgeni-arefjev-2]
+
+TASK [init : Create Promtail systemd service] **********************************
+--- before
++++ after: /home/jevgeni/ica0002/roles/init/files/promtail.service
+@@ -0,0 +1,10 @@
++[Unit]
++Description=Promtail Log Collector
++After=network.target
++
++[Service]
++ExecStart=/usr/bin/promtail-linux-amd64 -config.file=/etc/promtail/promtail-local-config.yaml
++Restart=always
++
++[Install]
++WantedBy=multi-user.target
+\ No newline at end of file
+
+changed: [jevgeni-arefjev-3]
+--- before
++++ after: /home/jevgeni/ica0002/roles/init/files/promtail.service
+@@ -0,0 +1,10 @@
++[Unit]
++Description=Promtail Log Collector
++After=network.target
++
++[Service]
++ExecStart=/usr/bin/promtail-linux-amd64 -config.file=/etc/promtail/promtail-local-config.yaml
++Restart=always
++
++[Install]
++WantedBy=multi-user.target
+\ No newline at end of file
+
+changed: [jevgeni-arefjev-2]
+--- before
++++ after: /home/jevgeni/ica0002/roles/init/files/promtail.service
+@@ -0,0 +1,10 @@
++[Unit]
++Description=Promtail Log Collector
++After=network.target
++
++[Service]
++ExecStart=/usr/bin/promtail-linux-amd64 -config.file=/etc/promtail/promtail-local-config.yaml
++Restart=always
++
++[Install]
++WantedBy=multi-user.target
+\ No newline at end of file
+
+changed: [jevgeni-arefjev-1]
+
+TASK [init : Promtail Service] *************************************************
+changed: [jevgeni-arefjev-3]
+changed: [jevgeni-arefjev-2]
+changed: [jevgeni-arefjev-1]
+
+TASK [init : Add user backup] **************************************************
+changed: [jevgeni-arefjev-1]
+changed: [jevgeni-arefjev-3]
+changed: [jevgeni-arefjev-2]
+
+TASK [init : Add backup server public key] *************************************
+--- before
++++ after: /home/jevgeni/.ansible/tmp/ansible-local-1142384txl80qh/tmppz4r833o/known_hosts.j2
+@@ -0,0 +1,3 @@
++192.168.42.5 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAtnpnME3TsMyvcJyiYawMBod33jkDcFG9Pb1rlxDiXX
++backup ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAtnpnME3TsMyvcJyiYawMBod33jkDcFG9Pb1rlxDiXX
++backup.humble.hungry ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAtnpnME3TsMyvcJyiYawMBod33jkDcFG9Pb1rlxDiXX
+\ No newline at end of file
+
+changed: [jevgeni-arefjev-3]
+--- before
++++ after: /home/jevgeni/.ansible/tmp/ansible-local-1142384txl80qh/tmpiynnnr6i/known_hosts.j2
+@@ -0,0 +1,3 @@
++192.168.42.5 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAtnpnME3TsMyvcJyiYawMBod33jkDcFG9Pb1rlxDiXX
++backup ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAtnpnME3TsMyvcJyiYawMBod33jkDcFG9Pb1rlxDiXX
++backup.humble.hungry ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAtnpnME3TsMyvcJyiYawMBod33jkDcFG9Pb1rlxDiXX
+\ No newline at end of file
+
+changed: [jevgeni-arefjev-1]
+--- before
++++ after: /home/jevgeni/.ansible/tmp/ansible-local-1142384txl80qh/tmpmz_bv396/known_hosts.j2
+@@ -0,0 +1,3 @@
++192.168.42.5 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAtnpnME3TsMyvcJyiYawMBod33jkDcFG9Pb1rlxDiXX
++backup ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAtnpnME3TsMyvcJyiYawMBod33jkDcFG9Pb1rlxDiXX
++backup.humble.hungry ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAtnpnME3TsMyvcJyiYawMBod33jkDcFG9Pb1rlxDiXX
+\ No newline at end of file
+
+changed: [jevgeni-arefjev-2]
+
+TASK [init : Create backup restore directory] **********************************
+--- before
++++ after
+@@ -1,6 +1,6 @@
+ {
+-    "mode": "0755",
+-    "owner": 0,
++    "mode": "0700",
++    "owner": 34,
+     "path": "/home/backup/restore",
+-    "state": "absent"
++    "state": "directory"
+ }
+
+changed: [jevgeni-arefjev-2]
+--- before
++++ after
+@@ -1,6 +1,6 @@
+ {
+-    "mode": "0755",
+-    "owner": 0,
++    "mode": "0700",
++    "owner": 34,
+     "path": "/home/backup/restore",
+-    "state": "absent"
++    "state": "directory"
+ }
+
+changed: [jevgeni-arefjev-3]
+--- before
++++ after
+@@ -1,6 +1,6 @@
+ {
+-    "mode": "0755",
+-    "owner": 0,
++    "mode": "0700",
++    "owner": 34,
+     "path": "/home/backup/restore",
+-    "state": "absent"
++    "state": "directory"
+ }
+
+changed: [jevgeni-arefjev-1]
+
+TASK [init : Install Duplicity] ************************************************
+The following additional packages will be installed:
+  librsync2t64 python3-fasteners python3-monotonic python3-nacl
+  python3-paramiko
+Suggested packages:
+  ncftp lftp tahoe-lafs python3-swiftclient python3-pip par2 python-nacl-doc
+  python3-gssapi python3-invoke
+The following NEW packages will be installed:
+  duplicity librsync2t64 python3-fasteners python3-monotonic python3-nacl
+  python3-paramiko
+0 upgraded, 6 newly installed, 0 to remove and 252 not upgraded.
+changed: [jevgeni-arefjev-2]
+The following additional packages will be installed:
+  librsync2t64 python3-fasteners python3-monotonic python3-nacl
+  python3-paramiko
+Suggested packages:
+  ncftp lftp tahoe-lafs python3-swiftclient python3-pip par2 python-nacl-doc
+  python3-gssapi python3-invoke
+The following NEW packages will be installed:
+  duplicity librsync2t64 python3-fasteners python3-monotonic python3-nacl
+  python3-paramiko
+0 upgraded, 6 newly installed, 0 to remove and 252 not upgraded.
+changed: [jevgeni-arefjev-3]
+The following additional packages will be installed:
+  librsync2t64 python3-fasteners python3-monotonic python3-nacl
+  python3-paramiko
+Suggested packages:
+  ncftp lftp tahoe-lafs python3-swiftclient python3-pip par2 python-nacl-doc
+  python3-gssapi python3-invoke
+The following NEW packages will be installed:
+  duplicity librsync2t64 python3-fasteners python3-monotonic python3-nacl
+  python3-paramiko
+0 upgraded, 6 newly installed, 0 to remove and 252 not upgraded.
+changed: [jevgeni-arefjev-1]
+
+TASK [init : Install dnspython package] ****************************************
+Suggested packages:
+  python3-trio python3-aioquic python3-h2 python3-httpx python3-httpcore
+The following NEW packages will be installed:
+  python3-dnspython
+0 upgraded, 1 newly installed, 0 to remove and 252 not upgraded.
+changed: [jevgeni-arefjev-3]
+Suggested packages:
+  python3-trio python3-aioquic python3-h2 python3-httpx python3-httpcore
+The following NEW packages will be installed:
+  python3-dnspython
+0 upgraded, 1 newly installed, 0 to remove and 252 not upgraded.
+changed: [jevgeni-arefjev-1]
+Suggested packages:
+  python3-trio python3-aioquic python3-h2 python3-httpx python3-httpcore
+The following NEW packages will be installed:
+  python3-dnspython
+0 upgraded, 1 newly installed, 0 to remove and 252 not upgraded.
+changed: [jevgeni-arefjev-2]
+
+TASK [init : change DNS resolv.conf] *******************************************
+--- before: /etc/resolv.conf
++++ after: /home/jevgeni/.ansible/tmp/ansible-local-1142384txl80qh/tmpnxiwvjmu/resolv.conf.j2
+@@ -1,23 +1,4 @@
+-# This is /run/systemd/resolve/stub-resolv.conf managed by man:systemd-resolved(8).
+-# Do not edit.
+-#
+-# This file might be symlinked as /etc/resolv.conf. If you're looking at
+-# /etc/resolv.conf and seeing this text, you have followed the symlink.
+-#
+-# This is a dynamic resolv.conf file for connecting local clients to the
+-# internal DNS stub resolver of systemd-resolved. This file lists all
+-# configured search domains.
+-#
+-# Run "resolvectl status" to see details about the uplink DNS servers
+-# currently in use.
+-#
+-# Third party programs should typically not access this file directly, but only
+-# through the symlink at /etc/resolv.conf. To manage man:resolv.conf(5) in a
+-# different way, replace this symlink by a static file or a different symlink.
+-#
+-# See man:systemd-resolved.service(8) for details about the supported modes of
+-# operation for /etc/resolv.conf.
+-
+-nameserver 127.0.0.53
+-options edns0 trust-ad
+-search .
++search humble.hungry
++nameserver 192.168.42.177
++nameserver 192.168.42.6
++nameserver 8.8.8.8
+
+changed: [jevgeni-arefjev-1]
+--- before: /etc/resolv.conf
++++ after: /home/jevgeni/.ansible/tmp/ansible-local-1142384txl80qh/tmpx9a_ud8x/resolv.conf.j2
+@@ -1,23 +1,4 @@
+-# This is /run/systemd/resolve/stub-resolv.conf managed by man:systemd-resolved(8).
+-# Do not edit.
+-#
+-# This file might be symlinked as /etc/resolv.conf. If you're looking at
+-# /etc/resolv.conf and seeing this text, you have followed the symlink.
+-#
+-# This is a dynamic resolv.conf file for connecting local clients to the
+-# internal DNS stub resolver of systemd-resolved. This file lists all
+-# configured search domains.
+-#
+-# Run "resolvectl status" to see details about the uplink DNS servers
+-# currently in use.
+-#
+-# Third party programs should typically not access this file directly, but only
+-# through the symlink at /etc/resolv.conf. To manage man:resolv.conf(5) in a
+-# different way, replace this symlink by a static file or a different symlink.
+-#
+-# See man:systemd-resolved.service(8) for details about the supported modes of
+-# operation for /etc/resolv.conf.
+-
+-nameserver 127.0.0.53
+-options edns0 trust-ad
+-search .
++search humble.hungry
++nameserver 192.168.42.177
++nameserver 192.168.42.6
++nameserver 8.8.8.8
+
+changed: [jevgeni-arefjev-3]
+--- before: /etc/resolv.conf
++++ after: /home/jevgeni/.ansible/tmp/ansible-local-1142384txl80qh/tmpdivggnaw/resolv.conf.j2
+@@ -1,23 +1,4 @@
+-# This is /run/systemd/resolve/stub-resolv.conf managed by man:systemd-resolved(8).
+-# Do not edit.
+-#
+-# This file might be symlinked as /etc/resolv.conf. If you're looking at
+-# /etc/resolv.conf and seeing this text, you have followed the symlink.
+-#
+-# This is a dynamic resolv.conf file for connecting local clients to the
+-# internal DNS stub resolver of systemd-resolved. This file lists all
+-# configured search domains.
+-#
+-# Run "resolvectl status" to see details about the uplink DNS servers
+-# currently in use.
+-#
+-# Third party programs should typically not access this file directly, but only
+-# through the symlink at /etc/resolv.conf. To manage man:resolv.conf(5) in a
+-# different way, replace this symlink by a static file or a different symlink.
+-#
+-# See man:systemd-resolved.service(8) for details about the supported modes of
+-# operation for /etc/resolv.conf.
+-
+-nameserver 127.0.0.53
+-options edns0 trust-ad
+-search .
++search humble.hungry
++nameserver 192.168.42.177
++nameserver 192.168.42.6
++nameserver 8.8.8.8
+
+changed: [jevgeni-arefjev-2]
+
+RUNNING HANDLER [init : Restart Promtail] **************************************
+changed: [jevgeni-arefjev-1]
+changed: [jevgeni-arefjev-2]
+changed: [jevgeni-arefjev-3]
+
+PLAY [DNS servers] *************************************************************
+
+TASK [bind : Install Bind9] ****************************************************
+The following additional packages will be installed:
+  bind9-dnsutils bind9-host bind9-libs bind9-utils dns-root-data
+Suggested packages:
+  bind-doc
+The following NEW packages will be installed:
+  bind9 bind9-utils dns-root-data
+The following packages will be upgraded:
+  bind9-dnsutils bind9-host bind9-libs
+3 upgraded, 3 newly installed, 0 to remove and 249 not upgraded.
+changed: [jevgeni-arefjev-2]
+The following additional packages will be installed:
+  bind9-dnsutils bind9-host bind9-libs bind9-utils dns-root-data
+Suggested packages:
+  bind-doc
+The following NEW packages will be installed:
+  bind9 bind9-utils dns-root-data
+The following packages will be upgraded:
+  bind9-dnsutils bind9-host bind9-libs
+3 upgraded, 3 newly installed, 0 to remove and 249 not upgraded.
+changed: [jevgeni-arefjev-1]
+The following additional packages will be installed:
+  bind9-dnsutils bind9-host bind9-libs bind9-utils dns-root-data
+Suggested packages:
+  bind-doc
+The following NEW packages will be installed:
+  bind9 bind9-utils dns-root-data
+The following packages will be upgraded:
+  bind9-dnsutils bind9-host bind9-libs
+3 upgraded, 3 newly installed, 0 to remove and 249 not upgraded.
+changed: [jevgeni-arefjev-3]
+
+TASK [bind : Update Bind9 configuration] ***************************************
+changed: [jevgeni-arefjev-1] => (item=None)
+changed: [jevgeni-arefjev-3] => (item=None)
+changed: [jevgeni-arefjev-2] => (item=None)
+changed: [jevgeni-arefjev-1] => (item=None)
+changed: [jevgeni-arefjev-1]
+changed: [jevgeni-arefjev-2] => (item=None)
+changed: [jevgeni-arefjev-2]
+changed: [jevgeni-arefjev-3] => (item=None)
+changed: [jevgeni-arefjev-3]
+
+TASK [bind : Configure master zone] ********************************************
+skipping: [jevgeni-arefjev-1] => (item=domain) 
+skipping: [jevgeni-arefjev-1] => (item=ptr) 
+skipping: [jevgeni-arefjev-1]
+skipping: [jevgeni-arefjev-2] => (item=domain) 
+skipping: [jevgeni-arefjev-2] => (item=ptr) 
+skipping: [jevgeni-arefjev-2]
+--- before
++++ after: /home/jevgeni/.ansible/tmp/ansible-local-1142384txl80qh/tmpii_ax_lp/db.domain.j2
+@@ -0,0 +1,14 @@
++$TTL	604800
++humble.hungry.	IN	SOA	vm1.humble.hungry. jevgeni.humble.hungry. (
++			      3		; Serial
++			 604800		; Refresh
++			  86400		; Retry
++			2419200		; Expire
++			 604800 )	; Negative Cache TTL
++;
++humble.hungry.	IN	NS	jevgeni-arefjev-1.humble.hungry.
++humble.hungry.	IN	NS	jevgeni-arefjev-2.humble.hungry.
++humble.hungry.	IN	NS	jevgeni-arefjev-3.humble.hungry.
++jevgeni-arefjev-1	IN	A	192.168.42.177
++jevgeni-arefjev-2	IN	A	192.168.42.6
++jevgeni-arefjev-3	IN	A	192.168.42.45
+
+changed: [jevgeni-arefjev-3] => (item=domain)
+--- before
++++ after: /home/jevgeni/.ansible/tmp/ansible-local-1142384txl80qh/tmprzyq31ga/db.ptr.j2
+@@ -0,0 +1,14 @@
++$TTL	604800
++168.192.in-addr.arpa.	IN	SOA vm1.humble.hungry. jevgeni.humble.hungry. (
++			      3		; Serial
++			 604800		; Refresh
++			  86400		; Retry
++			2419200		; Expire
++			 604800 )	; Negative Cache TTL
++;
++168.192.in-addr.arpa.	IN	NS	jevgeni-arefjev-3.humble.hungry.
++168.192.in-addr.arpa.	IN	NS	jevgeni-arefjev-1.humble.hungry.
++168.192.in-addr.arpa.	IN	NS	jevgeni-arefjev-2.humble.hungry.
++177.42	IN	PTR	jevgeni-arefjev-1.humble.hungry.
++6.42	IN	PTR	jevgeni-arefjev-2.humble.hungry.
++45.42	IN	PTR	jevgeni-arefjev-3.humble.hungry.
+
+changed: [jevgeni-arefjev-3] => (item=ptr)
+
+TASK [bind : Bind9 service] ****************************************************
+changed: [jevgeni-arefjev-1]
+changed: [jevgeni-arefjev-3]
+changed: [jevgeni-arefjev-2]
+
+TASK [bind : Install prometheus-bind-exporter] *********************************
+The following NEW packages will be installed:
+  prometheus-bind-exporter
+0 upgraded, 1 newly installed, 0 to remove and 249 not upgraded.
+changed: [jevgeni-arefjev-1]
+The following NEW packages will be installed:
+  prometheus-bind-exporter
+0 upgraded, 1 newly installed, 0 to remove and 249 not upgraded.
+changed: [jevgeni-arefjev-3]
+The following NEW packages will be installed:
+  prometheus-bind-exporter
+0 upgraded, 1 newly installed, 0 to remove and 249 not upgraded.
+changed: [jevgeni-arefjev-2]
+
+TASK [bind : Bind9-exporter service] *******************************************
+ok: [jevgeni-arefjev-3]
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [bind : Create DNS A record for backup server] ****************************
+skipping: [jevgeni-arefjev-1]
+skipping: [jevgeni-arefjev-2]
+changed: [jevgeni-arefjev-3]
+
+TASK [bind : Create DNS CNAME record for Bind9 servers] ************************
+changed: [jevgeni-arefjev-3] => (item=jevgeni-arefjev-3)
+changed: [jevgeni-arefjev-1] => (item=jevgeni-arefjev-3)
+changed: [jevgeni-arefjev-2] => (item=jevgeni-arefjev-3)
+
+RUNNING HANDLER [bind : Restart Bind9] *****************************************
+changed: [jevgeni-arefjev-3]
+changed: [jevgeni-arefjev-1]
+changed: [jevgeni-arefjev-2]
+
+PLAY [Database servers] ********************************************************
+
+TASK [mysql : Install MySQL] ***************************************************
+The following additional packages will be installed:
+  libcgi-fast-perl libcgi-pm-perl libclone-perl libencode-locale-perl
+  libevent-pthreads-2.1-7t64 libfcgi-bin libfcgi-perl libfcgi0t64
+  libhtml-parser-perl libhtml-tagset-perl libhtml-template-perl
+  libhttp-date-perl libhttp-message-perl libio-html-perl
+  liblwp-mediatypes-perl libmecab2 libprotobuf-lite32t64 liburi-perl
+  mecab-ipadic mecab-ipadic-utf8 mecab-utils mysql-client-8.0
+  mysql-client-core-8.0 mysql-common mysql-server-8.0 mysql-server-core-8.0
+Suggested packages:
+  libdata-dump-perl libipc-sharedcache-perl libio-compress-brotli-perl
+  libbusiness-isbn-perl libregexp-ipv6-perl libwww-perl mailx tinyca
+The following NEW packages will be installed:
+  libcgi-fast-perl libcgi-pm-perl libclone-perl libencode-locale-perl
+  libevent-pthreads-2.1-7t64 libfcgi-bin libfcgi-perl libfcgi0t64
+  libhtml-parser-perl libhtml-tagset-perl libhtml-template-perl
+  libhttp-date-perl libhttp-message-perl libio-html-perl
+  liblwp-mediatypes-perl libmecab2 libprotobuf-lite32t64 liburi-perl
+  mecab-ipadic mecab-ipadic-utf8 mecab-utils mysql-client-8.0
+  mysql-client-core-8.0 mysql-common mysql-server mysql-server-8.0
+  mysql-server-core-8.0
+0 upgraded, 27 newly installed, 0 to remove and 249 not upgraded.
+changed: [jevgeni-arefjev-2]
+The following additional packages will be installed:
+  libcgi-fast-perl libcgi-pm-perl libclone-perl libencode-locale-perl
+  libevent-pthreads-2.1-7t64 libfcgi-bin libfcgi-perl libfcgi0t64
+  libhtml-parser-perl libhtml-tagset-perl libhtml-template-perl
+  libhttp-date-perl libhttp-message-perl libio-html-perl
+  liblwp-mediatypes-perl libmecab2 libprotobuf-lite32t64 liburi-perl
+  mecab-ipadic mecab-ipadic-utf8 mecab-utils mysql-client-8.0
+  mysql-client-core-8.0 mysql-common mysql-server-8.0 mysql-server-core-8.0
+Suggested packages:
+  libdata-dump-perl libipc-sharedcache-perl libio-compress-brotli-perl
+  libbusiness-isbn-perl libregexp-ipv6-perl libwww-perl mailx tinyca
+The following NEW packages will be installed:
+  libcgi-fast-perl libcgi-pm-perl libclone-perl libencode-locale-perl
+  libevent-pthreads-2.1-7t64 libfcgi-bin libfcgi-perl libfcgi0t64
+  libhtml-parser-perl libhtml-tagset-perl libhtml-template-perl
+  libhttp-date-perl libhttp-message-perl libio-html-perl
+  liblwp-mediatypes-perl libmecab2 libprotobuf-lite32t64 liburi-perl
+  mecab-ipadic mecab-ipadic-utf8 mecab-utils mysql-client-8.0
+  mysql-client-core-8.0 mysql-common mysql-server mysql-server-8.0
+  mysql-server-core-8.0
+0 upgraded, 27 newly installed, 0 to remove and 249 not upgraded.
+changed: [jevgeni-arefjev-1]
+
+TASK [mysql : Configure MySQL to listen on public port] ************************
+--- before
++++ after: /home/jevgeni/.ansible/tmp/ansible-local-1142384txl80qh/tmpjukem0om/override.cnf.j2
+@@ -0,0 +1,7 @@
++[mysqld]
++bind-address = 0.0.0.0
++
++log-bin = /var/log/mysql/mysql-bin.log
++relay-log = /var/log/mysql/mysql-relay.log
++replicate-do-db = agama
++server-id = 177
+\ No newline at end of file
+
+changed: [jevgeni-arefjev-1]
+--- before
++++ after: /home/jevgeni/.ansible/tmp/ansible-local-1142384txl80qh/tmplhpvnmp5/override.cnf.j2
+@@ -0,0 +1,7 @@
++[mysqld]
++bind-address = 0.0.0.0
++
++log-bin = /var/log/mysql/mysql-bin.log
++relay-log = /var/log/mysql/mysql-relay.log
++replicate-do-db = agama
++server-id = 6
+\ No newline at end of file
+
+changed: [jevgeni-arefjev-2]
+
+TASK [mysql : MySQL service] ***************************************************
+changed: [jevgeni-arefjev-1]
+changed: [jevgeni-arefjev-2]
+
+TASK [mysql : Install pymysql] *************************************************
+Suggested packages:
+  python-pymysql-doc
+The following NEW packages will be installed:
+  python3-pymysql
+0 upgraded, 1 newly installed, 0 to remove and 249 not upgraded.
+changed: [jevgeni-arefjev-1]
+Suggested packages:
+  python-pymysql-doc
+The following NEW packages will be installed:
+  python3-pymysql
+0 upgraded, 1 newly installed, 0 to remove and 249 not upgraded.
+changed: [jevgeni-arefjev-2]
+
+TASK [mysql : MySQL database] **************************************************
+changed: [jevgeni-arefjev-1]
+changed: [jevgeni-arefjev-2]
+
+TASK [mysql : MySQL user agama] ************************************************
+changed: [jevgeni-arefjev-2]
+changed: [jevgeni-arefjev-1]
+
+TASK [mysql : Install mysqld_exporter] *****************************************
+The following NEW packages will be installed:
+  prometheus-mysqld-exporter
+0 upgraded, 1 newly installed, 0 to remove and 249 not upgraded.
+changed: [jevgeni-arefjev-1]
+The following NEW packages will be installed:
+  prometheus-mysqld-exporter
+0 upgraded, 1 newly installed, 0 to remove and 249 not upgraded.
+changed: [jevgeni-arefjev-2]
+
+TASK [mysql : Create MySQL user for mysqld_exporter] ***************************
+changed: [jevgeni-arefjev-2]
+changed: [jevgeni-arefjev-1]
+
+TASK [mysql : Create Prometheus/.my.cnf] ***************************************
+changed: [jevgeni-arefjev-1]
+changed: [jevgeni-arefjev-2]
+
+TASK [mysql : Create prometheus_mysqld_exporter *ARGS] *************************
+--- before: /etc/default/prometheus-mysqld-exporter
++++ after: /home/jevgeni/ica0002/roles/mysql/files/prometheus-mysqld-exporter
+@@ -1,33 +1 @@
+-# Set the command-line arguments to pass to the server.
+-# Due to shell escaping, to pass backslashes for regexes, you need to double
+-# them (\\d for \d). If running under systemd, you need to double them again
+-# (\\\\d to mean \d), and escape newlines too.
+-ARGS=""
+-
+-### Database authentication
+-#
+-# By default the DATABASE connection string will be read from
+-# the file specified with the -config.my-cnf parameter.  For example:
+-# ARGS='--config.my-cnf /etc/mysql/debian.cnf'
+-#
+-# Note that SSL options can only be set using a cnf file.
+-#
+-# To use UNIX domain sockets authentication with or without password:
+-# DATA_SOURCE_NAME="prometheus:nopassword@unix(/run/mysqld/mysqld.sock)/"
+-# DATA_SOURCE_NAME="prometheus@unix(/run/mysqld/mysqld.sock)/"
+-#
+-# To use a TCP connection and password authentication:
+-# DATA_SOURCE_NAME="prometheus:password@(hostname:port)/dbname"
+-
+-### Monitoring user creation.
+-#
+-# You need a user with enough privileges for the exporter to run.
+-#
+-# Example to create a user to connect (only) via UNIX socket:
+-#   CREATE USER IF NOT EXISTS 'prometheus'@'localhost' IDENTIFIED WITH unix_socket;
+-#
+-# To create a user with a password, that can log in via UNIX or TCP sockets:
+-#   CREATE USER IF NOT EXISTS 'prometheus'@'localhost' IDENTIFIED BY 'password';
+-#
+-# Finally, to grant the necessary privileges:
+-#   GRANT PROCESS, REPLICATION CLIENT, SELECT ON *.* TO 'prometheus'@'localhost';
++ARGS="--config.my-cnf=/var/lib/prometheus/.my.cnf"
+
+changed: [jevgeni-arefjev-2]
+--- before: /etc/default/prometheus-mysqld-exporter
++++ after: /home/jevgeni/ica0002/roles/mysql/files/prometheus-mysqld-exporter
+@@ -1,33 +1 @@
+-# Set the command-line arguments to pass to the server.
+-# Due to shell escaping, to pass backslashes for regexes, you need to double
+-# them (\\d for \d). If running under systemd, you need to double them again
+-# (\\\\d to mean \d), and escape newlines too.
+-ARGS=""
+-
+-### Database authentication
+-#
+-# By default the DATABASE connection string will be read from
+-# the file specified with the -config.my-cnf parameter.  For example:
+-# ARGS='--config.my-cnf /etc/mysql/debian.cnf'
+-#
+-# Note that SSL options can only be set using a cnf file.
+-#
+-# To use UNIX domain sockets authentication with or without password:
+-# DATA_SOURCE_NAME="prometheus:nopassword@unix(/run/mysqld/mysqld.sock)/"
+-# DATA_SOURCE_NAME="prometheus@unix(/run/mysqld/mysqld.sock)/"
+-#
+-# To use a TCP connection and password authentication:
+-# DATA_SOURCE_NAME="prometheus:password@(hostname:port)/dbname"
+-
+-### Monitoring user creation.
+-#
+-# You need a user with enough privileges for the exporter to run.
+-#
+-# Example to create a user to connect (only) via UNIX socket:
+-#   CREATE USER IF NOT EXISTS 'prometheus'@'localhost' IDENTIFIED WITH unix_socket;
+-#
+-# To create a user with a password, that can log in via UNIX or TCP sockets:
+-#   CREATE USER IF NOT EXISTS 'prometheus'@'localhost' IDENTIFIED BY 'password';
+-#
+-# Finally, to grant the necessary privileges:
+-#   GRANT PROCESS, REPLICATION CLIENT, SELECT ON *.* TO 'prometheus'@'localhost';
++ARGS="--config.my-cnf=/var/lib/prometheus/.my.cnf"
+
+changed: [jevgeni-arefjev-1]
+
+TASK [mysql : mysqld-exporter service] *****************************************
+changed: [jevgeni-arefjev-2]
+changed: [jevgeni-arefjev-1]
+
+TASK [mysql : Create backup folder for MySQL] **********************************
+--- before
++++ after
+@@ -1,6 +1,6 @@
+ {
+-    "mode": "0755",
+-    "owner": 0,
++    "mode": "0700",
++    "owner": 34,
+     "path": "/home/backup/mysql",
+-    "state": "absent"
++    "state": "directory"
+ }
+
+changed: [jevgeni-arefjev-2]
+--- before
++++ after
+@@ -1,6 +1,6 @@
+ {
+-    "mode": "0755",
+-    "owner": 0,
++    "mode": "0700",
++    "owner": 34,
+     "path": "/home/backup/mysql",
+-    "state": "absent"
++    "state": "directory"
+ }
+
+changed: [jevgeni-arefjev-1]
+
+TASK [mysql : Create MySQL user for backup] ************************************
+changed: [jevgeni-arefjev-1]
+changed: [jevgeni-arefjev-2]
+
+TASK [mysql : Create backup/.my.cnf] *******************************************
+changed: [jevgeni-arefjev-1]
+changed: [jevgeni-arefjev-2]
+
+TASK [mysql : Add cron backuping schedule] *************************************
+changed: [jevgeni-arefjev-1]
+--- before
++++ after: /home/jevgeni/.ansible/tmp/ansible-local-1142384txl80qh/tmpwxt5d499/backup-cron.j2
+@@ -0,0 +1,3 @@
++20 0 * * * backup mysqldump agama > /home/backup/mysql/agama.sql
++25 0 * * 0 backup duplicity --no-encryption full /home/backup/mysql/ rsync://jevgeni-arefjev@backup/mysql
++25 0 * * 1-6 backup duplicity --no-encryption incremental /home/backup/mysql/ rsync://jevgeni-arefjev@backup/mysql
+
+changed: [jevgeni-arefjev-2]
+
+TASK [mysql : MySQL user replication] ******************************************
+changed: [jevgeni-arefjev-1]
+changed: [jevgeni-arefjev-2]
+
+TASK [mysql : Set replica server to read-only] *********************************
+changed: [jevgeni-arefjev-2]
+changed: [jevgeni-arefjev-1]
+
+TASK [mysql : Create DNS CNAME record for MySQL servers] ***********************
+changed: [jevgeni-arefjev-1] => (item=jevgeni-arefjev-3)
+changed: [jevgeni-arefjev-2] => (item=jevgeni-arefjev-3)
+
+RUNNING HANDLER [mysql : Restart MySQL] ****************************************
+changed: [jevgeni-arefjev-2]
+changed: [jevgeni-arefjev-1]
+
+RUNNING HANDLER [mysql : Reset MySQL source] ***********************************
+skipping: [jevgeni-arefjev-2] => (item=stopreplica) 
+skipping: [jevgeni-arefjev-2] => (item=resetprimary) 
+skipping: [jevgeni-arefjev-2]
+changed: [jevgeni-arefjev-1] => (item=stopreplica)
+changed: [jevgeni-arefjev-1] => (item=resetprimary)
+
+RUNNING HANDLER [mysql : Reset MySQL replica] **********************************
+skipping: [jevgeni-arefjev-1] => (item=stopreplica) 
+skipping: [jevgeni-arefjev-1] => (item=changeprimary) 
+skipping: [jevgeni-arefjev-1] => (item=resetreplica) 
+skipping: [jevgeni-arefjev-1] => (item=startreplica) 
+skipping: [jevgeni-arefjev-1]
+changed: [jevgeni-arefjev-2] => (item=stopreplica)
+changed: [jevgeni-arefjev-2] => (item=changeprimary)
+changed: [jevgeni-arefjev-2] => (item=resetreplica)
+changed: [jevgeni-arefjev-2] => (item=startreplica)
+
+RUNNING HANDLER [mysql : Restart Prometheus-mysqld-exporter] *******************
+changed: [jevgeni-arefjev-2]
+changed: [jevgeni-arefjev-1]
+
+PLAY [Web Apps] ****************************************************************
+
+TASK [docker : Install Docker] *************************************************
+The following additional packages will be installed:
+  bridge-utils containerd dnsmasq-base pigz python3-websocket runc ubuntu-fan
+Suggested packages:
+  ifupdown aufs-tools cgroupfs-mount | cgroup-lite debootstrap docker-buildx
+  docker-compose-v2 docker-doc rinse zfs-fuse | zfsutils
+The following NEW packages will be installed:
+  bridge-utils containerd dnsmasq-base docker.io pigz python3-docker
+  python3-websocket runc ubuntu-fan
+0 upgraded, 9 newly installed, 0 to remove and 249 not upgraded.
+changed: [jevgeni-arefjev-2]
+The following additional packages will be installed:
+  bridge-utils containerd dnsmasq-base pigz python3-websocket runc ubuntu-fan
+Suggested packages:
+  ifupdown aufs-tools cgroupfs-mount | cgroup-lite debootstrap docker-buildx
+  docker-compose-v2 docker-doc rinse zfs-fuse | zfsutils
+The following NEW packages will be installed:
+  bridge-utils containerd dnsmasq-base docker.io pigz python3-docker
+  python3-websocket runc ubuntu-fan
+0 upgraded, 9 newly installed, 0 to remove and 249 not upgraded.
+changed: [jevgeni-arefjev-1]
+
+TASK [docker : Docker service] *************************************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [docker : Install Loki Docker driver] *************************************
+changed: [jevgeni-arefjev-2]
+changed: [jevgeni-arefjev-1]
+
+TASK [agama : Create directory /opt/agama] *************************************
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+     "path": "/opt/agama",
+-    "state": "absent"
++    "state": "directory"
+ }
+
+changed: [jevgeni-arefjev-2]
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+     "path": "/opt/agama",
+-    "state": "absent"
++    "state": "directory"
+ }
+
+changed: [jevgeni-arefjev-1]
+
+TASK [agama : Install agama app] ***********************************************
+changed: [jevgeni-arefjev-1] => (item=agama.py)
+changed: [jevgeni-arefjev-2] => (item=agama.py)
+changed: [jevgeni-arefjev-1] => (item=Dockerfile)
+changed: [jevgeni-arefjev-2] => (item=Dockerfile)
+
+TASK [agama : Build Agama Docker image] ****************************************
+changed: [jevgeni-arefjev-1]
+changed: [jevgeni-arefjev-2]
+
+TASK [agama : Start Agama] *****************************************************
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+-    "exists": false,
+-    "running": false
++    "exists": true,
++    "running": true
+ }
+
+changed: [jevgeni-arefjev-2]
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+-    "exists": false,
+-    "running": false
++    "exists": true,
++    "running": true
+ }
+
+changed: [jevgeni-arefjev-1]
+
+TASK [agama : Create DNS CNAME record for Agama servers] ***********************
+changed: [jevgeni-arefjev-2] => (item=jevgeni-arefjev-3)
+changed: [jevgeni-arefjev-1] => (item=jevgeni-arefjev-3)
+
+PLAY [Web servers] *************************************************************
+
+TASK [nginx : Install nginx package] *******************************************
+The following additional packages will be installed:
+  nginx-common
+Suggested packages:
+  fcgiwrap nginx-doc ssl-cert
+The following NEW packages will be installed:
+  nginx nginx-common
+0 upgraded, 2 newly installed, 0 to remove and 249 not upgraded.
+changed: [jevgeni-arefjev-2]
+The following additional packages will be installed:
+  nginx-common
+Suggested packages:
+  fcgiwrap nginx-doc ssl-cert
+The following NEW packages will be installed:
+  nginx nginx-common
+0 upgraded, 2 newly installed, 0 to remove and 249 not upgraded.
+changed: [jevgeni-arefjev-1]
+The following additional packages will be installed:
+  nginx-common
+Suggested packages:
+  fcgiwrap nginx-doc ssl-cert
+The following NEW packages will be installed:
+  nginx nginx-common
+0 upgraded, 2 newly installed, 0 to remove and 249 not upgraded.
+changed: [jevgeni-arefjev-3]
+
+TASK [nginx : Configure nginx] *************************************************
+--- before: /etc/nginx/sites-enabled/default
++++ after: /home/jevgeni/.ansible/tmp/ansible-local-1142384txl80qh/tmp6aievsux/default.j2
+@@ -1,91 +1,24 @@
+-##
+-# You should look at the following URL's in order to grasp a solid understanding
+-# of Nginx configuration files in order to fully unleash the power of Nginx.
+-# https://www.nginx.com/resources/wiki/start/
+-# https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/
+-# https://wiki.debian.org/Nginx/DirectoryStructure
+-#
+-# In most cases, administrators will remove this file from sites-enabled/ and
+-# leave it as reference inside of sites-available where it will continue to be
+-# updated by the nginx packaging team.
+-#
+-# This file will automatically load configuration files provided by other
+-# applications, such as Drupal or Wordpress. These applications will be made
+-# available underneath a path with that package name, such as /drupal8.
+-#
+-# Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.
+-##
++log_format status_time '$status $request_time';
+ 
+-# Default server configuration
+-#
+ server {
+ 	listen 80 default_server;
+-	listen [::]:80 default_server;
+-
+-	# SSL configuration
+-	#
+-	# listen 443 ssl default_server;
+-	# listen [::]:443 ssl default_server;
+-	#
+-	# Note: You should disable gzip for SSL traffic.
+-	# See: https://bugs.debian.org/773332
+-	#
+-	# Read up on ssl_ciphers to ensure a secure configuration.
+-	# See: https://bugs.debian.org/765782
+-	#
+-	# Self signed certs generated by the ssl-cert package
+-	# Don't use them in a production server!
+-	#
+-	# include snippets/snakeoil.conf;
+-
+-	root /var/www/html;
+-
+-	# Add index.php to the list if you are using PHP
+-	index index.html index.htm index.nginx-debian.html;
+-
+ 	server_name _;
+ 
+ 	location / {
+-		# First attempt to serve request as file, then
+-		# as directory, then fall back to displaying a 404.
+ 		try_files $uri $uri/ =404;
+ 	}
+-
+-	# pass PHP scripts to FastCGI server
+-	#
+-	#location ~ \.php$ {
+-	#	include snippets/fastcgi-php.conf;
+-	#
+-	#	# With php-fpm (or other unix sockets):
+-	#	fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+-	#	# With php-cgi (or other tcp sockets):
+-	#	fastcgi_pass 127.0.0.1:9000;
+-	#}
+-
+-	# deny access to .htaccess files, if Apache's document root
+-	# concurs with nginx's one
+-	#
+-	#location ~ /\.ht {
+-	#	deny all;
+-	#}
++	location /prometheus {
++		proxy_pass http://localhost:9090;
++	}
++	location /grafana {
++		proxy_pass http://localhost:3001;
++		proxy_set_header Host $http_host;
++	}
+ }
+ 
+-
+-# Virtual Host configuration for example.com
+-#
+-# You can move that to a different file under sites-available/ and symlink that
+-# to sites-enabled/ to enable it.
+-#
+-#server {
+-#	listen 80;
+-#	listen [::]:80;
+-#
+-#	server_name example.com;
+-#
+-#	root /var/www/example.com;
+-#	index index.html;
+-#
+-#	location / {
+-#		try_files $uri $uri/ =404;
+-#	}
+-#}
++server {
++	listen 8080 default_server;
++	location = /stub_status {
++		stub_status;
++	}
++}
+\ No newline at end of file
+
+changed: [jevgeni-arefjev-3]
+--- before: /etc/nginx/sites-enabled/default
++++ after: /home/jevgeni/.ansible/tmp/ansible-local-1142384txl80qh/tmpxbg1zt_x/default.j2
+@@ -1,91 +1,19 @@
+-##
+-# You should look at the following URL's in order to grasp a solid understanding
+-# of Nginx configuration files in order to fully unleash the power of Nginx.
+-# https://www.nginx.com/resources/wiki/start/
+-# https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/
+-# https://wiki.debian.org/Nginx/DirectoryStructure
+-#
+-# In most cases, administrators will remove this file from sites-enabled/ and
+-# leave it as reference inside of sites-available where it will continue to be
+-# updated by the nginx packaging team.
+-#
+-# This file will automatically load configuration files provided by other
+-# applications, such as Drupal or Wordpress. These applications will be made
+-# available underneath a path with that package name, such as /drupal8.
+-#
+-# Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.
+-##
++log_format status_time '$status $request_time';
+ 
+-# Default server configuration
+-#
+ server {
+ 	listen 80 default_server;
+-	listen [::]:80 default_server;
+-
+-	# SSL configuration
+-	#
+-	# listen 443 ssl default_server;
+-	# listen [::]:443 ssl default_server;
+-	#
+-	# Note: You should disable gzip for SSL traffic.
+-	# See: https://bugs.debian.org/773332
+-	#
+-	# Read up on ssl_ciphers to ensure a secure configuration.
+-	# See: https://bugs.debian.org/765782
+-	#
+-	# Self signed certs generated by the ssl-cert package
+-	# Don't use them in a production server!
+-	#
+-	# include snippets/snakeoil.conf;
+-
+-	root /var/www/html;
+-
+-	# Add index.php to the list if you are using PHP
+-	index index.html index.htm index.nginx-debian.html;
+-
+ 	server_name _;
+ 
+ 	location / {
+-		# First attempt to serve request as file, then
+-		# as directory, then fall back to displaying a 404.
+-		try_files $uri $uri/ =404;
++		proxy_pass http://localhost:8001;
++		access_log /var/log/nginx/access.log;
++		access_log /var/log/nginx/agama.log status_time;
+ 	}
+-
+-	# pass PHP scripts to FastCGI server
+-	#
+-	#location ~ \.php$ {
+-	#	include snippets/fastcgi-php.conf;
+-	#
+-	#	# With php-fpm (or other unix sockets):
+-	#	fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+-	#	# With php-cgi (or other tcp sockets):
+-	#	fastcgi_pass 127.0.0.1:9000;
+-	#}
+-
+-	# deny access to .htaccess files, if Apache's document root
+-	# concurs with nginx's one
+-	#
+-	#location ~ /\.ht {
+-	#	deny all;
+-	#}
+ }
+ 
+-
+-# Virtual Host configuration for example.com
+-#
+-# You can move that to a different file under sites-available/ and symlink that
+-# to sites-enabled/ to enable it.
+-#
+-#server {
+-#	listen 80;
+-#	listen [::]:80;
+-#
+-#	server_name example.com;
+-#
+-#	root /var/www/example.com;
+-#	index index.html;
+-#
+-#	location / {
+-#		try_files $uri $uri/ =404;
+-#	}
+-#}
++server {
++	listen 8080 default_server;
++	location = /stub_status {
++		stub_status;
++	}
++}
+\ No newline at end of file
+
+changed: [jevgeni-arefjev-1]
+--- before: /etc/nginx/sites-enabled/default
++++ after: /home/jevgeni/.ansible/tmp/ansible-local-1142384txl80qh/tmp6ux4mhbk/default.j2
+@@ -1,91 +1,19 @@
+-##
+-# You should look at the following URL's in order to grasp a solid understanding
+-# of Nginx configuration files in order to fully unleash the power of Nginx.
+-# https://www.nginx.com/resources/wiki/start/
+-# https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/
+-# https://wiki.debian.org/Nginx/DirectoryStructure
+-#
+-# In most cases, administrators will remove this file from sites-enabled/ and
+-# leave it as reference inside of sites-available where it will continue to be
+-# updated by the nginx packaging team.
+-#
+-# This file will automatically load configuration files provided by other
+-# applications, such as Drupal or Wordpress. These applications will be made
+-# available underneath a path with that package name, such as /drupal8.
+-#
+-# Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.
+-##
++log_format status_time '$status $request_time';
+ 
+-# Default server configuration
+-#
+ server {
+ 	listen 80 default_server;
+-	listen [::]:80 default_server;
+-
+-	# SSL configuration
+-	#
+-	# listen 443 ssl default_server;
+-	# listen [::]:443 ssl default_server;
+-	#
+-	# Note: You should disable gzip for SSL traffic.
+-	# See: https://bugs.debian.org/773332
+-	#
+-	# Read up on ssl_ciphers to ensure a secure configuration.
+-	# See: https://bugs.debian.org/765782
+-	#
+-	# Self signed certs generated by the ssl-cert package
+-	# Don't use them in a production server!
+-	#
+-	# include snippets/snakeoil.conf;
+-
+-	root /var/www/html;
+-
+-	# Add index.php to the list if you are using PHP
+-	index index.html index.htm index.nginx-debian.html;
+-
+ 	server_name _;
+ 
+ 	location / {
+-		# First attempt to serve request as file, then
+-		# as directory, then fall back to displaying a 404.
+-		try_files $uri $uri/ =404;
++		proxy_pass http://localhost:8001;
++		access_log /var/log/nginx/access.log;
++		access_log /var/log/nginx/agama.log status_time;
+ 	}
+-
+-	# pass PHP scripts to FastCGI server
+-	#
+-	#location ~ \.php$ {
+-	#	include snippets/fastcgi-php.conf;
+-	#
+-	#	# With php-fpm (or other unix sockets):
+-	#	fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+-	#	# With php-cgi (or other tcp sockets):
+-	#	fastcgi_pass 127.0.0.1:9000;
+-	#}
+-
+-	# deny access to .htaccess files, if Apache's document root
+-	# concurs with nginx's one
+-	#
+-	#location ~ /\.ht {
+-	#	deny all;
+-	#}
+ }
+ 
+-
+-# Virtual Host configuration for example.com
+-#
+-# You can move that to a different file under sites-available/ and symlink that
+-# to sites-enabled/ to enable it.
+-#
+-#server {
+-#	listen 80;
+-#	listen [::]:80;
+-#
+-#	server_name example.com;
+-#
+-#	root /var/www/example.com;
+-#	index index.html;
+-#
+-#	location / {
+-#		try_files $uri $uri/ =404;
+-#	}
+-#}
++server {
++	listen 8080 default_server;
++	location = /stub_status {
++		stub_status;
++	}
++}
+\ No newline at end of file
+
+changed: [jevgeni-arefjev-2]
+
+TASK [nginx : Nginx service] ***************************************************
+changed: [jevgeni-arefjev-2]
+changed: [jevgeni-arefjev-1]
+changed: [jevgeni-arefjev-3]
+
+TASK [nginx : Install prometheus-nginx-exporter] *******************************
+The following NEW packages will be installed:
+  prometheus-nginx-exporter
+0 upgraded, 1 newly installed, 0 to remove and 249 not upgraded.
+changed: [jevgeni-arefjev-1]
+The following NEW packages will be installed:
+  prometheus-nginx-exporter
+0 upgraded, 1 newly installed, 0 to remove and 249 not upgraded.
+changed: [jevgeni-arefjev-3]
+The following NEW packages will be installed:
+  prometheus-nginx-exporter
+0 upgraded, 1 newly installed, 0 to remove and 249 not upgraded.
+changed: [jevgeni-arefjev-2]
+
+TASK [nginx : Nginx-exporter service] ******************************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-3]
+
+RUNNING HANDLER [nginx : Restart Nginx] ****************************************
+changed: [jevgeni-arefjev-2]
+changed: [jevgeni-arefjev-3]
+changed: [jevgeni-arefjev-1]
+
+PLAY [Prometheus] **************************************************************
+
+TASK [nginx : Install nginx package] *******************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [nginx : Configure nginx] *************************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [nginx : Nginx service] ***************************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [nginx : Install prometheus-nginx-exporter] *******************************
+ok: [jevgeni-arefjev-3]
+
+TASK [nginx : Nginx-exporter service] ******************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [prometheus : Install Prometheus] *****************************************
+The following additional packages will be installed:
+  fonts-glyphicons-halflings javascript-common libjs-bootstrap
+  libjs-bootstrap4 libjs-d3 libjs-eonasdan-bootstrap-datetimepicker
+  libjs-jquery libjs-jquery-hotkeys libjs-moment libjs-moment-timezone
+  libjs-mustache libjs-popper.js libjs-rickshaw libjs-sizzle node-jquery
+The following NEW packages will be installed:
+  fonts-glyphicons-halflings javascript-common libjs-bootstrap
+  libjs-bootstrap4 libjs-d3 libjs-eonasdan-bootstrap-datetimepicker
+  libjs-jquery libjs-jquery-hotkeys libjs-moment libjs-moment-timezone
+  libjs-mustache libjs-popper.js libjs-rickshaw libjs-sizzle node-jquery
+  prometheus
+0 upgraded, 16 newly installed, 0 to remove and 249 not upgraded.
+changed: [jevgeni-arefjev-3]
+
+TASK [prometheus : Update Prometheus configuration] ****************************
+--- before: /etc/prometheus/prometheus.yml
++++ after: /home/jevgeni/.ansible/tmp/ansible-local-1142384txl80qh/tmpo0hxui9w/prometheus.yml.j2
+@@ -32,13 +32,79 @@
+     scrape_timeout: 5s
+ 
+     # metrics_path defaults to '/metrics'
++    metrics_path: '/prometheus/metrics'
+     # scheme defaults to 'http'.
+ 
+     static_configs:
+       - targets: ['localhost:9090']
+ 
+-  - job_name: node
++  #- job_name: node
+     # If prometheus-node-exporter is installed, grab stats about the local
+     # machine by default.
++  #  static_configs:
++  #    - targets: ['localhost:9100']
++
++  - job_name: 'linux'
++    
+     static_configs:
+-      - targets: ['localhost:9100']
++      - targets:
++        - 'jevgeni-arefjev-1:9100'
++        - 'jevgeni-arefjev-2:9100'
++        - 'jevgeni-arefjev-3:9100'
++
++  - job_name: 'mysql'
++    
++    static_configs:
++      - targets:
++        - 'jevgeni-arefjev-1:9104'
++        - 'jevgeni-arefjev-2:9104'
++
++  - job_name: 'bind9'
++      
++    static_configs:
++      - targets:
++        - 'jevgeni-arefjev-3:9119'
++        - 'jevgeni-arefjev-1:9119'
++        - 'jevgeni-arefjev-2:9119'
++
++  - job_name: 'nginx'
++      
++    static_configs:
++      - targets:
++        - 'jevgeni-arefjev-1:9113'
++        - 'jevgeni-arefjev-2:9113'
++        - 'jevgeni-arefjev-3:9113'
++
++  - job_name: 'loki'
++      
++    static_configs:
++      - targets:
++        - 'loki:3100'
++
++  - job_name: 'promtail'
++      
++    static_configs:
++      - targets:
++        - 'jevgeni-arefjev-1:9080'
++        - 'jevgeni-arefjev-2:9080'
++        - 'jevgeni-arefjev-3:9080'
++
++  - job_name: 'backup'
++
++    static_configs:
++      - targets:
++        - 'backup:9111'
++
++  - job_name: 'haproxy'
++      
++    static_configs:
++      - targets:
++        - 'jevgeni-arefjev-1:9101'
++        - 'jevgeni-arefjev-2:9101'
++
++  - job_name: 'keepalived'
++      
++    static_configs:
++      - targets:
++        - 'jevgeni-arefjev-1:9165'
++        - 'jevgeni-arefjev-2:9165'
+
+changed: [jevgeni-arefjev-3]
+
+TASK [prometheus : Adjust Prometheus service] **********************************
+--- before: /etc/default/prometheus
++++ after: /home/jevgeni/.ansible/tmp/ansible-local-1142384txl80qh/tmpwl8okdc3/prometheus.j2
+@@ -1,5 +1 @@
+-# Set the command-line arguments to pass to the server.
+-# Due to shell escaping, to pass backslashes for regexes, you need to double
+-# them (\\d for \d). If running under systemd, you need to double them again
+-# (\\\\d to mean \d), and escape newlines too.
+-ARGS=""
++ARGS="--web.external-url=http://193.40.157.25:4580/prometheus --web.enable-admin-api"
+\ No newline at end of file
+
+changed: [jevgeni-arefjev-3]
+
+TASK [prometheus : Prometheus service] *****************************************
+changed: [jevgeni-arefjev-3]
+
+TASK [prometheus : Add cron backuping schedule] ********************************
+--- before
++++ after: /home/jevgeni/.ansible/tmp/ansible-local-1142384txl80qh/tmpqi244vv2/backup-cron.j2
+@@ -0,0 +1,3 @@
++30 0 * * * backup curl -XPOST http://localhost:9090/prometheus/api/v1/admin/tsdb/snapshot
++35 0 * * 0 backup duplicity --no-encryption full /var/lib/prometheus/metrics2/snapshots/ rsync://jevgeni-arefjev@backup/prometheus
++35 0 * * 1-6 backup duplicity --no-encryption incremental /var/lib/prometheus/metrics2/snapshots/ rsync://jevgeni-arefjev@backup/prometheus
+
+changed: [jevgeni-arefjev-3]
+
+TASK [prometheus : Create DNS CNAME record for Prometheus server] **************
+changed: [jevgeni-arefjev-3] => (item=jevgeni-arefjev-3)
+
+RUNNING HANDLER [prometheus : Restart Prometheus] ******************************
+changed: [jevgeni-arefjev-3]
+
+PLAY [Grafana] *****************************************************************
+
+TASK [docker : Install Docker] *************************************************
+The following additional packages will be installed:
+  bridge-utils containerd dnsmasq-base pigz python3-websocket runc ubuntu-fan
+Suggested packages:
+  ifupdown aufs-tools cgroupfs-mount | cgroup-lite debootstrap docker-buildx
+  docker-compose-v2 docker-doc rinse zfs-fuse | zfsutils
+The following NEW packages will be installed:
+  bridge-utils containerd dnsmasq-base docker.io pigz python3-docker
+  python3-websocket runc ubuntu-fan
+0 upgraded, 9 newly installed, 0 to remove and 249 not upgraded.
+changed: [jevgeni-arefjev-3]
+
+TASK [docker : Docker service] *************************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [docker : Install Loki Docker driver] *************************************
+changed: [jevgeni-arefjev-3]
+
+TASK [grafana : Pre-create necessary repositories] *****************************
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+     "path": "/opt/grafana/provisioning/dashboards",
+-    "state": "absent"
++    "state": "directory"
+ }
+
+changed: [jevgeni-arefjev-3] => (item=dashboards)
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+     "path": "/opt/grafana/provisioning/datasources",
+-    "state": "absent"
++    "state": "directory"
+ }
+
+changed: [jevgeni-arefjev-3] => (item=datasources)
+
+TASK [grafana : Add grafana.ini file] ******************************************
+changed: [jevgeni-arefjev-3]
+
+TASK [grafana : Add Grafana datasources] ***************************************
+--- before
++++ after: /home/jevgeni/.ansible/tmp/ansible-local-1142384txl80qh/tmp5fnx23id/prometheus.yaml.j2
+@@ -0,0 +1,8 @@
++apiVersion: 1
++datasources:
++  - name: Prometheus
++    type: prometheus
++    access: proxy
++    uid: "df5rak9esf2tcd"
++    url: "http://prometheus:9090/prometheus/"
++    isDefault: true
+
+changed: [jevgeni-arefjev-3] => (item=prometheus.yaml)
+--- before
++++ after: /home/jevgeni/.ansible/tmp/ansible-local-1142384txl80qh/tmpi77a85rv/loki.yaml.j2
+@@ -0,0 +1,7 @@
++apiVersion: 1
++datasources:
++  - name: Loki
++    type: loki
++    access: proxy
++    uid: "P8E80F9AEF21F6940"
++    url: "http://loki:3100"
+
+changed: [jevgeni-arefjev-3] => (item=loki.yaml)
+
+TASK [grafana : Add Grafana dashboards] ****************************************
+--- before
++++ after: /home/jevgeni/ica0002/roles/grafana/files/dashboards.yaml
+@@ -0,0 +1,10 @@
++apiVersion: 1
++providers:
++  - name: 'Main'
++    orgId: 1
++    folder: ''
++    type: file
++    disableDeletion: false
++    editable: true
++    options:
++      path: /etc/grafana/provisioning/dashboards
+\ No newline at end of file
+
+changed: [jevgeni-arefjev-3] => (item=dashboards.yaml)
+--- before
++++ after: /home/jevgeni/ica0002/roles/grafana/files/main.json
+@@ -0,0 +1,1583 @@
++{
++  "annotations": {
++    "list": [
++      {
++        "builtIn": 1,
++        "datasource": {
++          "type": "grafana",
++          "uid": "-- Grafana --"
++        },
++        "enable": true,
++        "hide": true,
++        "iconColor": "rgba(0, 211, 255, 1)",
++        "name": "Annotations & Alerts",
++        "type": "dashboard"
++      }
++    ]
++  },
++  "editable": true,
++  "fiscalYearStartMonth": 0,
++  "graphTooltip": 0,
++  "id": 2,
++  "links": [],
++  "panels": [
++    {
++      "datasource": {
++        "type": "prometheus",
++        "uid": "df5rak9esf2tcd"
++      },
++      "fieldConfig": {
++        "defaults": {
++          "color": {
++            "mode": "thresholds"
++          },
++          "mappings": [
++            {
++              "options": {
++                "0": {
++                  "color": "red",
++                  "index": 1,
++                  "text": "DOWN"
++                },
++                "1": {
++                  "color": "green",
++                  "index": 0,
++                  "text": "UP"
++                }
++              },
++              "type": "value"
++            }
++          ],
++          "thresholds": {
++            "mode": "absolute",
++            "steps": [
++              {
++                "color": "green",
++                "value": 0
++              },
++              {
++                "color": "red",
++                "value": 80
++              }
++            ]
++          }
++        },
++        "overrides": []
++      },
++      "gridPos": {
++        "h": 3,
++        "w": 3,
++        "x": 0,
++        "y": 0
++      },
++      "id": 15,
++      "options": {
++        "colorMode": "value",
++        "graphMode": "none",
++        "justifyMode": "auto",
++        "orientation": "auto",
++        "percentChangeColorMode": "standard",
++        "reduceOptions": {
++          "calcs": [
++            "last"
++          ],
++          "fields": "",
++          "values": false
++        },
++        "showPercentChange": false,
++        "textMode": "auto",
++        "wideLayout": true
++      },
++      "pluginVersion": "12.3.0",
++      "targets": [
++        {
++          "editorMode": "builder",
++          "expr": "keepalived_up",
++          "legendFormat": "{{instance}}",
++          "range": true,
++          "refId": "A"
++        }
++      ],
++      "title": "Keepalived",
++      "type": "stat"
++    },
++    {
++      "datasource": {
++        "type": "prometheus",
++        "uid": "df5rak9esf2tcd"
++      },
++      "fieldConfig": {
++        "defaults": {
++          "color": {
++            "mode": "thresholds"
++          },
++          "mappings": [
++            {
++              "options": {
++                "0": {
++                  "color": "red",
++                  "index": 1,
++                  "text": "DOWN"
++                },
++                "1": {
++                  "color": "green",
++                  "index": 0,
++                  "text": "UP"
++                }
++              },
++              "type": "value"
++            }
++          ],
++          "thresholds": {
++            "mode": "absolute",
++            "steps": [
++              {
++                "color": "green",
++                "value": 0
++              },
++              {
++                "color": "red",
++                "value": 80
++              }
++            ]
++          }
++        },
++        "overrides": []
++      },
++      "gridPos": {
++        "h": 3,
++        "w": 3,
++        "x": 3,
++        "y": 0
++      },
++      "id": 13,
++      "options": {
++        "colorMode": "value",
++        "graphMode": "none",
++        "justifyMode": "auto",
++        "orientation": "auto",
++        "percentChangeColorMode": "standard",
++        "reduceOptions": {
++          "calcs": [
++            "last"
++          ],
++          "fields": "",
++          "values": false
++        },
++        "showPercentChange": false,
++        "textMode": "auto",
++        "wideLayout": true
++      },
++      "pluginVersion": "12.3.0",
++      "targets": [
++        {
++          "editorMode": "builder",
++          "expr": "haproxy_up",
++          "legendFormat": "{{instance}}",
++          "range": true,
++          "refId": "A"
++        }
++      ],
++      "title": "HAproxy",
++      "type": "stat"
++    },
++    {
++      "datasource": {
++        "type": "prometheus",
++        "uid": "df5rak9esf2tcd"
++      },
++      "fieldConfig": {
++        "defaults": {
++          "color": {
++            "mode": "palette-classic"
++          },
++          "custom": {
++            "axisBorderShow": false,
++            "axisCenteredZero": false,
++            "axisColorMode": "text",
++            "axisLabel": "",
++            "axisPlacement": "auto",
++            "barAlignment": 0,
++            "barWidthFactor": 0.6,
++            "drawStyle": "line",
++            "fillOpacity": 0,
++            "gradientMode": "none",
++            "hideFrom": {
++              "legend": false,
++              "tooltip": false,
++              "viz": false
++            },
++            "insertNulls": false,
++            "lineInterpolation": "linear",
++            "lineWidth": 1,
++            "pointSize": 5,
++            "scaleDistribution": {
++              "type": "linear"
++            },
++            "showPoints": "auto",
++            "showValues": false,
++            "spanNulls": false,
++            "stacking": {
++              "group": "A",
++              "mode": "none"
++            },
++            "thresholdsStyle": {
++              "mode": "off"
++            }
++          },
++          "mappings": [],
++          "thresholds": {
++            "mode": "absolute",
++            "steps": [
++              {
++                "color": "green",
++                "value": 0
++              },
++              {
++                "color": "red",
++                "value": 80
++              }
++            ]
++          }
++        },
++        "overrides": []
++      },
++      "gridPos": {
++        "h": 6,
++        "w": 3,
++        "x": 6,
++        "y": 0
++      },
++      "id": 10,
++      "options": {
++        "legend": {
++          "calcs": [],
++          "displayMode": "list",
++          "placement": "bottom",
++          "showLegend": true
++        },
++        "tooltip": {
++          "hideZeros": false,
++          "mode": "single",
++          "sort": "none"
++        }
++      },
++      "pluginVersion": "12.3.0",
++      "targets": [
++        {
++          "editorMode": "code",
++          "expr": "rate(promtail_sent_entries_total[1m])",
++          "legendFormat": "{{instance}}",
++          "range": true,
++          "refId": "A"
++        }
++      ],
++      "title": "Promtail total entries sent",
++      "type": "timeseries"
++    },
++    {
++      "datasource": {
++        "type": "prometheus",
++        "uid": "df5rak9esf2tcd"
++      },
++      "fieldConfig": {
++        "defaults": {
++          "color": {
++            "mode": "palette-classic"
++          },
++          "custom": {
++            "axisBorderShow": false,
++            "axisCenteredZero": false,
++            "axisColorMode": "text",
++            "axisLabel": "",
++            "axisPlacement": "auto",
++            "barAlignment": 0,
++            "barWidthFactor": 0.6,
++            "drawStyle": "line",
++            "fillOpacity": 0,
++            "gradientMode": "none",
++            "hideFrom": {
++              "legend": false,
++              "tooltip": false,
++              "viz": false
++            },
++            "insertNulls": false,
++            "lineInterpolation": "linear",
++            "lineWidth": 1,
++            "pointSize": 5,
++            "scaleDistribution": {
++              "type": "linear"
++            },
++            "showPoints": "auto",
++            "showValues": false,
++            "spanNulls": false,
++            "stacking": {
++              "group": "A",
++              "mode": "none"
++            },
++            "thresholdsStyle": {
++              "mode": "off"
++            }
++          },
++          "mappings": [],
++          "thresholds": {
++            "mode": "absolute",
++            "steps": [
++              {
++                "color": "green",
++                "value": 0
++              },
++              {
++                "color": "red",
++                "value": 80
++              }
++            ]
++          }
++        },
++        "overrides": []
++      },
++      "gridPos": {
++        "h": 6,
++        "w": 3,
++        "x": 9,
++        "y": 0
++      },
++      "id": 8,
++      "options": {
++        "legend": {
++          "calcs": [],
++          "displayMode": "list",
++          "placement": "bottom",
++          "showLegend": true
++        },
++        "tooltip": {
++          "hideZeros": false,
++          "mode": "single",
++          "sort": "none"
++        }
++      },
++      "pluginVersion": "12.3.0",
++      "targets": [
++        {
++          "editorMode": "code",
++          "expr": "rate(mysql_global_status_commands_total{command=\"select\"}[1m])",
++          "legendFormat": "{{instance}}",
++          "range": true,
++          "refId": "A"
++        }
++      ],
++      "title": "Number of MySQL SELECTs/min",
++      "type": "timeseries"
++    },
++    {
++      "datasource": {
++        "type": "prometheus",
++        "uid": "df5rak9esf2tcd"
++      },
++      "fieldConfig": {
++        "defaults": {
++          "color": {
++            "mode": "palette-classic"
++          },
++          "custom": {
++            "axisBorderShow": false,
++            "axisCenteredZero": false,
++            "axisColorMode": "text",
++            "axisLabel": "",
++            "axisPlacement": "auto",
++            "barAlignment": 0,
++            "barWidthFactor": 0.6,
++            "drawStyle": "line",
++            "fillOpacity": 0,
++            "gradientMode": "none",
++            "hideFrom": {
++              "legend": false,
++              "tooltip": false,
++              "viz": false
++            },
++            "insertNulls": false,
++            "lineInterpolation": "linear",
++            "lineWidth": 1,
++            "pointSize": 5,
++            "scaleDistribution": {
++              "type": "linear"
++            },
++            "showPoints": "auto",
++            "showValues": false,
++            "spanNulls": false,
++            "stacking": {
++              "group": "A",
++              "mode": "none"
++            },
++            "thresholdsStyle": {
++              "mode": "off"
++            }
++          },
++          "mappings": [],
++          "thresholds": {
++            "mode": "absolute",
++            "steps": [
++              {
++                "color": "green",
++                "value": 0
++              },
++              {
++                "color": "red",
++                "value": 80
++              }
++            ]
++          }
++        },
++        "overrides": []
++      },
++      "gridPos": {
++        "h": 6,
++        "w": 12,
++        "x": 12,
++        "y": 0
++      },
++      "id": 1,
++      "options": {
++        "legend": {
++          "calcs": [],
++          "displayMode": "list",
++          "placement": "bottom",
++          "showLegend": true
++        },
++        "tooltip": {
++          "hideZeros": false,
++          "mode": "single",
++          "sort": "none"
++        }
++      },
++      "pluginVersion": "12.3.0",
++      "targets": [
++        {
++          "datasource": {
++            "type": "prometheus",
++            "uid": "df5rak9esf2tcd"
++          },
++          "editorMode": "code",
++          "expr": "1-rate(node_cpu_seconds_total{mode=\"idle\"}[1m])",
++          "legendFormat": "{{instance}}",
++          "range": true,
++          "refId": "A"
++        }
++      ],
++      "title": "CPU utilization",
++      "type": "timeseries"
++    },
++    {
++      "datasource": {
++        "type": "prometheus",
++        "uid": "df5rak9esf2tcd"
++      },
++      "fieldConfig": {
++        "defaults": {
++          "color": {
++            "mode": "thresholds"
++          },
++          "mappings": [
++            {
++              "options": {
++                "0": {
++                  "color": "yellow",
++                  "index": 0,
++                  "text": "Init"
++                },
++                "1": {
++                  "color": "blue",
++                  "index": 1,
++                  "text": "Backup"
++                },
++                "2": {
++                  "color": "green",
++                  "index": 2,
++                  "text": "Master"
++                },
++                "3": {
++                  "color": "red",
++                  "index": 3,
++                  "text": "Fault"
++                }
++              },
++              "type": "value"
++            }
++          ],
++          "thresholds": {
++            "mode": "absolute",
++            "steps": [
++              {
++                "color": "green",
++                "value": 0
++              },
++              {
++                "color": "red",
++                "value": 80
++              }
++            ]
++          }
++        },
++        "overrides": []
++      },
++      "gridPos": {
++        "h": 3,
++        "w": 3,
++        "x": 0,
++        "y": 3
++      },
++      "id": 16,
++      "options": {
++        "colorMode": "value",
++        "graphMode": "none",
++        "justifyMode": "auto",
++        "orientation": "auto",
++        "percentChangeColorMode": "standard",
++        "reduceOptions": {
++          "calcs": [
++            "last"
++          ],
++          "fields": "",
++          "values": false
++        },
++        "showPercentChange": false,
++        "textMode": "auto",
++        "wideLayout": true
++      },
++      "pluginVersion": "12.3.0",
++      "targets": [
++        {
++          "editorMode": "builder",
++          "expr": "keepalived_vrrp_state",
++          "legendFormat": "{{instance}}",
++          "range": true,
++          "refId": "A"
++        }
++      ],
++      "title": "Keepalived VRRP",
++      "type": "stat"
++    },
++    {
++      "datasource": {
++        "type": "prometheus",
++        "uid": "df5rak9esf2tcd"
++      },
++      "fieldConfig": {
++        "defaults": {
++          "color": {
++            "mode": "thresholds"
++          },
++          "mappings": [
++            {
++              "options": {
++                "0": {
++                  "color": "red",
++                  "index": 1,
++                  "text": "DOWN"
++                },
++                "1": {
++                  "color": "green",
++                  "index": 0,
++                  "text": "UP"
++                }
++              },
++              "type": "value"
++            }
++          ],
++          "thresholds": {
++            "mode": "absolute",
++            "steps": [
++              {
++                "color": "green",
++                "value": 0
++              },
++              {
++                "color": "red",
++                "value": 80
++              }
++            ]
++          }
++        },
++        "overrides": []
++      },
++      "gridPos": {
++        "h": 9,
++        "w": 3,
++        "x": 3,
++        "y": 3
++      },
++      "id": 14,
++      "options": {
++        "colorMode": "value",
++        "graphMode": "none",
++        "justifyMode": "auto",
++        "orientation": "auto",
++        "percentChangeColorMode": "standard",
++        "reduceOptions": {
++          "calcs": [
++            "last"
++          ],
++          "fields": "",
++          "values": false
++        },
++        "showPercentChange": false,
++        "textMode": "auto",
++        "wideLayout": true
++      },
++      "pluginVersion": "12.3.0",
++      "targets": [
++        {
++          "editorMode": "builder",
++          "expr": "haproxy_server_up",
++          "legendFormat": "{{instance}}:{{server}}",
++          "range": true,
++          "refId": "A"
++        }
++      ],
++      "title": "Haproxy server",
++      "type": "stat"
++    },
++    {
++      "datasource": {
++        "type": "prometheus",
++        "uid": "df5rak9esf2tcd"
++      },
++      "fieldConfig": {
++        "defaults": {
++          "color": {
++            "mode": "thresholds"
++          },
++          "mappings": [
++            {
++              "options": {
++                "0": {
++                  "color": "red",
++                  "index": 1,
++                  "text": "DOWN"
++                },
++                "1": {
++                  "color": "green",
++                  "index": 0,
++                  "text": "UP"
++                }
++              },
++              "type": "value"
++            },
++            {
++              "options": {
++                "match": "null",
++                "result": {
++                  "color": "light-red",
++                  "index": 2,
++                  "text": "No data"
++                }
++              },
++              "type": "special"
++            }
++          ],
++          "thresholds": {
++            "mode": "absolute",
++            "steps": [
++              {
++                "color": "green",
++                "value": 0
++              },
++              {
++                "color": "red",
++                "value": 80
++              }
++            ]
++          }
++        },
++        "overrides": []
++      },
++      "gridPos": {
++        "h": 3,
++        "w": 3,
++        "x": 0,
++        "y": 6
++      },
++      "id": 7,
++      "options": {
++        "colorMode": "value",
++        "graphMode": "none",
++        "justifyMode": "auto",
++        "orientation": "auto",
++        "percentChangeColorMode": "standard",
++        "reduceOptions": {
++          "calcs": [
++            "last"
++          ],
++          "fields": "",
++          "values": false
++        },
++        "showPercentChange": false,
++        "textMode": "auto",
++        "wideLayout": true
++      },
++      "pluginVersion": "12.3.0",
++      "targets": [
++        {
++          "editorMode": "builder",
++          "expr": "mysql_up",
++          "legendFormat": "{{instance}}",
++          "range": true,
++          "refId": "A"
++        }
++      ],
++      "title": "MySQL",
++      "type": "stat"
++    },
++    {
++      "datasource": {
++        "type": "prometheus",
++        "uid": "df5rak9esf2tcd"
++      },
++      "fieldConfig": {
++        "defaults": {
++          "color": {
++            "mode": "palette-classic"
++          },
++          "custom": {
++            "axisBorderShow": false,
++            "axisCenteredZero": false,
++            "axisColorMode": "text",
++            "axisLabel": "",
++            "axisPlacement": "auto",
++            "barAlignment": 0,
++            "barWidthFactor": 0.6,
++            "drawStyle": "line",
++            "fillOpacity": 0,
++            "gradientMode": "none",
++            "hideFrom": {
++              "legend": false,
++              "tooltip": false,
++              "viz": false
++            },
++            "insertNulls": false,
++            "lineInterpolation": "linear",
++            "lineWidth": 1,
++            "pointSize": 5,
++            "scaleDistribution": {
++              "type": "linear"
++            },
++            "showPoints": "auto",
++            "showValues": false,
++            "spanNulls": false,
++            "stacking": {
++              "group": "A",
++              "mode": "none"
++            },
++            "thresholdsStyle": {
++              "mode": "off"
++            }
++          },
++          "mappings": [],
++          "thresholds": {
++            "mode": "absolute",
++            "steps": [
++              {
++                "color": "green",
++                "value": 0
++              },
++              {
++                "color": "red",
++                "value": 80
++              }
++            ]
++          }
++        },
++        "overrides": []
++      },
++      "gridPos": {
++        "h": 6,
++        "w": 6,
++        "x": 6,
++        "y": 6
++      },
++      "id": 6,
++      "options": {
++        "legend": {
++          "calcs": [],
++          "displayMode": "list",
++          "placement": "bottom",
++          "showLegend": true
++        },
++        "tooltip": {
++          "hideZeros": false,
++          "mode": "single",
++          "sort": "none"
++        }
++      },
++      "pluginVersion": "12.3.0",
++      "targets": [
++        {
++          "editorMode": "builder",
++          "expr": "rate(nginx_http_requests_total[1m])",
++          "legendFormat": "{{instance}}",
++          "range": true,
++          "refId": "A"
++        }
++      ],
++      "title": "Number of HTTP requests/min",
++      "type": "timeseries"
++    },
++    {
++      "datasource": {
++        "type": "prometheus",
++        "uid": "df5rak9esf2tcd"
++      },
++      "fieldConfig": {
++        "defaults": {
++          "color": {
++            "mode": "palette-classic"
++          },
++          "custom": {
++            "axisBorderShow": false,
++            "axisCenteredZero": false,
++            "axisColorMode": "text",
++            "axisLabel": "",
++            "axisPlacement": "auto",
++            "barAlignment": 0,
++            "barWidthFactor": 0.6,
++            "drawStyle": "line",
++            "fillOpacity": 0,
++            "gradientMode": "none",
++            "hideFrom": {
++              "legend": false,
++              "tooltip": false,
++              "viz": false
++            },
++            "insertNulls": false,
++            "lineInterpolation": "linear",
++            "lineWidth": 1,
++            "pointSize": 5,
++            "scaleDistribution": {
++              "type": "linear"
++            },
++            "showPoints": "auto",
++            "showValues": false,
++            "spanNulls": false,
++            "stacking": {
++              "group": "A",
++              "mode": "none"
++            },
++            "thresholdsStyle": {
++              "mode": "off"
++            }
++          },
++          "mappings": [],
++          "thresholds": {
++            "mode": "absolute",
++            "steps": [
++              {
++                "color": "green",
++                "value": 0
++              },
++              {
++                "color": "red",
++                "value": 80
++              }
++            ]
++          }
++        },
++        "overrides": []
++      },
++      "gridPos": {
++        "h": 6,
++        "w": 12,
++        "x": 12,
++        "y": 6
++      },
++      "id": 2,
++      "options": {
++        "legend": {
++          "calcs": [],
++          "displayMode": "list",
++          "placement": "bottom",
++          "showLegend": true
++        },
++        "tooltip": {
++          "hideZeros": false,
++          "mode": "single",
++          "sort": "none"
++        }
++      },
++      "pluginVersion": "12.3.0",
++      "targets": [
++        {
++          "editorMode": "code",
++          "expr": "node_memory_Active_bytes/node_memory_MemTotal_bytes",
++          "legendFormat": "{{instance}}",
++          "range": true,
++          "refId": "A"
++        }
++      ],
++      "title": "Memory consumption",
++      "type": "timeseries"
++    },
++    {
++      "datasource": {
++        "type": "prometheus",
++        "uid": "df5rak9esf2tcd"
++      },
++      "fieldConfig": {
++        "defaults": {
++          "color": {
++            "mode": "thresholds"
++          },
++          "mappings": [
++            {
++              "options": {
++                "0": {
++                  "color": "blue",
++                  "index": 0,
++                  "text": "Writable"
++                },
++                "1": {
++                  "color": "yellow",
++                  "index": 1,
++                  "text": "Read-only"
++                }
++              },
++              "type": "value"
++            }
++          ],
++          "thresholds": {
++            "mode": "absolute",
++            "steps": [
++              {
++                "color": "green",
++                "value": 0
++              }
++            ]
++          }
++        },
++        "overrides": []
++      },
++      "gridPos": {
++        "h": 3,
++        "w": 3,
++        "x": 0,
++        "y": 9
++      },
++      "id": 17,
++      "options": {
++        "colorMode": "value",
++        "graphMode": "none",
++        "justifyMode": "auto",
++        "orientation": "auto",
++        "percentChangeColorMode": "standard",
++        "reduceOptions": {
++          "calcs": [
++            "last"
++          ],
++          "fields": "",
++          "values": false
++        },
++        "showPercentChange": false,
++        "textMode": "auto",
++        "wideLayout": true
++      },
++      "pluginVersion": "12.3.0",
++      "targets": [
++        {
++          "editorMode": "code",
++          "expr": "mysql_global_variables_read_only",
++          "legendFormat": "{{instance}}",
++          "range": true,
++          "refId": "A"
++        }
++      ],
++      "title": "MySQL DB access",
++      "type": "stat"
++    },
++    {
++      "datasource": {
++        "type": "prometheus",
++        "uid": "df5rak9esf2tcd"
++      },
++      "fieldConfig": {
++        "defaults": {
++          "color": {
++            "mode": "thresholds"
++          },
++          "mappings": [
++            {
++              "options": {
++                "0": {
++                  "color": "red",
++                  "index": 1,
++                  "text": "DOWN"
++                },
++                "1": {
++                  "color": "green",
++                  "index": 0,
++                  "text": "UP"
++                }
++              },
++              "type": "value"
++            },
++            {
++              "options": {
++                "match": "null",
++                "result": {
++                  "color": "light-red",
++                  "index": 2,
++                  "text": "No data"
++                }
++              },
++              "type": "special"
++            }
++          ],
++          "thresholds": {
++            "mode": "absolute",
++            "steps": [
++              {
++                "color": "green",
++                "value": 0
++              },
++              {
++                "color": "red",
++                "value": 80
++              }
++            ]
++          }
++        },
++        "overrides": []
++      },
++      "gridPos": {
++        "h": 3,
++        "w": 6,
++        "x": 0,
++        "y": 12
++      },
++      "id": 3,
++      "options": {
++        "colorMode": "value",
++        "graphMode": "none",
++        "justifyMode": "auto",
++        "orientation": "auto",
++        "percentChangeColorMode": "standard",
++        "reduceOptions": {
++          "calcs": [
++            "last"
++          ],
++          "fields": "",
++          "values": false
++        },
++        "showPercentChange": false,
++        "textMode": "auto",
++        "wideLayout": true
++      },
++      "pluginVersion": "12.3.0",
++      "targets": [
++        {
++          "editorMode": "builder",
++          "expr": "bind_up",
++          "legendFormat": "{{instance}}",
++          "range": true,
++          "refId": "A"
++        }
++      ],
++      "title": "Bind9",
++      "type": "stat"
++    },
++    {
++      "datasource": {
++        "type": "prometheus",
++        "uid": "df5rak9esf2tcd"
++      },
++      "fieldConfig": {
++        "defaults": {
++          "color": {
++            "mode": "thresholds"
++          },
++          "mappings": [
++            {
++              "options": {
++                "0": {
++                  "color": "red",
++                  "index": 1,
++                  "text": "DOWN"
++                },
++                "1": {
++                  "color": "green",
++                  "index": 0,
++                  "text": "UP"
++                }
++              },
++              "type": "value"
++            },
++            {
++              "options": {
++                "match": "null",
++                "result": {
++                  "color": "light-red",
++                  "index": 2,
++                  "text": "No data"
++                }
++              },
++              "type": "special"
++            }
++          ],
++          "thresholds": {
++            "mode": "absolute",
++            "steps": [
++              {
++                "color": "green",
++                "value": 0
++              },
++              {
++                "color": "red",
++                "value": 80
++              }
++            ]
++          }
++        },
++        "overrides": []
++      },
++      "gridPos": {
++        "h": 3,
++        "w": 6,
++        "x": 6,
++        "y": 12
++      },
++      "id": 5,
++      "options": {
++        "colorMode": "value",
++        "graphMode": "none",
++        "justifyMode": "auto",
++        "orientation": "auto",
++        "percentChangeColorMode": "standard",
++        "reduceOptions": {
++          "calcs": [
++            "last"
++          ],
++          "fields": "",
++          "values": false
++        },
++        "showPercentChange": false,
++        "textMode": "auto",
++        "wideLayout": true
++      },
++      "pluginVersion": "12.3.0",
++      "targets": [
++        {
++          "editorMode": "builder",
++          "expr": "nginx_up",
++          "legendFormat": "{{instance}}",
++          "range": true,
++          "refId": "A"
++        }
++      ],
++      "title": "Nginx",
++      "type": "stat"
++    },
++    {
++      "datasource": {
++        "type": "loki",
++        "uid": "P8E80F9AEF21F6940"
++      },
++      "fieldConfig": {
++        "defaults": {
++          "color": {
++            "mode": "palette-classic"
++          },
++          "custom": {
++            "axisBorderShow": false,
++            "axisCenteredZero": false,
++            "axisColorMode": "text",
++            "axisLabel": "",
++            "axisPlacement": "auto",
++            "barAlignment": 0,
++            "barWidthFactor": 0.6,
++            "drawStyle": "line",
++            "fillOpacity": 0,
++            "gradientMode": "none",
++            "hideFrom": {
++              "legend": false,
++              "tooltip": false,
++              "viz": false
++            },
++            "insertNulls": false,
++            "lineInterpolation": "linear",
++            "lineWidth": 1,
++            "pointSize": 5,
++            "scaleDistribution": {
++              "type": "linear"
++            },
++            "showPoints": "auto",
++            "showValues": false,
++            "spanNulls": false,
++            "stacking": {
++              "group": "A",
++              "mode": "none"
++            },
++            "thresholdsStyle": {
++              "mode": "line+area"
++            }
++          },
++          "mappings": [],
++          "thresholds": {
++            "mode": "absolute",
++            "steps": [
++              {
++                "color": "green",
++                "value": 0
++              },
++              {
++                "color": "red",
++                "value": 200
++              }
++            ]
++          }
++        },
++        "overrides": []
++      },
++      "gridPos": {
++        "h": 7,
++        "w": 6,
++        "x": 12,
++        "y": 12
++      },
++      "id": 11,
++      "options": {
++        "legend": {
++          "calcs": [],
++          "displayMode": "list",
++          "placement": "bottom",
++          "showLegend": true
++        },
++        "tooltip": {
++          "hideZeros": false,
++          "mode": "single",
++          "sort": "none"
++        }
++      },
++      "pluginVersion": "12.3.0",
++      "targets": [
++        {
++          "datasource": {
++            "type": "loki",
++            "uid": "P8E80F9AEF21F6940"
++          },
++          "direction": "backward",
++          "editorMode": "code",
++          "expr": "avg_over_time(\n{service_name=\"syslog\"}\n| regexp \"^[234].* (?P<latency>\\\\d+)$\"\n| unwrap latency\n[2m]\n)",
++          "legendFormat": "Latency",
++          "queryType": "range",
++          "refId": "A"
++        }
++      ],
++      "title": "Agama response latency (ms)",
++      "type": "timeseries"
++    },
++    {
++      "datasource": {
++        "type": "loki",
++        "uid": "P8E80F9AEF21F6940"
++      },
++      "fieldConfig": {
++        "defaults": {
++          "color": {
++            "mode": "palette-classic"
++          },
++          "custom": {
++            "axisBorderShow": false,
++            "axisCenteredZero": false,
++            "axisColorMode": "text",
++            "axisLabel": "",
++            "axisPlacement": "auto",
++            "barAlignment": 0,
++            "barWidthFactor": 0.6,
++            "drawStyle": "line",
++            "fillOpacity": 0,
++            "gradientMode": "none",
++            "hideFrom": {
++              "legend": false,
++              "tooltip": false,
++              "viz": false
++            },
++            "insertNulls": false,
++            "lineInterpolation": "linear",
++            "lineWidth": 1,
++            "pointSize": 5,
++            "scaleDistribution": {
++              "type": "linear"
++            },
++            "showPoints": "auto",
++            "showValues": false,
++            "spanNulls": false,
++            "stacking": {
++              "group": "A",
++              "mode": "none"
++            },
++            "thresholdsStyle": {
++              "mode": "line+area"
++            }
++          },
++          "mappings": [],
++          "thresholds": {
++            "mode": "absolute",
++            "steps": [
++              {
++                "color": "red",
++                "value": 0
++              },
++              {
++                "color": "green",
++                "value": 95
++              }
++            ]
++          }
++        },
++        "overrides": []
++      },
++      "gridPos": {
++        "h": 7,
++        "w": 6,
++        "x": 18,
++        "y": 12
++      },
++      "id": 12,
++      "options": {
++        "legend": {
++          "calcs": [],
++          "displayMode": "list",
++          "placement": "bottom",
++          "showLegend": true
++        },
++        "tooltip": {
++          "hideZeros": false,
++          "mode": "single",
++          "sort": "none"
++        }
++      },
++      "pluginVersion": "12.3.0",
++      "targets": [
++        {
++          "datasource": {
++            "type": "loki",
++            "uid": "P8E80F9AEF21F6940"
++          },
++          "direction": "backward",
++          "editorMode": "code",
++          "expr": "100*(\nrate({service_name=\"syslog\"} \n|~ \"^[234]\\\\d\\\\d\" [2m])\n/ rate({service_name=\"syslog\"} |~ \"^[2345]\\\\d\\\\d\" [2m]))",
++          "legendFormat": "Availability",
++          "queryType": "range",
++          "refId": "A"
++        }
++      ],
++      "title": "Agama service availability (%)",
++      "type": "timeseries"
++    },
++    {
++      "datasource": {
++        "type": "prometheus",
++        "uid": "df5rak9esf2tcd"
++      },
++      "fieldConfig": {
++        "defaults": {
++          "color": {
++            "mode": "palette-classic"
++          },
++          "custom": {
++            "axisBorderShow": false,
++            "axisCenteredZero": false,
++            "axisColorMode": "text",
++            "axisLabel": "",
++            "axisPlacement": "auto",
++            "barAlignment": 0,
++            "barWidthFactor": 0.6,
++            "drawStyle": "line",
++            "fillOpacity": 0,
++            "gradientMode": "none",
++            "hideFrom": {
++              "legend": false,
++              "tooltip": false,
++              "viz": false
++            },
++            "insertNulls": false,
++            "lineInterpolation": "linear",
++            "lineWidth": 1,
++            "pointSize": 5,
++            "scaleDistribution": {
++              "type": "linear"
++            },
++            "showPoints": "auto",
++            "showValues": false,
++            "spanNulls": false,
++            "stacking": {
++              "group": "A",
++              "mode": "none"
++            },
++            "thresholdsStyle": {
++              "mode": "off"
++            }
++          },
++          "mappings": [],
++          "thresholds": {
++            "mode": "absolute",
++            "steps": [
++              {
++                "color": "green",
++                "value": 0
++              },
++              {
++                "color": "red",
++                "value": 80
++              }
++            ]
++          }
++        },
++        "overrides": []
++      },
++      "gridPos": {
++        "h": 6,
++        "w": 6,
++        "x": 0,
++        "y": 15
++      },
++      "id": 4,
++      "options": {
++        "legend": {
++          "calcs": [],
++          "displayMode": "list",
++          "placement": "bottom",
++          "showLegend": true
++        },
++        "tooltip": {
++          "hideZeros": false,
++          "mode": "single",
++          "sort": "none"
++        }
++      },
++      "pluginVersion": "12.3.0",
++      "targets": [
++        {
++          "editorMode": "builder",
++          "expr": "rate(bind_resolver_queries_total{type=\"A\"}[1m])",
++          "legendFormat": "{{instance}}",
++          "range": true,
++          "refId": "A"
++        }
++      ],
++      "title": "Number of A DNS queries/min",
++      "type": "timeseries"
++    },
++    {
++      "datasource": {
++        "type": "prometheus",
++        "uid": "df5rak9esf2tcd"
++      },
++      "fieldConfig": {
++        "defaults": {
++          "color": {
++            "mode": "palette-classic"
++          },
++          "custom": {
++            "axisBorderShow": false,
++            "axisCenteredZero": false,
++            "axisColorMode": "text",
++            "axisLabel": "",
++            "axisPlacement": "auto",
++            "barAlignment": 0,
++            "barWidthFactor": 0.6,
++            "drawStyle": "line",
++            "fillOpacity": 0,
++            "gradientMode": "none",
++            "hideFrom": {
++              "legend": false,
++              "tooltip": false,
++              "viz": false
++            },
++            "insertNulls": false,
++            "lineInterpolation": "linear",
++            "lineWidth": 1,
++            "pointSize": 5,
++            "scaleDistribution": {
++              "type": "linear"
++            },
++            "showPoints": "auto",
++            "showValues": false,
++            "spanNulls": false,
++            "stacking": {
++              "group": "A",
++              "mode": "none"
++            },
++            "thresholdsStyle": {
++              "mode": "off"
++            }
++          },
++          "mappings": [],
++          "thresholds": {
++            "mode": "absolute",
++            "steps": [
++              {
++                "color": "green",
++                "value": 0
++              },
++              {
++                "color": "red",
++                "value": 80
++              }
++            ]
++          }
++        },
++        "overrides": []
++      },
++      "gridPos": {
++        "h": 6,
++        "w": 6,
++        "x": 6,
++        "y": 15
++      },
++      "id": 9,
++      "options": {
++        "legend": {
++          "calcs": [],
++          "displayMode": "list",
++          "placement": "bottom",
++          "showLegend": true
++        },
++        "tooltip": {
++          "hideZeros": false,
++          "mode": "single",
++          "sort": "none"
++        }
++      },
++      "pluginVersion": "12.3.0",
++      "targets": [
++        {
++          "datasource": {
++            "type": "prometheus",
++            "uid": "df5rak9esf2tcd"
++          },
++          "editorMode": "code",
++          "expr": "rate(loki_log_messages_total{job=\"loki\"}[1m])",
++          "legendFormat": "loki_log_messages_total",
++          "range": true,
++          "refId": "A"
++        }
++      ],
++      "title": "Loki total logs",
++      "type": "timeseries"
++    }
++  ],
++  "preload": false,
++  "schemaVersion": 42,
++  "tags": [],
++  "templating": {
++    "list": []
++  },
++  "time": {
++    "from": "now-6h",
++    "to": "now"
++  },
++  "timepicker": {},
++  "timezone": "browser",
++  "title": "Main",
++  "uid": "adx8tvt",
++  "version": 2
++}
+\ No newline at end of file
+
+changed: [jevgeni-arefjev-3] => (item=main.json)
+--- before
++++ after: /home/jevgeni/ica0002/roles/grafana/files/agamalog.json
+@@ -0,0 +1,82 @@
++{
++  "annotations": {
++    "list": [
++      {
++        "builtIn": 1,
++        "datasource": {
++          "type": "grafana",
++          "uid": "-- Grafana --"
++        },
++        "enable": true,
++        "hide": true,
++        "iconColor": "rgba(0, 211, 255, 1)",
++        "name": "Annotations & Alerts",
++        "type": "dashboard"
++      }
++    ]
++  },
++  "editable": true,
++  "fiscalYearStartMonth": 0,
++  "graphTooltip": 0,
++  "id": 2,
++  "links": [],
++  "panels": [
++    {
++      "datasource": {
++        "type": "loki",
++        "uid": "P8E80F9AEF21F6940"
++      },
++      "fieldConfig": {
++        "defaults": {},
++        "overrides": []
++      },
++      "gridPos": {
++        "h": 15,
++        "w": 24,
++        "x": 0,
++        "y": 0
++      },
++      "id": 1,
++      "options": {
++        "dedupStrategy": "none",
++        "enableInfiniteScrolling": false,
++        "enableLogDetails": true,
++        "showControls": false,
++        "showTime": false,
++        "sortOrder": "Descending",
++        "wrapLogMessage": false
++      },
++      "pluginVersion": "12.3.0",
++      "targets": [
++        {
++          "datasource": {
++            "type": "loki",
++            "uid": "P8E80F9AEF21F6940"
++          },
++          "direction": "backward",
++          "editorMode": "builder",
++          "expr": "{job=\"agama\"} |= ``",
++          "queryType": "range",
++          "refId": "A"
++        }
++      ],
++      "title": "Agama log",
++      "type": "logs"
++    }
++  ],
++  "preload": false,
++  "schemaVersion": 42,
++  "tags": [],
++  "templating": {
++    "list": []
++  },
++  "time": {
++    "from": "now-6h",
++    "to": "now"
++  },
++  "timepicker": {},
++  "timezone": "browser",
++  "title": "Agama Logs",
++  "uid": "adnm95t",
++  "version": 1
++}
+\ No newline at end of file
+
+changed: [jevgeni-arefjev-3] => (item=agamalog.json)
+--- before
++++ after: /home/jevgeni/ica0002/roles/grafana/files/backups.json
+@@ -0,0 +1,177 @@
++{
++  "annotations": {
++    "list": [
++      {
++        "builtIn": 1,
++        "datasource": {
++          "type": "grafana",
++          "uid": "-- Grafana --"
++        },
++        "enable": true,
++        "hide": true,
++        "iconColor": "rgba(0, 211, 255, 1)",
++        "name": "Annotations & Alerts",
++        "type": "dashboard"
++      }
++    ]
++  },
++  "editable": true,
++  "fiscalYearStartMonth": 0,
++  "graphTooltip": 0,
++  "id": 3,
++  "links": [],
++  "panels": [
++    {
++      "datasource": {
++        "type": "prometheus",
++        "uid": "df5rak9esf2tcd"
++      },
++      "fieldConfig": {
++        "defaults": {
++          "color": {
++            "mode": "thresholds"
++          },
++          "mappings": [],
++          "thresholds": {
++            "mode": "absolute",
++            "steps": [
++              {
++                "color": "green",
++                "value": 0
++              },
++              {
++                "color": "red",
++                "value": 80
++              }
++            ]
++          }
++        },
++        "overrides": []
++      },
++      "gridPos": {
++        "h": 16,
++        "w": 8,
++        "x": 0,
++        "y": 0
++      },
++      "id": 10,
++      "options": {
++        "colorMode": "value",
++        "graphMode": "none",
++        "justifyMode": "center",
++        "orientation": "auto",
++        "percentChangeColorMode": "standard",
++        "reduceOptions": {
++          "calcs": [
++            "lastNotNull"
++          ],
++          "fields": "",
++          "values": false
++        },
++        "showPercentChange": false,
++        "textMode": "auto",
++        "wideLayout": true
++      },
++      "pluginVersion": "12.3.0",
++      "targets": [
++        {
++          "datasource": {
++            "type": "prometheus",
++            "uid": "df5rak9esf2tcd"
++          },
++          "editorMode": "builder",
++          "expr": "backups_total{user=\"jevgeni-arefjev\"}",
++          "legendFormat": "{{service}} - {{type}}",
++          "range": true,
++          "refId": "A"
++        }
++      ],
++      "title": "Number of backups created",
++      "type": "stat"
++    },
++    {
++      "datasource": {
++        "type": "prometheus",
++        "uid": "df5rak9esf2tcd"
++      },
++      "fieldConfig": {
++        "defaults": {
++          "color": {
++            "mode": "thresholds"
++          },
++          "mappings": [],
++          "thresholds": {
++            "mode": "absolute",
++            "steps": [
++              {
++                "color": "green",
++                "value": 0
++              },
++              {
++                "color": "red",
++                "value": 86400
++              }
++            ]
++          },
++          "unit": "dtdhms"
++        },
++        "overrides": []
++      },
++      "gridPos": {
++        "h": 16,
++        "w": 7,
++        "x": 8,
++        "y": 0
++      },
++      "id": 7,
++      "options": {
++        "colorMode": "value",
++        "graphMode": "none",
++        "justifyMode": "auto",
++        "orientation": "horizontal",
++        "percentChangeColorMode": "standard",
++        "reduceOptions": {
++          "calcs": [
++            "lastNotNull"
++          ],
++          "fields": "",
++          "values": false
++        },
++        "showPercentChange": false,
++        "textMode": "auto",
++        "wideLayout": true
++      },
++      "pluginVersion": "12.3.0",
++      "targets": [
++        {
++          "datasource": {
++            "type": "prometheus",
++            "uid": "df5rak9esf2tcd"
++          },
++          "editorMode": "builder",
++          "expr": "time() - backup_last_success_time{user=\"jevgeni-arefjev\"}",
++          "legendFormat": "{{service}}",
++          "range": true,
++          "refId": "A"
++        }
++      ],
++      "title": "Last backup age",
++      "type": "stat"
++    }
++  ],
++  "preload": false,
++  "schemaVersion": 42,
++  "tags": [],
++  "templating": {
++    "list": []
++  },
++  "time": {
++    "from": "now-6h",
++    "to": "now"
++  },
++  "timepicker": {},
++  "timezone": "browser",
++  "title": "Backups",
++  "uid": "ad5fp89",
++  "version": 1
++}
+\ No newline at end of file
+
+changed: [jevgeni-arefjev-3] => (item=backups.json)
+--- before
++++ after: /home/jevgeni/ica0002/roles/grafana/files/mysql.json
+@@ -0,0 +1,424 @@
++{
++  "annotations": {
++    "list": [
++      {
++        "builtIn": 1,
++        "datasource": {
++          "type": "grafana",
++          "uid": "-- Grafana --"
++        },
++        "enable": true,
++        "hide": true,
++        "iconColor": "rgba(0, 211, 255, 1)",
++        "name": "Annotations & Alerts",
++        "type": "dashboard"
++      }
++    ]
++  },
++  "editable": true,
++  "fiscalYearStartMonth": 0,
++  "graphTooltip": 0,
++  "id": 4,
++  "links": [],
++  "panels": [
++    {
++      "datasource": {
++        "type": "prometheus",
++        "uid": "df5rak9esf2tcd"
++      },
++      "fieldConfig": {
++        "defaults": {
++          "color": {
++            "mode": "thresholds"
++          },
++          "mappings": [],
++          "thresholds": {
++            "mode": "absolute",
++            "steps": [
++              {
++                "color": "text",
++                "value": 0
++              }
++            ]
++          }
++        },
++        "overrides": []
++      },
++      "gridPos": {
++        "h": 6,
++        "w": 24,
++        "x": 0,
++        "y": 0
++      },
++      "id": 1,
++      "options": {
++        "colorMode": "value",
++        "graphMode": "none",
++        "justifyMode": "auto",
++        "orientation": "auto",
++        "percentChangeColorMode": "standard",
++        "reduceOptions": {
++          "calcs": [
++            "lastNotNull"
++          ],
++          "fields": "",
++          "values": false
++        },
++        "showPercentChange": false,
++        "textMode": "auto",
++        "wideLayout": true
++      },
++      "pluginVersion": "12.3.0",
++      "targets": [
++        {
++          "datasource": {
++            "type": "prometheus",
++            "uid": "df5rak9esf2tcd"
++          },
++          "editorMode": "builder",
++          "expr": "mysql_global_variables_server_id",
++          "legendFormat": "{{instance}}",
++          "range": true,
++          "refId": "A"
++        }
++      ],
++      "title": "MySQL server ID",
++      "type": "stat"
++    },
++    {
++      "datasource": {
++        "type": "prometheus",
++        "uid": "df5rak9esf2tcd"
++      },
++      "fieldConfig": {
++        "defaults": {
++          "color": {
++            "mode": "thresholds"
++          },
++          "mappings": [
++            {
++              "options": {
++                "0": {
++                  "color": "semi-dark-blue",
++                  "index": 1,
++                  "text": "Writable"
++                },
++                "1": {
++                  "color": "semi-dark-yellow",
++                  "index": 0,
++                  "text": "Read-only"
++                }
++              },
++              "type": "value"
++            }
++          ],
++          "thresholds": {
++            "mode": "absolute",
++            "steps": [
++              {
++                "color": "green",
++                "value": 0
++              },
++              {
++                "color": "red",
++                "value": 80
++              }
++            ]
++          }
++        },
++        "overrides": []
++      },
++      "gridPos": {
++        "h": 6,
++        "w": 24,
++        "x": 0,
++        "y": 6
++      },
++      "id": 2,
++      "options": {
++        "colorMode": "value",
++        "graphMode": "none",
++        "justifyMode": "auto",
++        "orientation": "auto",
++        "percentChangeColorMode": "standard",
++        "reduceOptions": {
++          "calcs": [
++            "lastNotNull"
++          ],
++          "fields": "",
++          "values": false
++        },
++        "showPercentChange": false,
++        "textMode": "auto",
++        "wideLayout": true
++      },
++      "pluginVersion": "12.3.0",
++      "targets": [
++        {
++          "editorMode": "builder",
++          "expr": "mysql_global_variables_read_only",
++          "legendFormat": "{{instance}}",
++          "range": true,
++          "refId": "A"
++        }
++      ],
++      "title": "",
++      "type": "stat"
++    },
++    {
++      "datasource": {
++        "type": "prometheus",
++        "uid": "df5rak9esf2tcd"
++      },
++      "fieldConfig": {
++        "defaults": {
++          "color": {
++            "mode": "thresholds"
++          },
++          "mappings": [
++            {
++              "options": {
++                "0": {
++                  "color": "red",
++                  "index": 1,
++                  "text": "DOWN"
++                },
++                "1": {
++                  "color": "green",
++                  "index": 0,
++                  "text": "UP"
++                }
++              },
++              "type": "value"
++            }
++          ],
++          "thresholds": {
++            "mode": "absolute",
++            "steps": [
++              {
++                "color": "green",
++                "value": 0
++              },
++              {
++                "color": "red",
++                "value": 80
++              }
++            ]
++          }
++        },
++        "overrides": []
++      },
++      "gridPos": {
++        "h": 6,
++        "w": 7,
++        "x": 0,
++        "y": 12
++      },
++      "id": 4,
++      "options": {
++        "colorMode": "value",
++        "graphMode": "none",
++        "justifyMode": "auto",
++        "orientation": "auto",
++        "percentChangeColorMode": "standard",
++        "reduceOptions": {
++          "calcs": [
++            "lastNotNull"
++          ],
++          "fields": "",
++          "values": false
++        },
++        "showPercentChange": false,
++        "textMode": "auto",
++        "wideLayout": true
++      },
++      "pluginVersion": "12.3.0",
++      "targets": [
++        {
++          "editorMode": "builder",
++          "expr": "mysql_slave_status_slave_sql_running",
++          "legendFormat": "__auto",
++          "range": true,
++          "refId": "A"
++        }
++      ],
++      "title": "SQL thread",
++      "type": "stat"
++    },
++    {
++      "datasource": {
++        "type": "prometheus",
++        "uid": "df5rak9esf2tcd"
++      },
++      "fieldConfig": {
++        "defaults": {
++          "color": {
++            "mode": "thresholds"
++          },
++          "mappings": [
++            {
++              "options": {
++                "0": {
++                  "color": "red",
++                  "index": 1,
++                  "text": "DOWN"
++                },
++                "1": {
++                  "color": "green",
++                  "index": 0,
++                  "text": "UP"
++                }
++              },
++              "type": "value"
++            }
++          ],
++          "thresholds": {
++            "mode": "absolute",
++            "steps": [
++              {
++                "color": "green",
++                "value": 0
++              },
++              {
++                "color": "red",
++                "value": 80
++              }
++            ]
++          }
++        },
++        "overrides": []
++      },
++      "gridPos": {
++        "h": 6,
++        "w": 7,
++        "x": 7,
++        "y": 12
++      },
++      "id": 3,
++      "options": {
++        "colorMode": "value",
++        "graphMode": "none",
++        "justifyMode": "auto",
++        "orientation": "auto",
++        "percentChangeColorMode": "standard",
++        "reduceOptions": {
++          "calcs": [
++            "lastNotNull"
++          ],
++          "fields": "",
++          "values": false
++        },
++        "showPercentChange": false,
++        "textMode": "auto",
++        "wideLayout": true
++      },
++      "pluginVersion": "12.3.0",
++      "targets": [
++        {
++          "editorMode": "builder",
++          "expr": "mysql_slave_status_slave_io_running",
++          "legendFormat": "__auto",
++          "range": true,
++          "refId": "A"
++        }
++      ],
++      "title": "IO thread",
++      "type": "stat"
++    },
++    {
++      "datasource": {
++        "type": "prometheus",
++        "uid": "df5rak9esf2tcd"
++      },
++      "fieldConfig": {
++        "defaults": {
++          "color": {
++            "mode": "thresholds"
++          },
++          "mappings": [
++            {
++              "options": {
++                "0": {
++                  "color": "red",
++                  "index": 1,
++                  "text": "DOWN"
++                },
++                "1": {
++                  "color": "green",
++                  "index": 0,
++                  "text": "UP"
++                }
++              },
++              "type": "value"
++            }
++          ],
++          "thresholds": {
++            "mode": "absolute",
++            "steps": [
++              {
++                "color": "green",
++                "value": 0
++              },
++              {
++                "color": "red",
++                "value": 80
++              }
++            ]
++          }
++        },
++        "overrides": []
++      },
++      "gridPos": {
++        "h": 6,
++        "w": 10,
++        "x": 14,
++        "y": 12
++      },
++      "id": 5,
++      "options": {
++        "colorMode": "value",
++        "graphMode": "none",
++        "justifyMode": "auto",
++        "orientation": "auto",
++        "percentChangeColorMode": "standard",
++        "reduceOptions": {
++          "calcs": [
++            "lastNotNull"
++          ],
++          "fields": "",
++          "values": false
++        },
++        "showPercentChange": false,
++        "textMode": "auto",
++        "wideLayout": true
++      },
++      "pluginVersion": "12.3.0",
++      "targets": [
++        {
++          "editorMode": "builder",
++          "expr": "mysql_up",
++          "legendFormat": "__auto",
++          "range": true,
++          "refId": "A"
++        }
++      ],
++      "title": "MySQL status",
++      "type": "stat"
++    }
++  ],
++  "preload": false,
++  "schemaVersion": 42,
++  "tags": [],
++  "templating": {
++    "list": []
++  },
++  "time": {
++    "from": "now-6h",
++    "to": "now"
++  },
++  "timepicker": {},
++  "timezone": "browser",
++  "title": "MySQL HA",
++  "uid": "ad6mz4s",
++  "version": 1
++}
+\ No newline at end of file
+
+changed: [jevgeni-arefjev-3] => (item=mysql.json)
+
+TASK [grafana : Install Grafana (as container)] ********************************
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+-    "exists": false,
+-    "running": false
++    "exists": true,
++    "running": true
+ }
+
+changed: [jevgeni-arefjev-3]
+
+TASK [grafana : Create DNS CNAME record for Grafana server] ********************
+changed: [jevgeni-arefjev-3] => (item=jevgeni-arefjev-3)
+
+RUNNING HANDLER [grafana : Restart Grafana] ************************************
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+-    "restarted": false,
++    "restarted": true,
+     "running": true
+ }
+
+changed: [jevgeni-arefjev-3]
+
+PLAY [Loki] ********************************************************************
+
+TASK [loki : Download Loki binary] *********************************************
+changed: [jevgeni-arefjev-3]
+
+TASK [loki : Unzip Loki binary] ************************************************
+>f++++++.?? loki-linux-amd64
+changed: [jevgeni-arefjev-3]
+
+TASK [loki : Create Loki directory structure] **********************************
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+     "path": "/etc/loki",
+-    "state": "absent"
++    "state": "directory"
+ }
+
+changed: [jevgeni-arefjev-3] => (item=/etc/loki)
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+     "path": "/var/lib/loki",
+-    "state": "absent"
++    "state": "directory"
+ }
+
+changed: [jevgeni-arefjev-3] => (item=/var/lib/loki)
+
+TASK [loki : Install Loki configuration] ***************************************
+--- before
++++ after: /home/jevgeni/ica0002/roles/loki/files/loki-local-config.yaml
+@@ -0,0 +1,58 @@
++auth_enabled: false
++
++server:
++  http_listen_port: 3100
++  grpc_listen_port: 9096
++  log_level: debug
++  grpc_server_max_concurrent_streams: 1000
++
++common:
++  instance_addr: localhost
++  path_prefix: /var/lib/loki
++  storage:
++    filesystem:
++      chunks_directory: /var/lib/loki/chunks
++      rules_directory: /var/lib/loki/rules
++  replication_factor: 1
++  ring:
++    kvstore:
++      store: inmemory
++
++query_range:
++  results_cache:
++    cache:
++      embedded_cache:
++        enabled: true
++        max_size_mb: 100
++
++limits_config:
++  metric_aggregation_enabled: true
++  enable_multi_variant_queries: true
++
++schema_config:
++  configs:
++    - from: 2020-10-24
++      store: tsdb
++      object_store: filesystem
++      schema: v13
++      index:
++        prefix: index_
++        period: 24h
++
++pattern_ingester:
++  enabled: true
++  metric_aggregation:
++    loki_address: "loki:3100"
++
++# By default, Loki will send anonymous, but uniquely-identifiable usage and configuration
++# analytics to Grafana Labs. These statistics are sent to https://stats.grafana.org/
++#
++# Statistics help us better understand how Loki is used, and they show us performance
++# levels for most users. This helps us prioritize features and documentation.
++# For more information on what's sent, look at
++# https://github.com/grafana/loki/blob/main/pkg/analytics/stats.go
++# Refer to the buildReport method to see what goes into a report.
++#
++# If you would like to disable reporting, uncomment the following lines:
++#analytics:
++#  reporting_enabled: false
+\ No newline at end of file
+
+changed: [jevgeni-arefjev-3]
+
+TASK [loki : Create Loki systemd service] **************************************
+--- before
++++ after: /home/jevgeni/ica0002/roles/loki/files/loki.service
+@@ -0,0 +1,10 @@
++[Unit]
++Description=Loki Log Aggregator
++After=network.target
++
++[Service]
++ExecStart=/usr/bin/loki-linux-amd64 -config.file=/etc/loki/loki-local-config.yaml
++Restart=always
++
++[Install]
++WantedBy=multi-user.target
+\ No newline at end of file
+
+changed: [jevgeni-arefjev-3]
+
+TASK [loki : Loki Service] *****************************************************
+changed: [jevgeni-arefjev-3]
+
+TASK [loki : Create backup folder for Loki] ************************************
+--- before
++++ after
+@@ -1,6 +1,6 @@
+ {
+-    "mode": "0755",
+-    "owner": 0,
++    "mode": "0700",
++    "owner": 34,
+     "path": "/home/backup/loki",
+-    "state": "absent"
++    "state": "directory"
+ }
+
+changed: [jevgeni-arefjev-3]
+
+TASK [loki : Add cron backuping schedule] **************************************
+--- before
++++ after: /home/jevgeni/.ansible/tmp/ansible-local-1142384txl80qh/tmp65y611o6/backup-cron.j2
+@@ -0,0 +1,3 @@
++10 0 * * * root cp -t /home/backup/loki/ -r /var/lib/loki/tsdb-shipper-active /var/lib/loki/wal; chown -R backup:backup /home/backup/loki
++15 0 * * 0 backup duplicity --no-encryption full /home/backup/loki rsync://jevgeni-arefjev@backup/loki
++15 0 * * 1-6 backup duplicity --no-encryption incremental /home/backup/loki rsync://jevgeni-arefjev@backup/loki
+
+changed: [jevgeni-arefjev-3]
+
+TASK [loki : Create DNS CNAME record for Loki server] **************************
+changed: [jevgeni-arefjev-3] => (item=jevgeni-arefjev-3)
+
+RUNNING HANDLER [loki : Restart Loki] ******************************************
+changed: [jevgeni-arefjev-3]
+
+PLAY [HA] **********************************************************************
+
+TASK [keepalived : Install keepalived] *****************************************
+The following additional packages will be installed:
+  ipvsadm
+Suggested packages:
+  heartbeat ldirectord
+The following NEW packages will be installed:
+  ipvsadm keepalived
+0 upgraded, 2 newly installed, 0 to remove and 249 not upgraded.
+changed: [jevgeni-arefjev-2]
+The following additional packages will be installed:
+  ipvsadm
+Suggested packages:
+  heartbeat ldirectord
+The following NEW packages will be installed:
+  ipvsadm keepalived
+0 upgraded, 2 newly installed, 0 to remove and 249 not upgraded.
+changed: [jevgeni-arefjev-1]
+
+TASK [keepalived : Create user for keepalived] *********************************
+changed: [jevgeni-arefjev-1]
+changed: [jevgeni-arefjev-2]
+
+TASK [keepalived : Add keepalived.conf] ****************************************
+--- before
++++ after: /home/jevgeni/.ansible/tmp/ansible-local-1142384txl80qh/tmpg5kau0wd/keepalived.conf.j2
+@@ -0,0 +1,21 @@
++vrrp_script check_haproxy {                 
++    script /home/keepalived_script/script
++    weight 20                              
++    interval 1               
++}
++vrrp_instance XXX {             
++    interface ens3
++    virtual_router_id 1
++    priority 99
++    advert_int 1                            
++    virtual_ipaddress {                     
++        192.168.100.177/24                   
++    }
++    unicast_peer {  
++                     
++        192.168.42.6
++    }
++    track_script {
++        check_haproxy
++    }
++}
+\ No newline at end of file
+
+changed: [jevgeni-arefjev-1]
+--- before
++++ after: /home/jevgeni/.ansible/tmp/ansible-local-1142384txl80qh/tmp62nn8tuy/keepalived.conf.j2
+@@ -0,0 +1,21 @@
++vrrp_script check_haproxy {                 
++    script /home/keepalived_script/script
++    weight 20                              
++    interval 1               
++}
++vrrp_instance XXX {             
++    interface ens3
++    virtual_router_id 1
++    priority 98
++    advert_int 1                            
++    virtual_ipaddress {                     
++        192.168.100.177/24                   
++    }
++    unicast_peer {  
++                     
++        192.168.42.177
++    }
++    track_script {
++        check_haproxy
++    }
++}
+\ No newline at end of file
+
+changed: [jevgeni-arefjev-2]
+
+TASK [keepalived : Add script for haproxy health check] ************************
+--- before
++++ after: /home/jevgeni/ica0002/roles/keepalived/files/script
+@@ -0,0 +1,2 @@
++#!/bin/bash
++ss -ntl | grep -q ':88 '
+\ No newline at end of file
+
+changed: [jevgeni-arefjev-2]
+--- before
++++ after: /home/jevgeni/ica0002/roles/keepalived/files/script
+@@ -0,0 +1,2 @@
++#!/bin/bash
++ss -ntl | grep -q ':88 '
+\ No newline at end of file
+
+changed: [jevgeni-arefjev-1]
+
+TASK [keepalived : Keepalived service] *****************************************
+changed: [jevgeni-arefjev-1]
+changed: [jevgeni-arefjev-2]
+
+TASK [keepalived : Download keepalived-exporter tar.gz] ************************
+changed: [jevgeni-arefjev-1]
+changed: [jevgeni-arefjev-2]
+
+TASK [keepalived : Unarchive keepalived-exporter] ******************************
+changed: [jevgeni-arefjev-1]
+changed: [jevgeni-arefjev-2]
+
+TASK [keepalived : Create keepalived-exporter systemd service] *****************
+--- before
++++ after: /home/jevgeni/ica0002/roles/keepalived/files/keepalived-exporter.service
+@@ -0,0 +1,9 @@
++[Unit]
++Description=Keepalived exporter for prometheus
++
++[Service]
++ExecStart=/usr/bin/keepalived-exporter
++Restart=always
++
++[Install]
++WantedBy=multi-user.target
+\ No newline at end of file
+
+changed: [jevgeni-arefjev-2]
+--- before
++++ after: /home/jevgeni/ica0002/roles/keepalived/files/keepalived-exporter.service
+@@ -0,0 +1,9 @@
++[Unit]
++Description=Keepalived exporter for prometheus
++
++[Service]
++ExecStart=/usr/bin/keepalived-exporter
++Restart=always
++
++[Install]
++WantedBy=multi-user.target
+\ No newline at end of file
+
+changed: [jevgeni-arefjev-1]
+
+TASK [keepalived : Keepalived-exporter Service] ********************************
+changed: [jevgeni-arefjev-1]
+changed: [jevgeni-arefjev-2]
+
+TASK [haproxy : Install haproxy] ***********************************************
+The following additional packages will be installed:
+  liblua5.4-0
+Suggested packages:
+  vim-haproxy haproxy-doc
+The following NEW packages will be installed:
+  haproxy liblua5.4-0
+0 upgraded, 2 newly installed, 0 to remove and 249 not upgraded.
+changed: [jevgeni-arefjev-1]
+The following additional packages will be installed:
+  liblua5.4-0
+Suggested packages:
+  vim-haproxy haproxy-doc
+The following NEW packages will be installed:
+  haproxy liblua5.4-0
+0 upgraded, 2 newly installed, 0 to remove and 249 not upgraded.
+changed: [jevgeni-arefjev-2]
+
+TASK [haproxy : Configure haproxy] *********************************************
+--- before: /etc/haproxy/haproxy.cfg
++++ after: /home/jevgeni/.ansible/tmp/ansible-local-1142384txl80qh/tmp2s8k8o2q/haproxy.cfg.j2
+@@ -18,7 +18,7 @@
+         ssl-default-bind-options ssl-min-ver TLSv1.2 no-tls-tickets
+ 
+ defaults
+-	log	global
++	log	ring@logbuffer local0
+ 	mode	http
+ 	option	httplog
+ 	option	dontlognull
+@@ -32,3 +32,28 @@
+ 	errorfile 502 /etc/haproxy/errors/502.http
+ 	errorfile 503 /etc/haproxy/errors/503.http
+ 	errorfile 504 /etc/haproxy/errors/504.http
++
++ring logbuffer
++  description "buffer for logs"
++  format rfc5424
++  maxlen 1500
++  size 65536
++  timeout connect 10s
++  timeout server 20s
++     
++  # Sends outgoing messages via TCP
++  server logserver localhost:514
++
++frontend my_ha_frontend
++    bind :88
++    default_backend my_ha_backend
++    log-format "%ST %Tr"  # %ST = status code; %Tr = response time;
++
++backend my_ha_backend
++    server jevgeni1 jevgeni-arefjev-1:8001 check
++    server jevgeni2 jevgeni-arefjev-2:8001 check
++
++listen stats
++    bind localhost:9188  # Binds only to localhost
++    stats enable
++    stats uri /monitor
+
+changed: [jevgeni-arefjev-2]
+--- before: /etc/haproxy/haproxy.cfg
++++ after: /home/jevgeni/.ansible/tmp/ansible-local-1142384txl80qh/tmp8byxf5c_/haproxy.cfg.j2
+@@ -18,7 +18,7 @@
+         ssl-default-bind-options ssl-min-ver TLSv1.2 no-tls-tickets
+ 
+ defaults
+-	log	global
++	log	ring@logbuffer local0
+ 	mode	http
+ 	option	httplog
+ 	option	dontlognull
+@@ -32,3 +32,28 @@
+ 	errorfile 502 /etc/haproxy/errors/502.http
+ 	errorfile 503 /etc/haproxy/errors/503.http
+ 	errorfile 504 /etc/haproxy/errors/504.http
++
++ring logbuffer
++  description "buffer for logs"
++  format rfc5424
++  maxlen 1500
++  size 65536
++  timeout connect 10s
++  timeout server 20s
++     
++  # Sends outgoing messages via TCP
++  server logserver localhost:514
++
++frontend my_ha_frontend
++    bind :88
++    default_backend my_ha_backend
++    log-format "%ST %Tr"  # %ST = status code; %Tr = response time;
++
++backend my_ha_backend
++    server jevgeni1 jevgeni-arefjev-1:8001 check
++    server jevgeni2 jevgeni-arefjev-2:8001 check
++
++listen stats
++    bind localhost:9188  # Binds only to localhost
++    stats enable
++    stats uri /monitor
+
+changed: [jevgeni-arefjev-1]
+
+TASK [haproxy : Haproxy service] ***********************************************
+changed: [jevgeni-arefjev-2]
+changed: [jevgeni-arefjev-1]
+
+TASK [haproxy : Install prometheus-haproxy-exporter] ***************************
+The following NEW packages will be installed:
+  prometheus-haproxy-exporter
+0 upgraded, 1 newly installed, 0 to remove and 249 not upgraded.
+changed: [jevgeni-arefjev-2]
+The following NEW packages will be installed:
+  prometheus-haproxy-exporter
+0 upgraded, 1 newly installed, 0 to remove and 249 not upgraded.
+changed: [jevgeni-arefjev-1]
+
+TASK [haproxy : Configure prometheus-haproxy-exporter] *************************
+--- before: /etc/default/prometheus-haproxy-exporter
++++ after: /home/jevgeni/ica0002/roles/haproxy/files/prometheus-haproxy-exporter
+@@ -1,5 +1 @@
+-# Set the command-line arguments to pass to the server.
+-# Due to shell escaping, to pass backslashes for regexes, you need to double
+-# them (\\d for \d). If running under systemd, you need to double them again
+-# (\\\\d to mean \d), and escape newlines too.
+-ARGS=""
++ARGS='--haproxy.scrape-uri="http://localhost:9188/monitor;csv"'
+\ No newline at end of file
+
+changed: [jevgeni-arefjev-1]
+--- before: /etc/default/prometheus-haproxy-exporter
++++ after: /home/jevgeni/ica0002/roles/haproxy/files/prometheus-haproxy-exporter
+@@ -1,5 +1 @@
+-# Set the command-line arguments to pass to the server.
+-# Due to shell escaping, to pass backslashes for regexes, you need to double
+-# them (\\d for \d). If running under systemd, you need to double them again
+-# (\\\\d to mean \d), and escape newlines too.
+-ARGS=""
++ARGS='--haproxy.scrape-uri="http://localhost:9188/monitor;csv"'
+\ No newline at end of file
+
+changed: [jevgeni-arefjev-2]
+
+TASK [haproxy : Prometheus-haproxy-exporter service] ***************************
+changed: [jevgeni-arefjev-1]
+changed: [jevgeni-arefjev-2]
+
+TASK [haproxy : Create DNS CNAME record for HAproxy servers] *******************
+changed: [jevgeni-arefjev-1] => (item=jevgeni-arefjev-3)
+changed: [jevgeni-arefjev-2] => (item=jevgeni-arefjev-3)
+
+RUNNING HANDLER [keepalived : Restart Keepalived] ******************************
+changed: [jevgeni-arefjev-1]
+changed: [jevgeni-arefjev-2]
+
+RUNNING HANDLER [haproxy : Restart Haproxy] ************************************
+changed: [jevgeni-arefjev-2]
+changed: [jevgeni-arefjev-1]
+
+RUNNING HANDLER [haproxy : Restart prometheus-haproxy-exporter] ****************
+changed: [jevgeni-arefjev-2]
+changed: [jevgeni-arefjev-1]
+
+PLAY RECAP *********************************************************************
+jevgeni-arefjev-1          : ok=80   changed=76   unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
+jevgeni-arefjev-2          : ok=80   changed=76   unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
+jevgeni-arefjev-3          : ok=66   changed=57   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
++ ansible-playbook infra.yaml --diff
+
+PLAY [Initial setup] ***********************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-3]
+ok: [jevgeni-arefjev-2]
+
+TASK [init : Update APT cache] *************************************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-3]
+
+TASK [init : install prometheus node exporter] *********************************
+ok: [jevgeni-arefjev-3]
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [init : Install unzip package] ********************************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-3]
+
+TASK [init : Download Promtail binary] *****************************************
+ok: [jevgeni-arefjev-3]
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [init : Unzip Promtail binary] ********************************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-3]
+
+TASK [init : Create directory for Promtail] ************************************
+ok: [jevgeni-arefjev-1] => (item=/etc/promtail)
+ok: [jevgeni-arefjev-2] => (item=/etc/promtail)
+ok: [jevgeni-arefjev-3] => (item=/etc/promtail)
+ok: [jevgeni-arefjev-1] => (item=/var/lib/promtail)
+ok: [jevgeni-arefjev-2] => (item=/var/lib/promtail)
+ok: [jevgeni-arefjev-3] => (item=/var/lib/promtail)
+
+TASK [init : Create Promtail user] *********************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-3]
+
+TASK [init : Add promtail user to adm group for syslog access] *****************
+ok: [jevgeni-arefjev-3]
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [init : Install Promtail configuration] ***********************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-3]
+
+TASK [init : Create Promtail systemd service] **********************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-3]
+
+TASK [init : Promtail Service] *************************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-3]
+
+TASK [init : Add user backup] **************************************************
+[WARNING]: Found existing ssh key private file "/home/backup/.ssh/id_rsa", no
+force, so skipping ssh-keygen generation
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-3]
+
+TASK [init : Add backup server public key] *************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-3]
+ok: [jevgeni-arefjev-1]
+
+TASK [init : Create backup restore directory] **********************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-3]
+
+TASK [init : Install Duplicity] ************************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-3]
+
+TASK [init : Install dnspython package] ****************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-3]
+
+TASK [init : change DNS resolv.conf] *******************************************
+ok: [jevgeni-arefjev-3]
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+PLAY [DNS servers] *************************************************************
+
+TASK [bind : Install Bind9] ****************************************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-3]
+
+TASK [bind : Update Bind9 configuration] ***************************************
+ok: [jevgeni-arefjev-3] => (item=None)
+ok: [jevgeni-arefjev-1] => (item=None)
+ok: [jevgeni-arefjev-2] => (item=None)
+ok: [jevgeni-arefjev-3] => (item=None)
+ok: [jevgeni-arefjev-3]
+ok: [jevgeni-arefjev-2] => (item=None)
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1] => (item=None)
+ok: [jevgeni-arefjev-1]
+
+TASK [bind : Configure master zone] ********************************************
+skipping: [jevgeni-arefjev-1] => (item=domain) 
+skipping: [jevgeni-arefjev-1] => (item=ptr) 
+skipping: [jevgeni-arefjev-1]
+skipping: [jevgeni-arefjev-2] => (item=domain) 
+skipping: [jevgeni-arefjev-2] => (item=ptr) 
+skipping: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-3] => (item=domain)
+ok: [jevgeni-arefjev-3] => (item=ptr)
+
+TASK [bind : Bind9 service] ****************************************************
+ok: [jevgeni-arefjev-3]
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [bind : Install prometheus-bind-exporter] *********************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-3]
+
+TASK [bind : Bind9-exporter service] *******************************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-3]
+ok: [jevgeni-arefjev-2]
+
+TASK [bind : Create DNS A record for backup server] ****************************
+skipping: [jevgeni-arefjev-1]
+skipping: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-3]
+
+TASK [bind : Create DNS CNAME record for Bind9 servers] ************************
+ok: [jevgeni-arefjev-3] => (item=jevgeni-arefjev-3)
+ok: [jevgeni-arefjev-1] => (item=jevgeni-arefjev-3)
+ok: [jevgeni-arefjev-2] => (item=jevgeni-arefjev-3)
+
+PLAY [Database servers] ********************************************************
+
+TASK [mysql : Install MySQL] ***************************************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [mysql : Configure MySQL to listen on public port] ************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [mysql : MySQL service] ***************************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [mysql : Install pymysql] *************************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [mysql : MySQL database] **************************************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [mysql : MySQL user agama] ************************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [mysql : Install mysqld_exporter] *****************************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [mysql : Create MySQL user for mysqld_exporter] ***************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [mysql : Create Prometheus/.my.cnf] ***************************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [mysql : Create prometheus_mysqld_exporter *ARGS] *************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [mysql : mysqld-exporter service] *****************************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [mysql : Create backup folder for MySQL] **********************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [mysql : Create MySQL user for backup] ************************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [mysql : Create backup/.my.cnf] *******************************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [mysql : Add cron backuping schedule] *************************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [mysql : MySQL user replication] ******************************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [mysql : Set replica server to read-only] *********************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [mysql : Create DNS CNAME record for MySQL servers] ***********************
+ok: [jevgeni-arefjev-1] => (item=jevgeni-arefjev-3)
+ok: [jevgeni-arefjev-2] => (item=jevgeni-arefjev-3)
+
+PLAY [Web Apps] ****************************************************************
+
+TASK [docker : Install Docker] *************************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [docker : Docker service] *************************************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [docker : Install Loki Docker driver] *************************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [agama : Create directory /opt/agama] *************************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [agama : Install agama app] ***********************************************
+ok: [jevgeni-arefjev-1] => (item=agama.py)
+ok: [jevgeni-arefjev-2] => (item=agama.py)
+ok: [jevgeni-arefjev-2] => (item=Dockerfile)
+ok: [jevgeni-arefjev-1] => (item=Dockerfile)
+
+TASK [agama : Build Agama Docker image] ****************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [agama : Start Agama] *****************************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [agama : Create DNS CNAME record for Agama servers] ***********************
+ok: [jevgeni-arefjev-1] => (item=jevgeni-arefjev-3)
+ok: [jevgeni-arefjev-2] => (item=jevgeni-arefjev-3)
+
+PLAY [Web servers] *************************************************************
+
+TASK [nginx : Install nginx package] *******************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-3]
+ok: [jevgeni-arefjev-1]
+
+TASK [nginx : Configure nginx] *************************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-3]
+ok: [jevgeni-arefjev-1]
+
+TASK [nginx : Nginx service] ***************************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-3]
+
+TASK [nginx : Install prometheus-nginx-exporter] *******************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-3]
+
+TASK [nginx : Nginx-exporter service] ******************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-3]
+
+PLAY [Prometheus] **************************************************************
+
+TASK [nginx : Install nginx package] *******************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [nginx : Configure nginx] *************************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [nginx : Nginx service] ***************************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [nginx : Install prometheus-nginx-exporter] *******************************
+ok: [jevgeni-arefjev-3]
+
+TASK [nginx : Nginx-exporter service] ******************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [prometheus : Install Prometheus] *****************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [prometheus : Update Prometheus configuration] ****************************
+ok: [jevgeni-arefjev-3]
+
+TASK [prometheus : Adjust Prometheus service] **********************************
+ok: [jevgeni-arefjev-3]
+
+TASK [prometheus : Prometheus service] *****************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [prometheus : Add cron backuping schedule] ********************************
+ok: [jevgeni-arefjev-3]
+
+TASK [prometheus : Create DNS CNAME record for Prometheus server] **************
+ok: [jevgeni-arefjev-3] => (item=jevgeni-arefjev-3)
+
+PLAY [Grafana] *****************************************************************
+
+TASK [docker : Install Docker] *************************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [docker : Docker service] *************************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [docker : Install Loki Docker driver] *************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [grafana : Pre-create necessary repositories] *****************************
+ok: [jevgeni-arefjev-3] => (item=dashboards)
+ok: [jevgeni-arefjev-3] => (item=datasources)
+
+TASK [grafana : Add grafana.ini file] ******************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [grafana : Add Grafana datasources] ***************************************
+ok: [jevgeni-arefjev-3] => (item=prometheus.yaml)
+ok: [jevgeni-arefjev-3] => (item=loki.yaml)
+
+TASK [grafana : Add Grafana dashboards] ****************************************
+ok: [jevgeni-arefjev-3] => (item=dashboards.yaml)
+ok: [jevgeni-arefjev-3] => (item=main.json)
+ok: [jevgeni-arefjev-3] => (item=agamalog.json)
+ok: [jevgeni-arefjev-3] => (item=backups.json)
+ok: [jevgeni-arefjev-3] => (item=mysql.json)
+
+TASK [grafana : Install Grafana (as container)] ********************************
+ok: [jevgeni-arefjev-3]
+
+TASK [grafana : Create DNS CNAME record for Grafana server] ********************
+ok: [jevgeni-arefjev-3] => (item=jevgeni-arefjev-3)
+
+PLAY [Loki] ********************************************************************
+
+TASK [loki : Download Loki binary] *********************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [loki : Unzip Loki binary] ************************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [loki : Create Loki directory structure] **********************************
+ok: [jevgeni-arefjev-3] => (item=/etc/loki)
+ok: [jevgeni-arefjev-3] => (item=/var/lib/loki)
+
+TASK [loki : Install Loki configuration] ***************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [loki : Create Loki systemd service] **************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [loki : Loki Service] *****************************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [loki : Create backup folder for Loki] ************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [loki : Add cron backuping schedule] **************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [loki : Create DNS CNAME record for Loki server] **************************
+ok: [jevgeni-arefjev-3] => (item=jevgeni-arefjev-3)
+
+PLAY [HA] **********************************************************************
+
+TASK [keepalived : Install keepalived] *****************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [keepalived : Create user for keepalived] *********************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [keepalived : Add keepalived.conf] ****************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [keepalived : Add script for haproxy health check] ************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [keepalived : Keepalived service] *****************************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [keepalived : Download keepalived-exporter tar.gz] ************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [keepalived : Unarchive keepalived-exporter] ******************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [keepalived : Create keepalived-exporter systemd service] *****************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [keepalived : Keepalived-exporter Service] ********************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [haproxy : Install haproxy] ***********************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [haproxy : Configure haproxy] *********************************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [haproxy : Haproxy service] ***********************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [haproxy : Install prometheus-haproxy-exporter] ***************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [haproxy : Configure prometheus-haproxy-exporter] *************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [haproxy : Prometheus-haproxy-exporter service] ***************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [haproxy : Create DNS CNAME record for HAproxy servers] *******************
+ok: [jevgeni-arefjev-1] => (item=jevgeni-arefjev-3)
+ok: [jevgeni-arefjev-2] => (item=jevgeni-arefjev-3)
+
+PLAY RECAP *********************************************************************
+jevgeni-arefjev-1          : ok=71   changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+jevgeni-arefjev-2          : ok=71   changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+jevgeni-arefjev-3          : ok=60   changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
++ ansible all -b -m reboot -a test_command=uptime
+jevgeni-arefjev-1 | CHANGED => {
+    "changed": true,
+    "elapsed": 114,
+    "rebooted": true
+}
+jevgeni-arefjev-2 | CHANGED => {
+    "changed": true,
+    "elapsed": 115,
+    "rebooted": true
+}
+jevgeni-arefjev-3 | CHANGED => {
+    "changed": true,
+    "elapsed": 116,
+    "rebooted": true
+}
++ sleep 15
++ ansible-playbook infra.yaml --diff
+
+PLAY [Initial setup] ***********************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [jevgeni-arefjev-3]
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [init : Update APT cache] *************************************************
+ok: [jevgeni-arefjev-3]
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [init : install prometheus node exporter] *********************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-3]
+ok: [jevgeni-arefjev-1]
+
+TASK [init : Install unzip package] ********************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-3]
+ok: [jevgeni-arefjev-1]
+
+TASK [init : Download Promtail binary] *****************************************
+ok: [jevgeni-arefjev-3]
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [init : Unzip Promtail binary] ********************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-3]
+
+TASK [init : Create directory for Promtail] ************************************
+ok: [jevgeni-arefjev-1] => (item=/etc/promtail)
+ok: [jevgeni-arefjev-3] => (item=/etc/promtail)
+ok: [jevgeni-arefjev-2] => (item=/etc/promtail)
+ok: [jevgeni-arefjev-1] => (item=/var/lib/promtail)
+ok: [jevgeni-arefjev-3] => (item=/var/lib/promtail)
+ok: [jevgeni-arefjev-2] => (item=/var/lib/promtail)
+
+TASK [init : Create Promtail user] *********************************************
+ok: [jevgeni-arefjev-3]
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [init : Add promtail user to adm group for syslog access] *****************
+ok: [jevgeni-arefjev-3]
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [init : Install Promtail configuration] ***********************************
+ok: [jevgeni-arefjev-3]
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [init : Create Promtail systemd service] **********************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-3]
+ok: [jevgeni-arefjev-1]
+
+TASK [init : Promtail Service] *************************************************
+ok: [jevgeni-arefjev-3]
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [init : Add user backup] **************************************************
+[WARNING]: Found existing ssh key private file "/home/backup/.ssh/id_rsa", no
+force, so skipping ssh-keygen generation
+ok: [jevgeni-arefjev-3]
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [init : Add backup server public key] *************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-3]
+
+TASK [init : Create backup restore directory] **********************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-3]
+ok: [jevgeni-arefjev-2]
+
+TASK [init : Install Duplicity] ************************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-3]
+ok: [jevgeni-arefjev-1]
+
+TASK [init : Install dnspython package] ****************************************
+ok: [jevgeni-arefjev-3]
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [init : change DNS resolv.conf] *******************************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-3]
+
+PLAY [DNS servers] *************************************************************
+
+TASK [bind : Install Bind9] ****************************************************
+ok: [jevgeni-arefjev-3]
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [bind : Update Bind9 configuration] ***************************************
+ok: [jevgeni-arefjev-3] => (item=None)
+ok: [jevgeni-arefjev-2] => (item=None)
+ok: [jevgeni-arefjev-1] => (item=None)
+ok: [jevgeni-arefjev-3] => (item=None)
+ok: [jevgeni-arefjev-3]
+ok: [jevgeni-arefjev-2] => (item=None)
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1] => (item=None)
+ok: [jevgeni-arefjev-1]
+
+TASK [bind : Configure master zone] ********************************************
+skipping: [jevgeni-arefjev-1] => (item=domain) 
+skipping: [jevgeni-arefjev-1] => (item=ptr) 
+skipping: [jevgeni-arefjev-1]
+skipping: [jevgeni-arefjev-2] => (item=domain) 
+skipping: [jevgeni-arefjev-2] => (item=ptr) 
+skipping: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-3] => (item=domain)
+ok: [jevgeni-arefjev-3] => (item=ptr)
+
+TASK [bind : Bind9 service] ****************************************************
+ok: [jevgeni-arefjev-3]
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [bind : Install prometheus-bind-exporter] *********************************
+ok: [jevgeni-arefjev-3]
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [bind : Bind9-exporter service] *******************************************
+ok: [jevgeni-arefjev-3]
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [bind : Create DNS A record for backup server] ****************************
+skipping: [jevgeni-arefjev-1]
+skipping: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-3]
+
+TASK [bind : Create DNS CNAME record for Bind9 servers] ************************
+ok: [jevgeni-arefjev-3] => (item=jevgeni-arefjev-3)
+ok: [jevgeni-arefjev-2] => (item=jevgeni-arefjev-3)
+ok: [jevgeni-arefjev-1] => (item=jevgeni-arefjev-3)
+
+PLAY [Database servers] ********************************************************
+
+TASK [mysql : Install MySQL] ***************************************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [mysql : Configure MySQL to listen on public port] ************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [mysql : MySQL service] ***************************************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [mysql : Install pymysql] *************************************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [mysql : MySQL database] **************************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [mysql : MySQL user agama] ************************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [mysql : Install mysqld_exporter] *****************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [mysql : Create MySQL user for mysqld_exporter] ***************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [mysql : Create Prometheus/.my.cnf] ***************************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [mysql : Create prometheus_mysqld_exporter *ARGS] *************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [mysql : mysqld-exporter service] *****************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [mysql : Create backup folder for MySQL] **********************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [mysql : Create MySQL user for backup] ************************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [mysql : Create backup/.my.cnf] *******************************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [mysql : Add cron backuping schedule] *************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [mysql : MySQL user replication] ******************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [mysql : Set replica server to read-only] *********************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [mysql : Create DNS CNAME record for MySQL servers] ***********************
+ok: [jevgeni-arefjev-1] => (item=jevgeni-arefjev-3)
+ok: [jevgeni-arefjev-2] => (item=jevgeni-arefjev-3)
+
+PLAY [Web Apps] ****************************************************************
+
+TASK [docker : Install Docker] *************************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [docker : Docker service] *************************************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [docker : Install Loki Docker driver] *************************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [agama : Create directory /opt/agama] *************************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [agama : Install agama app] ***********************************************
+ok: [jevgeni-arefjev-2] => (item=agama.py)
+ok: [jevgeni-arefjev-1] => (item=agama.py)
+ok: [jevgeni-arefjev-2] => (item=Dockerfile)
+ok: [jevgeni-arefjev-1] => (item=Dockerfile)
+
+TASK [agama : Build Agama Docker image] ****************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [agama : Start Agama] *****************************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [agama : Create DNS CNAME record for Agama servers] ***********************
+ok: [jevgeni-arefjev-2] => (item=jevgeni-arefjev-3)
+ok: [jevgeni-arefjev-1] => (item=jevgeni-arefjev-3)
+
+PLAY [Web servers] *************************************************************
+
+TASK [nginx : Install nginx package] *******************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-3]
+
+TASK [nginx : Configure nginx] *************************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-3]
+
+TASK [nginx : Nginx service] ***************************************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-3]
+ok: [jevgeni-arefjev-2]
+
+TASK [nginx : Install prometheus-nginx-exporter] *******************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-3]
+ok: [jevgeni-arefjev-1]
+
+TASK [nginx : Nginx-exporter service] ******************************************
+ok: [jevgeni-arefjev-3]
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+PLAY [Prometheus] **************************************************************
+
+TASK [nginx : Install nginx package] *******************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [nginx : Configure nginx] *************************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [nginx : Nginx service] ***************************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [nginx : Install prometheus-nginx-exporter] *******************************
+ok: [jevgeni-arefjev-3]
+
+TASK [nginx : Nginx-exporter service] ******************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [prometheus : Install Prometheus] *****************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [prometheus : Update Prometheus configuration] ****************************
+ok: [jevgeni-arefjev-3]
+
+TASK [prometheus : Adjust Prometheus service] **********************************
+ok: [jevgeni-arefjev-3]
+
+TASK [prometheus : Prometheus service] *****************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [prometheus : Add cron backuping schedule] ********************************
+ok: [jevgeni-arefjev-3]
+
+TASK [prometheus : Create DNS CNAME record for Prometheus server] **************
+ok: [jevgeni-arefjev-3] => (item=jevgeni-arefjev-3)
+
+PLAY [Grafana] *****************************************************************
+
+TASK [docker : Install Docker] *************************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [docker : Docker service] *************************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [docker : Install Loki Docker driver] *************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [grafana : Pre-create necessary repositories] *****************************
+ok: [jevgeni-arefjev-3] => (item=dashboards)
+ok: [jevgeni-arefjev-3] => (item=datasources)
+
+TASK [grafana : Add grafana.ini file] ******************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [grafana : Add Grafana datasources] ***************************************
+ok: [jevgeni-arefjev-3] => (item=prometheus.yaml)
+ok: [jevgeni-arefjev-3] => (item=loki.yaml)
+
+TASK [grafana : Add Grafana dashboards] ****************************************
+ok: [jevgeni-arefjev-3] => (item=dashboards.yaml)
+ok: [jevgeni-arefjev-3] => (item=main.json)
+ok: [jevgeni-arefjev-3] => (item=agamalog.json)
+ok: [jevgeni-arefjev-3] => (item=backups.json)
+ok: [jevgeni-arefjev-3] => (item=mysql.json)
+
+TASK [grafana : Install Grafana (as container)] ********************************
+ok: [jevgeni-arefjev-3]
+
+TASK [grafana : Create DNS CNAME record for Grafana server] ********************
+ok: [jevgeni-arefjev-3] => (item=jevgeni-arefjev-3)
+
+PLAY [Loki] ********************************************************************
+
+TASK [loki : Download Loki binary] *********************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [loki : Unzip Loki binary] ************************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [loki : Create Loki directory structure] **********************************
+ok: [jevgeni-arefjev-3] => (item=/etc/loki)
+ok: [jevgeni-arefjev-3] => (item=/var/lib/loki)
+
+TASK [loki : Install Loki configuration] ***************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [loki : Create Loki systemd service] **************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [loki : Loki Service] *****************************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [loki : Create backup folder for Loki] ************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [loki : Add cron backuping schedule] **************************************
+ok: [jevgeni-arefjev-3]
+
+TASK [loki : Create DNS CNAME record for Loki server] **************************
+ok: [jevgeni-arefjev-3] => (item=jevgeni-arefjev-3)
+
+PLAY [HA] **********************************************************************
+
+TASK [keepalived : Install keepalived] *****************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [keepalived : Create user for keepalived] *********************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [keepalived : Add keepalived.conf] ****************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [keepalived : Add script for haproxy health check] ************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [keepalived : Keepalived service] *****************************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [keepalived : Download keepalived-exporter tar.gz] ************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [keepalived : Unarchive keepalived-exporter] ******************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [keepalived : Create keepalived-exporter systemd service] *****************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [keepalived : Keepalived-exporter Service] ********************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [haproxy : Install haproxy] ***********************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [haproxy : Configure haproxy] *********************************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [haproxy : Haproxy service] ***********************************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [haproxy : Install prometheus-haproxy-exporter] ***************************
+ok: [jevgeni-arefjev-1]
+ok: [jevgeni-arefjev-2]
+
+TASK [haproxy : Configure prometheus-haproxy-exporter] *************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [haproxy : Prometheus-haproxy-exporter service] ***************************
+ok: [jevgeni-arefjev-2]
+ok: [jevgeni-arefjev-1]
+
+TASK [haproxy : Create DNS CNAME record for HAproxy servers] *******************
+ok: [jevgeni-arefjev-2] => (item=jevgeni-arefjev-3)
+ok: [jevgeni-arefjev-1] => (item=jevgeni-arefjev-3)
+
+PLAY RECAP *********************************************************************
+jevgeni-arefjev-1          : ok=71   changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+jevgeni-arefjev-2          : ok=71   changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+jevgeni-arefjev-3          : ok=60   changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
++ date
+Tue Dec 16 06:32:25 PM EET 2025

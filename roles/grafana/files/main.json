@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 2,
+  "id": 3,
   "links": [],
   "panels": [
     {
@@ -1363,7 +1363,7 @@
           },
           "direction": "backward",
           "editorMode": "code",
-          "expr": "100*(\nrate({service_name=\"syslog\"} \n|~ \"^[234]\\\\d\\\\d\" [2m])\n/ rate({service_name=\"syslog\"} |~ \"^[2345]\\\\d\\\\d\" [2m]))",
+          "expr": "100*(\nrate({service_name=\"haproxy_agama_log\"} \n|~ \"^[234]\\\\d\\\\d\" [2m])\n/ rate({service_name=\"haproxy_agama_log\"} |~ \"^[2345]\\\\d\\\\d\" [2m]))",
           "legendFormat": "Availability",
           "queryType": "range",
           "refId": "A"
@@ -1579,5 +1579,5 @@
   "timezone": "browser",
   "title": "Main",
   "uid": "adx8tvt",
-  "version": 2
+  "version": 1
 }

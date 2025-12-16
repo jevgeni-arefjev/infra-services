@@ -9,15 +9,15 @@ clients:
   - url: "http://loki:3100/loki/api/v1/push"
 
 scrape_configs:
-  - job_name: syslog-host
+  - job_name: syslog
     static_configs:
     - targets:
         - localhost
       labels:
-        job: syslog-host
+        job: syslog
         __path__: /var/log/syslog
 
-  - job_name: agama
+  - job_name: uwsgi_agama
     static_configs:
     - targets:
        - localhost
@@ -49,8 +49,8 @@ scrape_configs:
         job: nginx_error
         __path__: /var/log/nginx/error.log
 
-  - job_name: syslog
+  - job_name: haproxy_agama_log
     syslog:
       listen_address: 0.0.0.0:514
       labels:
-        job: "syslog"
+        job: "haproxy_agama_log"
