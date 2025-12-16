@@ -1264,7 +1264,7 @@
           },
           "direction": "backward",
           "editorMode": "code",
-          "expr": "avg_over_time(\n{service_name=\"syslog\"}\n| regexp \"^[234].* (?P<latency>\\\\d+)$\"\n| unwrap latency\n[2m]\n)",
+          "expr": "avg_over_time(\n{service_name=\"haproxy_agama_log\"}\n| regexp \"^[234].* (?P<latency>\\\\d+)$\"\n| unwrap latency\n[2m]\n)",
           "legendFormat": "Latency",
           "queryType": "range",
           "refId": "A"
