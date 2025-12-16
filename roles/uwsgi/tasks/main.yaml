@@ -3,6 +3,7 @@
     name:
       - uwsgi
       - uwsgi-plugin-python3
+    policy_rc_d: 101
 
 - name: Create repository /etc/uwsgi/apps-enabled
   ansible.builtin.file:

@@ -1,6 +1,7 @@
 - name: Install Bind9
   ansible.builtin.apt:
     name: bind9
+    policy_rc_d: 101 # avoid key misconfiguration errors
 
 - name: Update Bind9 configuration
   ansible.builtin.template:

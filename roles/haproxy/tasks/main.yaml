@@ -1,6 +1,7 @@
 - name: Install haproxy
   ansible.builtin.apt:
     name: haproxy
+    policy_rc_d: 101
 
 - name: Configure haproxy
   ansible.builtin.template:
@@ -17,6 +18,7 @@
 - name: Install prometheus-haproxy-exporter
   ansible.builtin.apt:
     name: prometheus-haproxy-exporter
+    policy_rc_d: 101
 
 - name: Configure prometheus-haproxy-exporter
   ansible.builtin.copy:

@@ -1,6 +1,7 @@
 - name: Install Prometheus
   ansible.builtin.apt:
     name: prometheus
+    policy_rc_d: 101
 
 - name: Update Prometheus configuration
   ansible.builtin.template:

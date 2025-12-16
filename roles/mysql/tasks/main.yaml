@@ -1,6 +1,7 @@
 - name: Install MySQL
   ansible.builtin.apt:
     name: mysql-server
+    policy_rc_d: 101
 
 - name: Configure MySQL to listen on public port
   ansible.builtin.template:

@@ -1,6 +1,7 @@
 - name: Install nginx package
   ansible.builtin.apt:
     name: nginx
+    policy_rc_d: 101
 
 - name: Configure nginx
   ansible.builtin.template:

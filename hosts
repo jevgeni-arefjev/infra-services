@@ -1,33 +1,40 @@
-jevgeni-arefjev-1 ansible_host=193.40.157.25 ansible_port=42222 ansible_user=ubuntu
-jevgeni-arefjev-2 ansible_host=193.40.157.25 ansible_port=46922 ansible_user=ubuntu
-
-[db_servers]
-jevgeni-arefjev-2
-jevgeni-arefjev-1
-
-[web_servers]
-jevgeni-arefjev-1
-jevgeni-arefjev-2
+jevgeni-arefjev-1 ansible_host=193.40.157.25 ansible_port=17922 ansible_user=ubuntu
+jevgeni-arefjev-2 ansible_host=193.40.157.25 ansible_port=9922 ansible_user=ubuntu
+jevgeni-arefjev-3 ansible_host=193.40.157.25 ansible_port=23522 ansible_user=ubuntu
 
 [dns_primary]
-jevgeni-arefjev-1
+jevgeni-arefjev-3
 
 [dns_secondary]
+jevgeni-arefjev-1
 jevgeni-arefjev-2
 
 [dns_servers:children]
 dns_primary
 dns_secondary
 
-[prometheus]
-jevgeni-arefjev-2
-
-[grafana]
-jevgeni-arefjev-2
-
-[loki]
+[db_servers]
 jevgeni-arefjev-1
+jevgeni-arefjev-2
+
+[web_apps]
+jevgeni-arefjev-1
+jevgeni-arefjev-2
+
+[web_servers]
+jevgeni-arefjev-1
+jevgeni-arefjev-2
+jevgeni-arefjev-3
 
 [haproxy]
 jevgeni-arefjev-1
 jevgeni-arefjev-2
+
+[prometheus]
+jevgeni-arefjev-3
+
+[grafana]
+jevgeni-arefjev-3
+
+[loki]
+jevgeni-arefjev-3

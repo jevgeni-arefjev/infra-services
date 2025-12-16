@@ -1,4 +1,6 @@
-mysql_host: db-1
+
+ # cannot really use db-1 because in mysql role there is "if inventory_hostname == mysql_host" and it sets all DBs to read-only
+mysql_host: jevgeni-arefjev-1 
 mysql_database: agama
 mysql_user: agama
 mysql_password: !vault |

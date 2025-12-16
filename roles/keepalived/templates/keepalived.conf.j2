@@ -12,7 +12,7 @@ vrrp_instance XXX {
         {{ virtual_ip_address }}/24                   
     }
     unicast_peer {  
-{% for vm in groups['web_servers'] %}
+{% for vm in groups['web_apps'] %}
 {% if vm != inventory_hostname %}                     
         {{ hostvars[vm]['ansible_default_ipv4']['address'] }}
 {% endif %}

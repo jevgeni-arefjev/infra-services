@@ -1,6 +1,7 @@
 - name: Install keepalived
   ansible.builtin.apt:
     name: keepalived
+    policy_rc_d: 101
 
 - name: Create user for keepalived
   ansible.builtin.user:

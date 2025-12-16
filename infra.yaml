@@ -22,12 +22,17 @@
     tags:
       - db
 
-  - name: Web servers
-    hosts: web_servers
+  - name: Web Apps
+    hosts: web_apps
     roles:
       - docker
       - agama
-     #- uwsgi
+    tags:
+      - apps
+
+  - name: Web servers
+    hosts: web_servers
+    roles:
       - nginx
     tags:
       - www
