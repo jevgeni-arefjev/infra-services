@@ -33,6 +33,7 @@ nsupdate_key: !vault |
           36346464393135316463643936376434616435346463393130393939356539643232626239396337
           6361623261616361633737396162313161386534613233303230
 
+num_agama_containers: 2
 agama_port: 8001
 node_id: "{{ (ansible_port / 100) | int }}"
 mysql_backup_host: "{{ groups['db_servers'] | reject('eq', mysql_host) | first | default(mysql_host) }}"

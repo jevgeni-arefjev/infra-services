@@ -21,7 +21,7 @@
 - name: Start Agama
   community.docker.docker_container:
     image: agama
-    name: agama
+    name: "agama-{{ item }}"
     state: started
     restart_policy: always 
     env:
@@ -30,6 +30,7 @@
     log_driver: grafana/loki-docker-driver
     log_options:
       loki-url: http://loki:3100/loki/api/v1/push
+  loop: "{{ range(1, num_agama_containers+1) | list }}"
 
 - name: Create DNS CNAME record for Agama servers
   community.general.nsupdate:
