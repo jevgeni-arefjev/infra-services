@@ -51,7 +51,9 @@ frontend my_ha_frontend
 
 backend my_ha_backend
 {% for vm in groups['haproxy'] %}
-    server jevgeni{{ vm[-1] }} {{ vm }}:8001 check
+{% for i in range(num_agama_containers) %}
+	server jevgeni{{ vm[-1] }}-{{ i + 1 }} {{ vm }}:{{ agama_port + i }} check
+{% endfor %} 
 {% endfor %}
 
 listen stats
