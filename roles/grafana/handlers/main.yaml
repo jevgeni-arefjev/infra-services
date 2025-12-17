@@ -4,3 +4,4 @@
     name: grafana
     state: started
     restart: true
+    timeout: 600
