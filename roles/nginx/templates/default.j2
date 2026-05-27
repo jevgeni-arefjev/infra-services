@@ -1,12 +1,20 @@
 log_format status_time '$status $request_time';
 
+{% if inventory_hostname in groups['web_apps'] %}
+upstream agama {
+{% for i in range(1, num_agama_containers + 1) %}
+    server localhost:{{ agama_port + i }};
+{% endfor %}
+}
+{% endif %}
+
 server {
 	listen 80 default_server;
 	server_name _;
 
 {% if inventory_hostname in groups['web_apps'] %}
 	location / {
-		proxy_pass http://localhost:{{ agama_port }};
+		proxy_pass http://agama;
 		access_log /var/log/nginx/access.log;
 		access_log /var/log/nginx/agama.log status_time;
 	}

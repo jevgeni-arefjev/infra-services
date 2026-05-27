@@ -34,7 +34,7 @@
     login_unix_socket: /var/run/mysqld/mysqld.sock
     host: "%"
     priv: "{{ mysql_database }}.*:ALL"
-  no_log: yes
+  #no_log: yes
 
 # Installing prometheus exporter
 - name: Install mysqld_exporter

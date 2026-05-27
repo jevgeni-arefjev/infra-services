@@ -1,6 +1,6 @@
-jevgeni-arefjev-1 ansible_host=193.40.157.25 ansible_port=31422 ansible_user=ubuntu
-jevgeni-arefjev-2 ansible_host=193.40.157.25 ansible_port=49222 ansible_user=ubuntu
-jevgeni-arefjev-3 ansible_host=193.40.157.25 ansible_port=37722 ansible_user=ubuntu
+jevgeni-arefjev-1 ansible_host=89.167.29.7 ansible_port=22 ansible_user=root internal_ip=10.0.0.2
+jevgeni-arefjev-2 ansible_host=89.167.13.106 ansible_port=22 ansible_user=root internal_ip=10.0.0.4
+jevgeni-arefjev-3 ansible_host=46.62.144.1 ansible_port=22 ansible_user=root internal_ip=10.0.0.3
 
 [dns_primary]
 jevgeni-arefjev-3

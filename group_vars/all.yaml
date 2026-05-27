@@ -40,9 +40,9 @@ mysql_backup_host: "{{ groups['db_servers'] | reject('eq', mysql_host) | first |
 
 # Adding 58 to third octet for keepalived virtual IP address:
 keepalived_vm: jevgeni-arefjev-1
-_octets: "{{ hostvars[keepalived_vm]['ansible_default_ipv4']['address'].split('.') }}"
-virtual_ip_address: "{{ _octets[0] }}.{{ _octets[1] }}.{{ _octets[2] | int + 58 }}.{{ _octets[3] }}" 
-
+#_octets: "{{ hostvars[keepalived_vm]['ansible_default_ipv4']['address'].split('.') }}"
+#virtual_ip_address: "{{ _octets[0] }}.{{ _octets[1] }}.{{ _octets[2] | int + 58 }}.{{ _octets[3] }}" 
+virtual_ip_address: "10.0.0.5"
 
 backup_server_ip_address: 192.168.42.5
 backup_server_ssh_key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAtnpnME3TsMyvcJyiYawMBod33jkDcFG9Pb1rlxDiXX"

@@ -3,18 +3,26 @@ vrrp_script check_haproxy {
     weight 20                              
     interval 1               
 }
-vrrp_instance XXX {             
-    interface ens3
+{% set ns = namespace(internal_iface='') %}
+{% for iface in ansible_interfaces %}
+{%   set iface_data = hostvars[inventory_hostname]['ansible_' + iface | replace('-', '_')] | default({}) %}
+{%   if iface_data.get('ipv4', {}).get('address', '') == internal_ip %}
+{%     set ns.internal_iface = iface %}
+{%   endif %}
+{% endfor %}
+vrrp_instance XXX {
+    interface {{ ns.internal_iface }}
     virtual_router_id 1
     priority {{ 100 - inventory_hostname[-1] | int }}
-    advert_int 1                            
-    virtual_ipaddress {                     
-        {{ virtual_ip_address }}/24                   
+    advert_int 1
+    unicast_src_ip {{ internal_ip }}
+    virtual_ipaddress {
+        {{ virtual_ip_address }}/32
     }
-    unicast_peer {  
+    unicast_peer {
 {% for vm in groups['web_apps'] %}
-{% if vm != inventory_hostname %}                     
-        {{ hostvars[vm]['ansible_default_ipv4']['address'] }}
+{% if vm != inventory_hostname %}
+        {{ hostvars[vm]['internal_ip'] }}
 {% endif %}
 {% endfor %}
     }
